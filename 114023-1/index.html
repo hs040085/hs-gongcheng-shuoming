@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<title>114023-1｜115學年度改善無障礙校園環境工程</title>
+<!--
+  ─────────────────────────────────────────────────────────────
+  工程說明頁母版　作者: claude　建立: 2026-08-09
+  規格與分級見 ..\..\01_案件庫\_wiki\概念頁\工程說明頁母版-分級對照表.md
+  ★ 本檔為母版：所有雙大括號佔位符與 DATA 內的值皆為本案特有，一律由 skill 填。
+     _build.js 會斷言產出的 HTML 裡一個佔位符都不剩，漏填即擋下不產出。
+  ★ 這一頁會被推上公開網際網路。可上什麼、不可上什麼，見 ..\README.md「可上網白名單」。
+     _scan.js 會逐檔斷言，違反即擋下不發布。
+     ⚠ 本註解不重抄禁項清單——理由同 CLAUDE.md §失誤型錄 006：摘要會漂移，
+       而漂移之後沒有一處是唯一權威。（且禁字寫在這裡會被掃描器自己抓到。）
+  ─────────────────────────────────────────────────────────────
+-->
+<style>
+:root{
+  --bg:#0f1420; --card:#1a2130; --card2:#232c3d; --line:rgba(255,255,255,.10);
+  --tx:#f1f5f9; --dim:#94a3b8; --bl:#38bdf8; --gr:#34d399; --am:#fbbf24; --ro:#fb7185;
+  --pad:16px; --r:14px;
+}
+@media (prefers-color-scheme: light){
+  :root{ --bg:#f4f6fb; --card:#fff; --card2:#eef2f9; --line:rgba(15,20,32,.10);
+         --tx:#0f1420; --dim:#5b6678; }
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  background:var(--bg); color:var(--tx); line-height:1.75;
+  font-size:16px; padding-bottom:calc(84px + env(safe-area-inset-bottom));
+}
+.wrap{max-width:820px;margin:0 auto;padding:0 var(--pad)}
+
+/* ── 頁首 ─────────────────────────────────────── */
+header{padding:20px var(--pad) 14px;border-bottom:1px solid var(--line)}
+.kicker{font-size:.78rem;color:var(--bl);letter-spacing:.06em;font-weight:700}
+h1{font-size:1.35rem;line-height:1.4;margin:6px 0 10px;font-weight:800}
+.lede{font-size:1rem;color:var(--tx);background:var(--card);border-left:4px solid var(--bl);
+      border-radius:0 var(--r) var(--r) 0;padding:12px 14px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.fact{background:var(--card2);border:1px solid var(--line);border-radius:999px;
+      padding:5px 12px;font-size:.82rem;color:var(--dim)}
+.fact b{color:var(--tx);font-weight:700}
+
+/* ── 分頁列（手機：底部固定；桌機：也固定，夠用就好）───── */
+nav{position:fixed;left:0;right:0;bottom:0;z-index:50;
+    background:color-mix(in srgb,var(--bg) 92%,transparent);
+    backdrop-filter:blur(14px);border-top:1px solid var(--line);
+    padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;max-width:820px;margin:0 auto}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:transparent;border:1px solid transparent;color:var(--dim);
+     font:inherit;font-size:.86rem;font-weight:700;padding:9px 14px;border-radius:10px;
+     cursor:pointer;white-space:nowrap;min-height:44px}
+.tab[aria-selected="true"]{background:color-mix(in srgb,var(--bl) 18%,transparent);
+     color:var(--bl);border-color:color-mix(in srgb,var(--bl) 35%,transparent)}
+
+/* ── 區塊 ─────────────────────────────────────── */
+section{display:none;padding-top:18px}
+section.on{display:block;animation:in .25s ease}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h2{font-size:1.08rem;margin:22px 0 10px;display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:4px;height:18px;background:var(--bl);border-radius:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+      padding:14px;margin-bottom:12px}
+.card h3{font-size:1rem;margin-bottom:6px}
+.tag{display:inline-block;background:var(--card2);border:1px solid var(--line);
+     border-radius:6px;padding:1px 7px;font-size:.72rem;color:var(--dim);margin-left:6px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:.92rem;margin-top:8px}
+.kv dt{color:var(--dim);white-space:nowrap}
+.muted{color:var(--dim);font-size:.9rem}
+
+/* ── 前後對比 ─────────────────────────────────── */
+.ba{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);
+    aspect-ratio:4/3;background:var(--card2);touch-action:pan-y}
+.ba>div{position:absolute;inset:0;display:grid;place-items:center;padding:18px;text-align:center}
+.ba .after{clip-path:inset(0 0 0 var(--split,50%))}
+.ba .before{clip-path:inset(0 calc(100% - var(--split,50%)) 0 0)}
+.ba .lab{position:absolute;top:8px;font-size:.74rem;font-weight:800;
+         background:rgba(0,0,0,.55);color:#fff;padding:3px 9px;border-radius:999px}
+.ba .before .lab{left:8px} .ba .after .lab{right:8px}
+.ba svg{width:100%;height:100%}
+input[type=range].sp{width:100%;margin-top:10px;accent-color:var(--bl);height:44px}
+
+/* ── 階段動畫 ─────────────────────────────────── */
+.steps{position:relative;padding-left:26px}
+.steps::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.step{position:relative;margin-bottom:10px;opacity:.42;transition:opacity .3s}
+.step.on{opacity:1}
+.step::before{content:"";position:absolute;left:-22px;top:16px;width:11px;height:11px;
+   border-radius:50%;background:var(--card2);border:2px solid var(--line);transition:.3s}
+.step.on::before{background:var(--bl);border-color:var(--bl);box-shadow:0 0 0 5px color-mix(in srgb,var(--bl) 22%,transparent)}
+.ctrl{display:flex;gap:8px;align-items:center;margin:12px 0}
+button.btn{background:var(--card2);border:1px solid var(--line);color:var(--tx);font:inherit;
+  font-weight:700;font-size:.88rem;padding:10px 16px;border-radius:10px;cursor:pointer;min-height:44px}
+button.btn.pri{background:var(--bl);border-color:var(--bl);color:#04121d}
+
+/* ── 督工清單 ─────────────────────────────────── */
+label.chk{display:flex;gap:10px;align-items:flex-start;background:var(--card);
+  border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:8px;cursor:pointer}
+label.chk input{width:22px;height:22px;margin-top:2px;accent-color:var(--gr);flex:0 0 auto}
+label.chk.done{opacity:.5}
+label.chk .t{font-weight:700;font-size:.95rem}
+label.chk .h{font-size:.88rem;color:var(--dim);margin-top:2px}
+.cam{color:var(--am);font-size:.78rem;font-weight:700}
+.pg{font-size:.85rem;color:var(--dim);margin-bottom:10px}
+
+/* ── 摺疊 ─────────────────────────────────────── */
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:12px 14px;margin-bottom:8px}
+details[open]{background:var(--card2)}
+summary{cursor:pointer;font-weight:700;font-size:.95rem;list-style:none;min-height:32px;display:flex;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";margin-left:auto;color:var(--dim)}
+details[open] summary::after{content:"−"}
+details p{margin-top:8px;font-size:.92rem;color:var(--dim)}
+.risk{border-left:4px solid var(--am)}
+.risk summary::before{content:"⚠ ";color:var(--am)}
+
+footer{margin:28px 0 8px;padding-top:14px;border-top:1px solid var(--line);
+  font-size:.78rem;color:var(--dim);line-height:1.9}
+
+@media (min-width:700px){
+  body{font-size:17px}
+  h1{font-size:1.7rem}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid2 .card{margin-bottom:0}
+}
+@media (max-width:400px){
+  :root{--pad:12px}
+  h1{font-size:1.18rem} .tab{padding:9px 10px;font-size:.8rem}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ═══ 這一段由 skill 填。上面的 CSS 與下面的 JS 一律不動 ═══ -->
+<script>
+const DATA = {
+  "案號": "114023-1",
+  "案名": "115學年度改善無障礙校園環境工程",
+  "一句話": "把校園裡三處會擋住輪椅、娃娃車與行動不便者的地方——書香樓西側斜坡道、星空樓南側斜坡道、星空樓丙樓梯——重做坡面與扶手。不動結構，做的是地坪面層、不銹鋼扶手欄杆與花台修補。",
+  "基本": [
+    {
+      "k": "施工地點",
+      "v": "書香樓西側斜坡道・星空樓南側斜坡道・星空樓丙樓梯（B1～屋頂層）"
+    },
+    {
+      "k": "工期",
+      "v": "機關通知日起 7 日內開工，開工之日起 60 日內竣工（預計竣工 2026-10-30）"
+    },
+    {
+      "k": "設計監造",
+      "v": "廖欽大建築師事務所"
+    },
+    {
+      "k": "經費來源",
+      "v": "教育部國教署補助（經桃園市教育局轉核），115年度改善無障礙校園環境計畫"
+    }
+  ],
+  "區域": [
+    {
+      "id": "A",
+      "名": "書香樓西側斜坡道",
+      "位置": "書香樓西側那條連到停車位旁邊的既有斜坡道。旁邊有一座 RC 花台，還有一面無障礙車位標示牌。這一區是三區裡動得最多的，坡道要重鋪、花台要拆掉重砌、扶手整組換新。",
+      "現況": "坡道面層老舊；臨空側是一座 RC 花台兼護欄，花台裡種了小喬木；既有不銹鋼扶手一道；無障礙車位標示牌位置在整修後會擋到路。",
+      "完成": "坡度做到 1:12、面層拉毛止滑；花台改砌磚花台並貼上與原有相近的方塊磚；臨空側換成 SUS304 不銹鋼雙層欄杆（高的 110 公分是防護、低的 75 公分是扶手），坡面兩側加不銹鋼護緣防止輪椅前輪滑出去；標示牌移到新位置。",
+      "示意": {
+        "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='書香樓西側斜坡道整修前示意：既有坡道、RC 花台與單道扶手'><rect width='400' height='300' fill='#f4f2ee'/><polygon points='40,220 300,220 300,190 40,205' fill='#c9c3b8'/><rect x='40' y='150' width='70' height='70' fill='#b0a99c'/><ellipse cx='75' cy='145' rx='26' ry='18' fill='#8fa87a'/><rect x='72' y='140' width='6' height='16' fill='#7a6a52'/><line x1='120' y1='185' x2='300' y2='170' stroke='#8a8a8a' stroke-width='4'/><circle cx='150' cy='183' r='3' fill='#8a8a8a'/><circle cx='230' cy='177' r='3' fill='#8a8a8a'/><text x='45' y='142' font-size='13' fill='#5a5347'>RC 花台＋植栽</text><text x='195' y='163' font-size='13' fill='#5a5347'>單道舊扶手</text><text x='20' y='265' font-size='15' fill='#3a352c'>整修前：坡面老舊、花台擋邊、只有一道扶手</text></svg>",
+        "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='書香樓西側斜坡道整修後示意：新坡面、磚花台與雙層不銹鋼欄杆'><rect width='400' height='300' fill='#f4f2ee'/><polygon points='40,220 300,220 300,190 40,205' fill='#ded8cd'/><rect x='40' y='210' width='260' height='6' fill='#9aa7b4'/><rect x='40' y='160' width='60' height='60' fill='#c08a6a'/><line x1='60' y1='120' x2='300' y2='105' stroke='#8f9aa6' stroke-width='5'/><line x1='60' y1='155' x2='300' y2='140' stroke='#8f9aa6' stroke-width='4'/><line x1='70' y1='120' x2='70' y2='205' stroke='#8f9aa6' stroke-width='4'/><line x1='170' y1='113' x2='170' y2='198' stroke='#8f9aa6' stroke-width='4'/><line x1='280' y1='106' x2='280' y2='192' stroke='#8f9aa6' stroke-width='4'/><text x='305' y='112' font-size='12' fill='#3a352c'>110</text><text x='305' y='147' font-size='12' fill='#3a352c'>75</text><text x='42' y='152' font-size='12' fill='#5a5347'>磚花台</text><text x='150' y='236' font-size='12' fill='#5a5347'>不銹鋼護緣</text><text x='20' y='265' font-size='15' fill='#3a352c'>整修後：坡度 1:12、雙層欄杆、坡邊有護緣</text></svg>"
+      },
+      "項目": [
+        {
+          "標": "舊不銹鋼扶手拆除",
+          "圖號": "A2-1 拆除說明 1",
+          "白話": "把原有的不銹鋼扶手整組拆掉。圖說特別註明「不銹鋼料需回收」——不是丟掉，是要留下來。",
+          "材料": "拆除工項，無新材料。",
+          "看點": "★ 拆下來的不銹鋼有沒有被載走。依一般說明第 8 條，有價料拆除後不得運離，要統一堆置在機關指定位置，由學校後續辦理拍賣、所得繳庫。拆除當天就要看，隔天就來不及。"
+        },
+        {
+          "標": "RC 花台與植栽移除",
+          "圖號": "A2-1 拆除說明 2、3",
+          "白話": "把坡道旁邊那座兼作護欄的 RC 花台打掉運走，花台裡的植栽、小喬木和花土也一起移除。",
+          "材料": "拆除運棄。",
+          "看點": "花台打掉後坡道臨空側會整個開放，這段期間是最危險的——看廠商有沒有先設臨時圍籬或警示，不要等新欄杆裝好才防護。"
+        },
+        {
+          "標": "坡面剷除與打毛",
+          "圖號": "A2-1 拆除說明 4、5、6",
+          "白話": "斜線範圍內的舊 RC 坡道要剷掉至少 3 公分厚；斜線以外的坡道面層與抛坪則是「密打毛」——把表面打粗糙，新的混凝土才咬得住。",
+          "材料": "剷除、打毛，無新材料。",
+          "看點": "★ 打毛是不是「密」——整面均勻粗糙，不是隨便敲幾下。側光照過去凹凸會現形。這一項澆置後就永遠看不到了。"
+        },
+        {
+          "標": "坡道地坪重澆",
+          "圖號": "A2-1 整修說明 1、2",
+          "白話": "坡道面層重新澆 210kg/cm² 的細粒料混凝土，厚度 3～12 公分不等（因為要把坡度修成 1:12，所以每一段厚度不一樣）；裡面放直徑 5mm、格距 15×15cm 的點焊鋼絲網。地坪那一段另有一組較厚的做法，內置直徑 10mm、格距 15×15cm 的雙層點焊鋼筋網。",
+          "材料": "210kg/cm² 細粒料混凝土；點焊鋼絲網 Ø5mm@15×15cm；點焊鋼筋網 Ø10mm@15×15cm 雙層。",
+          "看點": "★★ 澆置前一定要到場：① 鋼絲網／鋼筋網有沒有真的鋪、格距對不對（拿捲尺量幾格）② 網有沒有墊起來（貼在底部等於沒作用）③ 混凝土初凝時面層有沒有「拉毛」止滑。這三件事澆完就再也看不到，一定要拍照。"
+        },
+        {
+          "標": "補砌磚花台",
+          "圖號": "A2-1 整修說明 3",
+          "白話": "把打掉的 RC 花台改成砌磚花台，雙面和頂面用 1:3 水泥砂漿刷貼「與原有相近之方塊磚」。",
+          "材料": "紅磚、1:3 水泥砂漿、方塊磚。",
+          "看點": "「相近」是模糊字（見下方爭議點）。貼之前先要一塊樣品，跟現場既有的磚放在一起比對，比對過程拍照存證。"
+        },
+        {
+          "標": "不銹鋼欄杆與扶手",
+          "圖號": "A2-1 整修說明 5～9、A2-5",
+          "白話": "臨空側裝一整組 SUS304 不銹鋼欄杆：上層 Ø1.5 吋管，高度距坡面或平台 110 公分（這一道是防護，防止人摔出去）；下層 Ø1 吋管，高度 75 公分（這一道才是手扶的扶手）。中間以 L 形支撐桿焊在支撐柱上。",
+          "材料": "SUS304 毛絲面不銹鋼管：扶手 Ø1.5\" 厚 1.65mm、支撐柱與支撐桿 Ø1\" 厚 1.65mm。",
+          "看點": "① 材質：看鋼印或出廠證明，並要求提供材質證明書 ② 焊道有沒有研磨平整、管口有沒有封起來（小朋友會摸，毛刺會割手）③ 高度量到哪裡（上緣還是管中心）要在裝之前講定，不然驗收會吵。"
+        },
+        {
+          "標": "不銹鋼護緣",
+          "圖號": "A2-1 整修說明 10、11",
+          "白話": "坡道兩側邊緣加不銹鋼板護緣，厚 5mm、高 5 公分，底部離坡面 10mm；另有 5×5cm 的角鋼護緣固定在坡面或平台上。護緣的作用是擋住輪椅前輪，不讓它滑出坡道。",
+          "材料": "SUS304 毛絲面不銹鋼板 5mm×H5cm；SUS304 角鋼 5×5cm。",
+          "看點": "護緣是無障礙坡道的必要構件（規範 206.4.1：高差超過 20 公分、未鄰牆壁側應設 5 公分以上邊緣防護）。量高度是不是真的 5 公分，底部縫是不是 10mm——縫太大排不了水，太小反而積水。"
+        },
+        {
+          "標": "無障礙車位標示牌移設",
+          "圖號": "A2-1 拆除說明 7、整修說明 4",
+          "白話": "原有的無障礙停車位標示牌，要照整修後平面圖畫的新位置移過去。",
+          "材料": "沿用原標示牌。",
+          "看點": "移過去之後會不會擋到新的坡道動線或欄杆；牌面有沒有在拆裝過程中撞凹。"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "名": "星空樓南側無障礙斜坡道",
+      "位置": "星空樓南側那條長長的無障礙坡道，圖上量到全長約 12.4 公尺、寬約 1.95 公尺。這一區的做法比書香樓單純：不動花台、不改坡度，只把面層重做、扶手換新。",
+      "現況": "既有 RC 坡道面層老舊；既有不銹鋼扶手一道。",
+      "完成": "地坪剷掉 3 公分重澆同厚度的細粒料混凝土並拉毛止滑；換上 SUS304 不銹鋼扶手（高度 75 公分）與 L 形支撐桿、不銹鋼板護緣。",
+      "示意": {
+        "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='星空樓南側坡道整修前示意：長條坡道與單道舊扶手'><rect width='400' height='300' fill='#f4f2ee'/><rect x='30' y='150' width='340' height='70' fill='#c9c3b8'/><line x1='30' y1='150' x2='370' y2='150' stroke='#8a8a8a' stroke-width='3'/><line x1='30' y1='128' x2='370' y2='128' stroke='#8a8a8a' stroke-width='4'/><line x1='60' y1='128' x2='60' y2='150' stroke='#8a8a8a' stroke-width='3'/><line x1='200' y1='128' x2='200' y2='150' stroke='#8a8a8a' stroke-width='3'/><line x1='340' y1='128' x2='340' y2='150' stroke='#8a8a8a' stroke-width='3'/><text x='140' y='120' font-size='13' fill='#5a5347'>既有單道扶手</text><text x='150' y='192' font-size='13' fill='#5a5347'>舊坡面</text><text x='20' y='265' font-size='15' fill='#3a352c'>整修前：面層老舊，扶手一道</text></svg>",
+        "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='星空樓南側坡道整修後示意：新面層、新扶手與護緣'><rect width='400' height='300' fill='#f4f2ee'/><rect x='30' y='150' width='340' height='70' fill='#ded8cd'/><rect x='30' y='214' width='340' height='6' fill='#9aa7b4'/><line x1='30' y1='126' x2='370' y2='126' stroke='#8f9aa6' stroke-width='5'/><line x1='60' y1='126' x2='60' y2='152' stroke='#8f9aa6' stroke-width='4'/><line x1='150' y1='126' x2='150' y2='152' stroke='#8f9aa6' stroke-width='4'/><line x1='250' y1='126' x2='250' y2='152' stroke='#8f9aa6' stroke-width='4'/><line x1='340' y1='126' x2='340' y2='152' stroke='#8f9aa6' stroke-width='4'/><text x='375' y='131' font-size='12' fill='#3a352c'>75</text><text x='120' y='185' font-size='13' fill='#5a5347'>面層重澆＋拉毛</text><text x='140' y='240' font-size='12' fill='#5a5347'>不銹鋼護緣</text><text x='20' y='265' font-size='15' fill='#3a352c'>整修後：面層重做、扶手 75 公分、加護緣</text></svg>"
+      },
+      "項目": [
+        {
+          "標": "舊扶手拆除",
+          "圖號": "A2-2 拆除說明 1",
+          "白話": "原有不銹鋼扶手拆除，同樣註明「不銹鋼料需回收」。",
+          "材料": "拆除工項。",
+          "看點": "同 A 區：★ 不銹鋼是有價料，不得運離現場。"
+        },
+        {
+          "標": "地坪剷除 3 公分",
+          "圖號": "A2-2 拆除說明 2",
+          "白話": "斜線範圍內的既有 RC 地坪剷掉 3 公分厚。這一區是「剷掉多少、補回多少」，坡度不改。",
+          "材料": "剷除運棄。",
+          "看點": "剷除深度用尺量幾個點。剷太淺，新混凝土疊上去會比原來高，接到門檻那一段就會多出一個小坎——那正是無障礙工程最忌諱的東西。"
+        },
+        {
+          "標": "面層重澆與拉毛",
+          "圖號": "A2-2 整修說明 1",
+          "白話": "澆 210kg/cm² 細粒料混凝土 3 公分厚，內置 Ø5mm、格距 15×15cm 點焊鋼絲網，初凝時面層拉毛。",
+          "材料": "210kg/cm² 細粒料混凝土；點焊鋼絲網 Ø5mm@15×15cm。",
+          "看點": "★ 同 A 區，鋼絲網與拉毛都只能在澆置那一天看。另外看新舊面的交接處有沒有留高低差。"
+        },
+        {
+          "標": "不銹鋼扶手與支撐",
+          "圖號": "A2-2 整修說明 2～6",
+          "白話": "支撐柱 Ø1 吋固定於地坪（固定方式須經監造單位同意後才能施作）；L 形支撐桿焊在支撐柱上；扶手 Ø1 吋、高度距坡面或平台 75 公分；再加 5mm 厚、5 公分高的不銹鋼板護緣。",
+          "材料": "SUS304 毛絲面不銹鋼管 Ø1\" 厚 1.65mm；不銹鋼板 5mm×H5cm。",
+          "看點": "① 這一區圖說只寫了 75 公分一道扶手，和 A 區的 110＋75 不一樣——開工前要問清楚是設計如此還是漏標（見爭議點）② 支撐柱怎麼固定要有監造的書面同意，不要讓廠商先做了再說。"
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "名": "星空樓丙樓梯（地下層～屋頂層）",
+      "位置": "星空樓的丙樓梯，從地下層一路到屋頂層，中間一至五層。每一層 24 階（分成兩個梯段，各 12 階）。這一區的量最大，但每一層做的事都一樣。",
+      "現況": "既有不銹鋼管扶手；踏面與平台是磨石子地坪加粉刷層。",
+      "完成": "舊扶手全部拆掉（拆除處的牆面要復原），重新裝 SUS304 不銹鋼扶手，高度 75 公分，支撐桿固定在既有 RC 欄杆上；磨石子地坪與粉刷層剷除後重做假石子地坪。",
+      "示意": {
+        "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='丙樓梯整修前示意：磨石子踏面與舊扶手'><rect width='400' height='300' fill='#f4f2ee'/><g fill='#c9c3b8' stroke='#a8a196'><rect x='60' y='210' width='50' height='14'/><rect x='110' y='196' width='50' height='14'/><rect x='160' y='182' width='50' height='14'/><rect x='210' y='168' width='50' height='14'/><rect x='260' y='154' width='50' height='14'/></g><line x1='60' y1='170' x2='310' y2='104' stroke='#8a8a8a' stroke-width='4'/><line x1='90' y1='163' x2='90' y2='205' stroke='#8a8a8a' stroke-width='3'/><line x1='200' y1='134' x2='200' y2='177' stroke='#8a8a8a' stroke-width='3'/><text x='120' y='128' font-size='13' fill='#5a5347'>既有不銹鋼扶手</text><text x='70' y='250' font-size='13' fill='#5a5347'>磨石子踏面＋粉刷層</text><text x='20' y='278' font-size='15' fill='#3a352c'>整修前：每層 24 階，扶手與地坪都要換</text></svg>",
+        "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='丙樓梯整修後示意：假石子踏面與新不銹鋼扶手'><rect width='400' height='300' fill='#f4f2ee'/><g fill='#ded8cd' stroke='#bdb6aa'><rect x='60' y='210' width='50' height='14'/><rect x='110' y='196' width='50' height='14'/><rect x='160' y='182' width='50' height='14'/><rect x='210' y='168' width='50' height='14'/><rect x='260' y='154' width='50' height='14'/></g><line x1='60' y1='165' x2='310' y2='99' stroke='#8f9aa6' stroke-width='5'/><line x1='90' y1='158' x2='90' y2='205' stroke='#8f9aa6' stroke-width='4'/><line x1='160' y1='139' x2='160' y2='187' stroke='#8f9aa6' stroke-width='4'/><line x1='240' y1='118' x2='240' y2='166' stroke='#8f9aa6' stroke-width='4'/><text x='316' y='104' font-size='12' fill='#3a352c'>75</text><text x='70' y='250' font-size='13' fill='#5a5347'>假石子地坪（新）</text><text x='20' y='278' font-size='15' fill='#3a352c'>整修後：新扶手 75 公分、地坪換材質</text></svg>"
+      },
+      "項目": [
+        {
+          "標": "舊扶手拆除與牆面復原",
+          "圖號": "A2-3 拆除說明",
+          "白話": "圖說原文只有一句：「樓梯現有不銹鋼管扶手拆除（有價料需回收，拆除處之牆面處復原）」。也就是拆完之後牆上會留下一排固定孔，要補回去。",
+          "材料": "拆除；牆面修補。",
+          "看點": "★ 拆除前先沿著整段樓梯拍一輪照片，把原本扶手固定在哪、幾支立柱、牆面原來什麼顏色記錄下來。「復原」沒有標準（見爭議點），有照片才有得談。"
+        },
+        {
+          "標": "地坪換材質",
+          "圖號": "A2-4 整修說明 1",
+          "白話": "原有的磨石子地坪與粉刷層剷除運棄，重新施作「假石子地坪」。圖說在這一項旁邊註了「材質變換地坪」。",
+          "材料": "假石子（洗石子類面層）。",
+          "看點": "① 剷除後基底有沒有整平 ② 假石子的粒徑與顏色要先做樣品確認 ③ 級鼻（階梯前緣）那一道最容易做不平，用直尺靠上去看 ④ 止滑：磨石子換假石子的目的之一就是止滑，完工後用鞋底試踩，濕的時候更要試。"
+        },
+        {
+          "標": "新設不銹鋼扶手",
+          "圖號": "A2-4 整修說明 2、3、A2-6",
+          "白話": "直徑 1 吋、厚 1.65mm 的 SUS304 毛絲面不銹鋼管扶手，高度距斜坡面或平台 75 公分；L 形支撐桿固定在既有 RC 欄杆上。",
+          "材料": "SUS304 毛絲面不銹鋼管 Ø1\" 厚 1.65mm。",
+          "看點": "① 扶手要連續不中斷（規範 305.1）——在樓梯轉折處看接頭有沒有斷開 ② 端部要作防勾撞處理（往下彎或彎入牆），不要留一截直管在那裡勾人 ③ 固定在 RC 欄杆上的錨栓有沒有鬆動，用手用力搖看看。"
+        }
+      ]
+    }
+  ],
+  "階段": [
+    {
+      "週": "推定 第 1～7 天",
+      "名": "開工前置與材料送審",
+      "現場": "假設工程進場、設置工程告示牌與乙種圍籬（1800×1800mm，含夜間 LED 警示燈）。現場看起來還沒動什麼，但材料送審會同時進行。",
+      "你要": "① 發開工通知（契約：機關通知日起 7 日內開工）② 材料送審要簽——SUS304 管材、假石子、方塊磚的樣品與材質證明，這個階段定案，拖到後面會卡工期 ③ ★ 支撐柱固定方式須經監造單位同意後才能施工，這份同意要在動工前拿到書面 ④ 提醒廠商：施工前、中、後及隱蔽部分都要拍照留存（一般說明 11）。"
+    },
+    {
+      "週": "推定 第 8～22 天",
+      "名": "書香樓西側坡道：拆除與整地",
+      "現場": "最吵、最髒的一段。RC 花台打除、坡面剷除與打毛，會有粉塵與打除噪音。書香樓西側動線要改道。",
+      "你要": "① ★ 拆下來的不銹鋼扶手要留在校內指定位置，不能讓廠商載走（一般說明 8，後續由學校辦理拍賣繳庫）② 打除與噪音較大的施工要配合學校作息與活動時間（一般說明 12）③ 澆置混凝土前務必到場看鋼絲網與格距，並拍照。"
+    },
+    {
+      "週": "推定 第 23～34 天",
+      "名": "星空樓南側坡道：面層重做",
+      "現場": "地坪剷除 3 公分、重澆混凝土。這一區坡道長約 12 公尺，施工期間整條動線會封閉，要事先公告替代路線。",
+      "你要": "① 同樣在澆置前看鋼絲網、澆置時看拉毛 ② ★ 這時候要把「北側那一座坡道到底做不做」問清楚（見爭議點第 1 項）——南側做完才問，廠商的機具與人力已經撤了。"
+    },
+    {
+      "週": "推定 第 35～48 天",
+      "名": "星空樓丙樓梯：拆除、地坪與扶手",
+      "現場": "從地下層做到屋頂層，整支樓梯會分段封閉。磨石子剷除會有噪音與粉塵；樓梯是平時與緊急時的主要垂直動線，封閉範圍與時段要特別謹慎。",
+      "你要": "① 分段施工計畫要先看過，確認任何時候都有一支可用的樓梯 ② 拆除前拍照留存牆面原況 ③ 假石子樣品確認 ④ 「一至五層」的實作數量要對照標單清點（見爭議點）。"
+    },
+    {
+      "週": "推定 第 49～56 天",
+      "名": "不銹鋼欄杆扶手安裝與收尾",
+      "現場": "三區的不銹鋼件現場組裝、焊接、研磨。會有焊接火花與研磨聲，要注意防火與周邊防護。",
+      "你要": "① 逐段量扶手高度（110／75）與護緣高度 ② 摸焊道與管口有沒有毛刺 ③ 無障礙車位標示牌移設定位 ④ 開始準備竣工文件與驗收清單。"
+    },
+    {
+      "週": "推定 第 57～60 天",
+      "名": "竣工、清理與驗收準備",
+      "現場": "圍籬撤除、環境清潔、動線恢復。",
+      "你要": "① 竣工報告與完工照片（含隱蔽部分）② 對照設計規範逐項複核：坡度 1:12、扶手高度、護緣 5 公分、扶手連續不中斷、端部防勾撞 ③ ★ 補助案：本案核定補助 120 萬元，驗收核銷有時限（核定函說明六「執行完成後 2 週內」），竣工當下就要啟動核銷準備，不要等驗收合格才開始整理。"
+    }
+  ],
+  "督工": [
+    {
+      "區": "全部",
+      "項": "拆下來的不銹鋼有沒有被載走",
+      "怎麼看": "★ 只有拆除當天看得到。圖說寫「有價料需回收」、一般說明第 8 條寫「拆除後不得運棄，統一集中堆置於機關指定位置，由業主後續辦理拍賣，所得納入國庫收入」。拆除當天到現場點一次數量並拍照，指定堆放位置。",
+      "拍照": true
+    },
+    {
+      "區": "A・B",
+      "項": "鋼絲網有沒有真的鋪、格距對不對",
+      "怎麼看": "★★ 只能在澆置混凝土之前看，澆完就永遠看不到。拿捲尺量幾格，應為 15×15 公分；線徑 Ø5mm（A 區地坪那一段是 Ø10mm 雙層）。並看網有沒有被墊起來——貼在底部等於白做。",
+      "拍照": true
+    },
+    {
+      "區": "A・B",
+      "項": "混凝土初凝時有沒有拉毛",
+      "怎麼看": "★ 只有澆置後那幾個小時看得到。面層要用工具拉出細紋，這是止滑的來源。等完全硬化後再補做就只能靠打磨，效果不同。",
+      "拍照": true
+    },
+    {
+      "區": "A",
+      "項": "坡度是不是 1:12",
+      "怎麼看": "拿一支 1 公尺的水平尺和一把捲尺：把水平尺水平架在坡面上，一端貼地，另一端到坡面的垂直距離應約 8.3 公分（1 公尺÷12）。多量幾段，坡道中間常常比兩端陡。",
+      "拍照": true
+    },
+    {
+      "區": "A・B・C",
+      "項": "扶手高度量到哪裡",
+      "怎麼看": "A 區 110／75、B 區 75、C 區 75（公分）。★ 裝之前就要跟廠商講定是量到「管子上緣」還是「管子中心」——差一個管徑（約 2.5～3.8 公分）就是驗收爭議。講定後寫進監造工作日誌。",
+      "拍照": false
+    },
+    {
+      "區": "A・B・C",
+      "項": "是不是真的 SUS304",
+      "怎麼看": "要材質證明書與出廠證明；現場可用磁鐵初步判別（304 幾乎不吸磁，一般鐵管會明顯吸住），但磁鐵只能當初篩，不能取代證明文件。另看表面是不是「毛絲面」（細直紋），不是亮面也不是霧面。",
+      "拍照": false
+    },
+    {
+      "區": "A・B・C",
+      "項": "焊道與管口",
+      "怎麼看": "用手摸每一個接頭：焊道要研磨平整、不刮手；所有管子的端口要封起來，不能留開口（會積水生鏽，小朋友手指也會伸進去）。逆光看焊道有沒有燒穿或凹陷。",
+      "拍照": true
+    },
+    {
+      "區": "A・B",
+      "項": "護緣高度與底縫",
+      "怎麼看": "護緣高 5 公分、底部離坡面 10mm。用尺量幾個點。這一項是規範 206.4.1 明文（高差超過 20 公分、未鄰牆側應設 5 公分以上邊緣防護），少做或做矮了會直接被指為不符規範。",
+      "拍照": true
+    },
+    {
+      "區": "C",
+      "項": "扶手連續不中斷",
+      "怎麼看": "規範 305.1：扶手應連續不得中斷（樓梯中間平台外側扶手得不連續）。從地下層一路走到屋頂層，手不離開扶手走一遍，斷開的地方立刻就知道。",
+      "拍照": true
+    },
+    {
+      "區": "C",
+      "項": "扶手端部有沒有防勾撞處理",
+      "怎麼看": "規範 207.3.4：端部應作防勾撞處理。看端頭是往下彎、彎入牆、還是留一截直管——留直管的不合格，書包背帶會勾住。",
+      "拍照": true
+    },
+    {
+      "區": "C",
+      "項": "牆面拆除處復原到什麼程度",
+      "怎麼看": "★ 拆除前先拍原況。復原後看：孔有沒有補平、補土有沒有凸出、油漆色差明顯不明顯。圖說只寫「復原」沒有標準，所以要在拆除前就跟監造講定標準（見爭議點）。",
+      "拍照": true
+    },
+    {
+      "區": "C",
+      "項": "假石子與級鼻",
+      "怎麼看": "① 先要樣品，確認粒徑與顏色 ② 完工後用一支直尺靠在級鼻（階梯前緣）上，看有沒有波浪 ③ 濕的時候用鞋底踩看看止滑效果——換這個材質的目的就是止滑。",
+      "拍照": true
+    }
+  ],
+  "名詞": [
+    {
+      "詞": "SUS304 毛絲面",
+      "白": "SUS304 是最常見的不銹鋼材質（含鉻 18%、鎳 8%，俗稱 18-8 白鐵），耐鏽、室外可用。「毛絲面」是表面處理方式，用細砂帶磨出一條條細直紋，摸起來霧霧的、不反光刺眼，也比較不容易留下指紋與刮痕。"
+    },
+    {
+      "詞": "1:12 是什麼意思",
+      "白": "坡度的表示法：每往前走 12 公分，高度只升 1 公分。這是無障礙坡道的法定上限，再陡輪椅就推不上去。換算成常見說法大約是 8.3%。"
+    },
+    {
+      "詞": "點焊鋼絲網 / 點焊鋼筋網",
+      "白": "把鋼絲（或鋼筋）縱橫排好、交叉點用電銲固定成的一張網，鋪在混凝土裡，防止混凝土因為溫度變化或受力而龜裂。「格距 15×15cm」就是網格 15 公分見方。它是隱蔽工項——澆完混凝土就完全看不到。"
+    },
+    {
+      "詞": "210kg/cm²",
+      "白": "混凝土的抗壓強度等級，代表每平方公分能承受 210 公斤的壓力。一般人行道與地坪常用的等級。數字愈大愈強，也愈貴。"
+    },
+    {
+      "詞": "細粒料混凝土",
+      "白": "骨材（石頭）顆粒比較小的混凝土。因為這次澆的厚度只有 3～12 公分，用一般粗骨材會鋪不平、也包不住，所以用細粒料。"
+    },
+    {
+      "詞": "拉毛",
+      "白": "混凝土快要凝固（初凝）的時候，用掃把或專用工具在表面拉出細紋，讓表面粗糙。目的是止滑——這是坡道最重要的一道工，而且只能在那個時間點做。"
+    },
+    {
+      "詞": "打毛",
+      "白": "把既有的混凝土表面打粗糙，讓新澆的混凝土咬得住。「密打毛」是指整面均勻打，不是意思意思敲幾下。"
+    },
+    {
+      "詞": "磨石子 vs 假石子",
+      "白": "磨石子是水泥拌小石粒鋪好後研磨拋光，表面光滑（濕了會滑）。假石子（又稱洗石子、噴石子）則是把石粒表面的水泥沖掉，讓石粒露出來，表面粗糙。這次把樓梯從磨石子換成假石子，最主要的理由就是止滑。"
+    },
+    {
+      "詞": "護緣",
+      "白": "坡道或平台邊緣往上凸起的一道 5 公分小邊條。作用是擋住輪椅的前輪，不讓它從坡道側邊滑出去。無障礙規範 206.4.1 明文要求。"
+    },
+    {
+      "詞": "有價料",
+      "白": "拆除下來還能賣錢的材料（本案是不銹鋼）。依規定不能讓廠商直接載走變賣，要堆置在機關指定位置，由學校辦理拍賣、所得繳庫。這一條漏了，就是圖利廠商。"
+    },
+    {
+      "詞": "乙種圍籬",
+      "白": "工地圍籬的一種規格：高 1800mm，下段實心板、上段鐵網，需含夜間警示燈。圖說附有詳圖，並註明本案圍籬為無破損之堪用品即可。"
+    }
+  ],
+  "爭議": [
+    {
+      "地方": "🔴 星空樓「北側」那一座坡道到底做不做",
+      "圖說": "A2-2 圖面下方備註說明：「星空樓北側尚有一座與本座一樣之斜坡道需改善，改善方式與本座相同。」但**全套圖說沒有北側的獨立圖，也沒有任何數量標註**。",
+      "為什麼吵": "這句話有兩種讀法：① 北側也在本次契約範圍內，只是共用南側的圖　② 北側只是「將來也需要改善」的提醒，不在本次範圍。兩種讀法差一整座坡道的錢。等到南側做完、機具人力都撤了才發現認知不同，無論結論是哪一種，代價都很高——要嘛追加，要嘛學校白等一年。",
+      "先問誰": "★★ 開工前置階段（第 1～7 天）就要辦一次圖說會審，同時問建築師與廠商，並拿標單逐項核對：標單裡坡道的數量是一座還是兩座？結論一定要寫進監造工作日誌或會勘紀錄，不要只在現場口頭說。"
+    },
+    {
+      "地方": "「有價料需回收」——回收給誰、價金歸誰",
+      "圖說": "A2-1／A2-2 拆除說明寫「不銹鋼料需回收」，A2-3 寫「有價料需回收」；一般說明第 8 條則寫「有價料拆除後不得運棄，統一集中堆置於機關指定位置，由業主後續辦理拍賣，所得納入國庫收入」。",
+      "為什麼吵": "圖說三處寫法不同，只有一般說明第 8 條講到歸屬。若廠商依「回收」二字理解為由他回收變賣，而學校依第 8 條認為應繳庫，就是一筆說不清的帳；而且東西一旦載出校門就追不回來了。",
+      "先問誰": "開工前以書面（開工會議紀錄）向廠商明確指定：① 堆置位置在哪 ② 拆除當天由誰點交數量 ③ 拍照存證。並同步問會計，拍賣繳庫的程序要先跑起來。"
+    },
+    {
+      "地方": "「拆除處之牆面處復原」——復原到什麼程度",
+      "圖說": "A2-3 樓梯扶手拆除說明的括號內文：「(有價料需回收，拆除處之牆面處復原)」。全圖沒有任何復原的標準、範圍或材料說明。",
+      "為什麼吵": "「復原」可以是補平、可以是補平＋粉光、可以是補平＋粉光＋整面油漆到同色。三種的工料差好幾倍。從地下層到屋頂層每層都有固定孔，累積起來不是小數目。",
+      "先問誰": "★ 拆除之前就要問監造：復原的標準是哪一種？補土後要不要粉刷？粉刷是局部還是整面？並在拆除前把每一層的牆面原況拍照存檔——沒有原況照片，之後連「原本長什麼樣」都各說各話。"
+    },
+    {
+      "地方": "磚花台「與原有相近之方塊磚」",
+      "圖說": "A2-1 整修說明 3：「補砌磚花台，雙面及頂面作 1:3 水泥砂漿刷貼與原有相近之方塊磚。」",
+      "為什麼吵": "「相近」由誰認定？廠商覺得相近、學校覺得差很多，這種爭議在完工後才會爆發，而那時候磚已經貼上去了，要換就是整面敲掉。",
+      "先問誰": "貼之前要求廠商提供 2～3 種樣品，帶到現場與既有磚並排比對，選定後拍照並請監造在樣品上簽認。**樣品簽認這一步不能省**——它是把「相近」這個形容詞變成一件具體東西的唯一辦法。"
+    },
+    {
+      "地方": "樓梯扶手是不是「兩側都要做」",
+      "圖說": "A2-7 抄錄的規範 305.1：「高差超過 20 公分之樓梯**兩側**應設置符合本規範 207 節規定之扶手。」但 A2-4 整修說明只寫「支撐桿固定於 RC 欄杆上」，平面圖上看起來只標了臨空側一側；A2-6 剖面圖則完全沒有標示扶手在哪一側。",
+      "為什麼吵": "如果實際只做臨空側一側，靠牆那一側沒有扶手，驗收時可能被認定不符規範——而這是一個**補做很貴、不補又過不了**的位置。更麻煩的是：圖說自己抄了 305.1 在同一套圖裡，等於白紙黑字寫著兩側都要。",
+      "先問誰": "★★ 開工前務必問建築師：本案樓梯扶手是單側還是雙側？若是單側，依據是什麼（是否有既有牆側扶手可沿用）？並同時核對標單的扶手長度數量。**這一題在圖說會審問是免費的，施工到一半問就是變更設計。**"
+    },
+    {
+      "地方": "丙樓梯「一至五層」只畫一張圖，數量怎麼算",
+      "圖說": "A2-3／A2-4 各只有三張平面：地下層、一至五層、屋頂層。中間樓層以一張代表，但**沒有寫「其餘各層同」，也沒有任何長度或數量標註**；A2-6 剖面中間樓層以折斷符號省略。",
+      "為什麼吵": "扶手是按公尺計價的。圖上一個長度數字都沒有，實作數量只能靠現場丈量。多了要追加、少了是短少，而爭議通常在完工後計價時才浮現。",
+      "先問誰": "開工前把標單的扶手數量抄出來，與現場實測長度核對一次（帶捲尺走一趟樓梯就知道）。落差超過一成就立刻反映監造，不要等估驗。"
+    },
+    {
+      "地方": "支撐柱的固定方式「須經監造單位同意後始得施工」",
+      "圖說": "A2-1 整修說明 6、A2-2 整修說明 2：「（固定於花台或地坪之方式須經監造單位同意後始得施工）」。",
+      "為什麼吵": "圖說把這件事交給後續決定，等於現在沒有答案。是植筋、化學錨栓、還是預埋？做法不同、耐久性差很多，而且是隱蔽工項——做完看不到。若廠商先做了才補同意，學校事後很難要求打掉重做。",
+      "先問誰": "★ 開工前置階段就向監造要一份書面同意（或施工詳圖），寫明固定方式、錨栓規格與埋深。拿到之後，安裝當天照著看。"
+    },
+    {
+      "地方": "圖說的簽章欄全部空白",
+      "圖說": "全套 10 張圖的圖框中，設計 DESIGNED BY／繪圖 DRAWN BY／核准 APPROVED BY／校核 CHECKED BY／日期 DATE／修正記錄 REVISION 欄位**全部空白**，只有事務所抬頭。另外前三張（A1-0 封面、A1-1、A1-2）圖框的「業主名稱」欄寫的是別的機關，屬圖框範本殘留。",
+      "為什麼吵": "發包圖說沒有建築師簽證與日期，驗收與稽核都會被問「這份圖說的版本與效力為何」；而業主名稱寫錯的那三張，若被外界看到會質疑圖說歸屬。",
+      "先問誰": "開工前向建築師索取簽章版正式圖說（含日期），並把索取與收受紀錄留存。圖框業主名稱誤植一併請其更正後重新出圖。"
+    }
+  ],
+  "更新日": "2026-08-09",
+  "來源": "依 114023-1 案 05.製約\\契約檔\\06.工程圖說.pdf（＝02.招標文件\\07.工程圖說.pdf，兩檔內容相同）逐頁轉譯，共 10 張：A1-0 封面、A1-1 圖號索引與工程告示牌、A1-2 施工位置及一般說明、A2-1～A2-7。規範條文引自圖說 A2-7 所抄錄之建築物無障礙設施設計規範條號（206.4.1／206.4.2／206.5／207.2.1／207.3.2／207.3.3／207.3.4／305.1），依鐵則 5 未另行查證現行條文版本，實務適用以現行法規為準。施工階段的天數為推定（本案尚無核定之施工預定進度表），實際依廠商提送之施工預定進度表。"
+};
+</script>
+<!-- ═══ 以下不動 ═══ -->
+
+<header>
+  <div class="wrap">
+    <div class="kicker" id="elKicker"></div>
+    <h1 id="elTitle"></h1>
+    <div class="lede" id="elLede"></div>
+    <div class="facts" id="elFacts"></div>
+  </div>
+</header>
+
+<main class="wrap" id="elMain"></main>
+
+<nav><div class="tabs" id="elTabs" role="tablist"></div></nav>
+
+<script>
+// ★ 一律用 getElementById，不靠 id 自動變成全域變數。
+//   `title`、`name`、`length` 這些 id 會與 window 既有屬性打架，而打架時不會報錯，
+//   只會靜默拿到錯的東西——那是最難查的一種壞法。
+const el = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const store = {
+  get(k){ try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch { return null; } },
+  set(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+};
+
+document.title = `${DATA.案號}｜${DATA.案名}`;
+el('elKicker').textContent = `${DATA.案號} 工程說明`;
+el('elTitle').textContent = DATA.案名;
+el('elLede').textContent = DATA.一句話;
+el('elFacts').innerHTML = DATA.基本.map(f => `<span class="fact">${esc(f.k)}　<b>${esc(f.v)}</b></span>`).join('');
+
+const panels = [];
+const add = (id, 名, html) => { panels.push({ id, 名, html }); };
+
+// ① 各區域：現況→完成 對比 + 逐項白話
+DATA.區域.forEach(r => add('r' + r.id, r.名, `
+  <h2>這一區在哪裡</h2>
+  <div class="card"><p>${esc(r.位置)}</p></div>
+  <h2>做之前 / 做之後</h2>
+  <div class="ba" data-ba>
+    <div class="before">${r.示意?.前 || '<p class="muted">（施工前示意）</p>'}<span class="lab">現況</span></div>
+    <div class="after">${r.示意?.後 || '<p class="muted">（完工後示意）</p>'}<span class="lab">完工後</span></div>
+  </div>
+  <input class="sp" type="range" min="0" max="100" value="50" aria-label="拖曳比較施工前後">
+  <div class="grid2" style="margin-top:12px">
+    <div class="card"><h3>現況</h3><p class="muted">${esc(r.現況)}</p></div>
+    <div class="card"><h3>完工後</h3><p class="muted">${esc(r.完成)}</p></div>
+  </div>
+  <h2>這一區做哪些事</h2>
+  ${(r.項目 || []).map(i => `
+    <div class="card">
+      <h3>${esc(i.標)}<span class="tag">圖號 ${esc(i.圖號)}</span></h3>
+      <p>${esc(i.白話)}</p>
+      <dl class="kv">
+        <dt>材料規格</dt><dd>${esc(i.材料)}</dd>
+        <dt>現場看點</dt><dd>${esc(i.看點)}</dd>
+      </dl>
+    </div>`).join('')}
+`));
+
+// ② 施工階段
+add('st', '施工階段', `
+  <h2>工程會怎麼進行</h2>
+  <div class="ctrl">
+    <button class="btn pri" id="elPlay">▶ 播放</button>
+    <button class="btn" id="elPrev">上一步</button>
+    <button class="btn" id="elNext">下一步</button>
+  </div>
+  <div class="steps" id="elSteps">
+    ${DATA.階段.map((s, i) => `
+      <div class="step${i === 0 ? ' on' : ''}">
+        <div class="card">
+          <h3>${esc(s.名)}<span class="tag">${esc(s.週)}</span></h3>
+          <dl class="kv">
+            <dt>現場情形</dt><dd>${esc(s.現場)}</dd>
+            <dt>你要做的</dt><dd>${esc(s.你要)}</dd>
+          </dl>
+        </div>
+      </div>`).join('')}
+  </div>`);
+
+// ③ 督工看點（可勾選，勾選狀態存在這支手機上）
+add('ck', '督工清單', `
+  <h2>現場走一趟要看什麼</h2>
+  <div class="pg" id="elPg"></div>
+  ${DATA.督工.map((c, i) => `
+    <label class="chk" data-i="${i}">
+      <input type="checkbox">
+      <span>
+        <span class="t">${esc(c.項)}<span class="tag">${esc(c.區)}</span></span>
+        <span class="h">${esc(c.怎麼看)}</span>
+        ${c.拍照 ? '<span class="cam">📷 這一項要拍照存證</span>' : ''}
+      </span>
+    </label>`).join('')}
+  <p class="muted" style="margin-top:10px">勾選只存在這支手機上，不會上傳，換手機就要重勾。</p>`);
+
+// ④ 名詞 + 爭議
+add('gl', '名詞・爭議', `
+  <h2>圖說上那些看不懂的詞</h2>
+  ${DATA.名詞.map(g => `<details><summary>${esc(g.詞)}</summary><p>${esc(g.白)}</p></details>`).join('')}
+  <h2>這幾處將來最容易吵</h2>
+  ${DATA.爭議.map(w => `
+    <details class="risk"><summary>${esc(w.地方)}</summary>
+      <p><b>圖說怎麼寫：</b>${esc(w.圖說)}</p>
+      <p><b>為什麼會吵：</b>${esc(w.為什麼吵)}</p>
+      <p><b>開工前先問：</b>${esc(w.先問誰)}</p>
+    </details>`).join('')}
+  <footer>
+    <div>資料來源：${esc(DATA.來源)}</div>
+    <div>更新日：${esc(DATA.更新日)}</div>
+    <div>★ 本頁是圖說的<b>白話轉譯</b>，不是契約文件。施工範圍、尺寸、規格一律以核定圖說與契約為準。</div>
+  </footer>`);
+
+el('elMain').innerHTML = panels.map((p, i) => `<section id="${p.id}" class="${i ? '' : 'on'}">${p.html}</section>`).join('');
+el('elTabs').innerHTML = panels.map((p, i) =>
+  `<button class="tab" role="tab" aria-selected="${!i}" data-go="${p.id}">${esc(p.名)}</button>`).join('');
+
+el('elTabs').addEventListener('click', e => {
+  const b = e.target.closest('[data-go]'); if (!b) return;
+  document.querySelectorAll('nav .tab').forEach(t => t.setAttribute('aria-selected', t === b));
+  document.querySelectorAll('main section').forEach(s => s.classList.toggle('on', s.id === b.dataset.go));
+  scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// 前後對比：拖桿 + 直接在圖上拖
+document.querySelectorAll('[data-ba]').forEach(ba => {
+  const rng = ba.nextElementSibling;
+  const set = v => ba.style.setProperty('--split', Math.max(0, Math.min(100, v)) + '%');
+  rng.addEventListener('input', () => set(rng.value));
+  const drag = e => {
+    const t = e.touches ? e.touches[0] : e, r = ba.getBoundingClientRect();
+    const v = (t.clientX - r.left) / r.width * 100; rng.value = v; set(v);
+  };
+  ba.addEventListener('pointerdown', e => { ba.setPointerCapture(e.pointerId); drag(e); });
+  ba.addEventListener('pointermove', e => { if (e.pressure || e.buttons) drag(e); });
+});
+
+// 階段播放
+(() => {
+  const steps = [...document.querySelectorAll('#elSteps .step')]; if (!steps.length) return;
+  const play = el('elPlay'), prev = el('elPrev'), next = el('elNext');
+  let i = 0, timer = null;
+  const show = n => { i = (n + steps.length) % steps.length; steps.forEach((s, k) => s.classList.toggle('on', k <= i)); };
+  next.onclick = () => show(i + 1); prev.onclick = () => show(i - 1);
+  play.onclick = () => {
+    if (timer) { clearInterval(timer); timer = null; play.textContent = '▶ 播放'; return; }
+    play.textContent = '⏸ 暫停'; show(0);
+    timer = setInterval(() => { if (i >= steps.length - 1) { clearInterval(timer); timer = null; play.textContent = '▶ 播放'; } else show(i + 1); }, 1600);
+  };
+  show(0);
+})();
+
+// 督工清單
+(() => {
+  const key = 'ck-' + DATA.案號, saved = store.get(key) || {};
+  const boxes = [...document.querySelectorAll('label.chk')];
+  if (!boxes.length) return;
+  const paint = () => {
+    let n = 0;
+    boxes.forEach(l => { const c = l.querySelector('input'); l.classList.toggle('done', c.checked); if (c.checked) n++; });
+    el('elPg').textContent = `已確認 ${n} / ${boxes.length} 項`;
+  };
+  boxes.forEach(l => {
+    const c = l.querySelector('input'); c.checked = !!saved[l.dataset.i];
+    c.addEventListener('change', () => { saved[l.dataset.i] = c.checked; store.set(key, saved); paint(); });
+  });
+  paint();
+})();
+</script>
+</body>
+</html>

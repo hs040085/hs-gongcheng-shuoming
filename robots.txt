@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /
+
+# ⚠ 這一份在 project pages（https://<帳號>.github.io/<repo>/）底下其實是無效的——
+#    搜尋引擎只讀 https://<帳號>.github.io/robots.txt，不會讀 /<repo>/robots.txt。
+#    真正擋索引的是每一頁的 <meta name="robots" content="noindex, nofollow">。
+#    這一份放著只是備援，不要靠它。_scan.js 會逐檔斷言 meta 有沒有漏。

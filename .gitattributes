@@ -1,0 +1,6 @@
+# 統一換行為 LF，避免每次 commit 都跳 "LF will be replaced by CRLF" 警告，
+# 也避免同一個檔在不同機器上被判定為「整檔都改過」。
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary

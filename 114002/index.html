@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<title>114002｜公有房舍屋頂設置太陽光電發電系統標租案</title>
+<style>
+:root{
+  --bg:#0f1420; --card:#1a2130; --card2:#232c3d; --line:rgba(255,255,255,.10);
+  --tx:#f1f5f9; --dim:#94a3b8; --bl:#38bdf8; --gr:#34d399; --am:#fbbf24; --ro:#fb7185; --pu:#c084fc;
+  --pad:16px; --r:14px;
+}
+@media (prefers-color-scheme: light){
+  :root{ --bg:#f4f6fb; --card:#fff; --card2:#eef2f9; --line:rgba(15,20,32,.10);
+         --tx:#0f1420; --dim:#5b6678; }
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  background:var(--bg); color:var(--tx); line-height:1.75;
+  font-size:16px; padding-bottom:calc(84px + env(safe-area-inset-bottom));
+}
+.wrap{max-width:860px;margin:0 auto;padding:0 var(--pad)}
+
+/* ── 頁首 ─────────────────────────────────────── */
+header{padding:20px var(--pad) 14px;border-bottom:1px solid var(--line)}
+.kicker{font-size:.78rem;color:var(--bl);letter-spacing:.06em;font-weight:700}
+h1{font-size:1.35rem;line-height:1.4;margin:6px 0 10px;font-weight:800}
+.lede{font-size:1rem;color:var(--tx);background:var(--card);border-left:4px solid var(--bl);
+      border-radius:0 var(--r) var(--r) 0;padding:12px 14px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.fact{background:var(--card2);border:1px solid var(--line);border-radius:999px;
+      padding:5px 12px;font-size:.82rem;color:var(--dim)}
+.fact b{color:var(--tx);font-weight:700}
+
+/* ── 分頁列 ─────────────────────────────────────── */
+nav{position:fixed;left:0;right:0;bottom:0;z-index:50;
+    background:color-mix(in srgb,var(--bg) 92%,transparent);
+    backdrop-filter:blur(14px);border-top:1px solid var(--line);
+    padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;max-width:860px;margin:0 auto}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:transparent;border:1px solid transparent;color:var(--dim);
+     font:inherit;font-size:.86rem;font-weight:700;padding:9px 14px;border-radius:10px;
+     cursor:pointer;white-space:nowrap;min-height:44px}
+.tab[aria-selected="true"]{background:color-mix(in srgb,var(--bl) 18%,transparent);
+     color:var(--bl);border-color:color-mix(in srgb,var(--bl) 35%,transparent)}
+
+/* ── 區塊 ─────────────────────────────────────── */
+section{display:none;padding-top:18px}
+section.on{display:block;animation:in .25s ease}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h2{font-size:1.1rem;margin:22px 0 10px;display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:4px;height:18px;background:var(--bl);border-radius:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+      padding:14px;margin-bottom:12px}
+.card h3{font-size:1rem;margin-bottom:6px;display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+.tag{display:inline-block;background:var(--card2);border:1px solid var(--line);
+     border-radius:6px;padding:1px 7px;font-size:.72rem;color:var(--dim)}
+.tag.bl{color:var(--bl);border-color:color-mix(in srgb,var(--bl) 40%,transparent)}
+.tag.gr{color:var(--gr);border-color:color-mix(in srgb,var(--gr) 40%,transparent)}
+.tag.am{color:var(--am);border-color:color-mix(in srgb,var(--am) 40%,transparent)}
+.tag.ro{color:var(--ro);border-color:color-mix(in srgb,var(--ro) 40%,transparent)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:.92rem;margin-top:8px}
+.kv dt{color:var(--dim);white-space:nowrap}
+.muted{color:var(--dim);font-size:.9rem}
+
+/* ── 特殊亮點卡片 ─────────────────────────────── */
+.banner-leak{background:linear-gradient(135deg,color-mix(in srgb,#0284c7 15%,var(--card)),var(--card));
+  border:1px solid color-mix(in srgb,#0284c7 40%,transparent);border-radius:var(--r);padding:16px;margin-bottom:16px}
+.banner-leak h3{color:#38bdf8;margin-bottom:8px;font-size:1.05rem}
+.grid-highlight{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:12px 0}
+.h-box{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px}
+.h-box b{color:var(--bl);display:block;margin-bottom:4px;font-size:.95rem}
+
+/* ── 前後對比 ─────────────────────────────────── */
+.ba{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);
+    aspect-ratio:16/9;background:var(--card2);touch-action:pan-y}
+.ba>div{position:absolute;inset:0;display:grid;place-items:center;padding:12px;text-align:center}
+.ba .after{clip-path:inset(0 0 0 var(--split,50%))}
+.ba .before{clip-path:inset(0 calc(100% - var(--split,50%)) 0 0)}
+.ba .lab{position:absolute;top:8px;font-size:.74rem;font-weight:800;
+         background:rgba(0,0,0,.65);color:#fff;padding:3px 9px;border-radius:999px}
+.ba .before .lab{left:8px} .ba .after .lab{right:8px}
+.ba svg{width:100%;height:100%}
+input[type=range].sp{width:100%;margin-top:10px;accent-color:var(--bl);height:44px}
+
+/* ── 階段動畫 ─────────────────────────────────── */
+.steps{position:relative;padding-left:26px}
+.steps::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.step{position:relative;margin-bottom:10px;opacity:.42;transition:opacity .3s}
+.step.on{opacity:1}
+.step::before{content:"";position:absolute;left:-22px;top:16px;width:11px;height:11px;
+   border-radius:50%;background:var(--card2);border:2px solid var(--line);transition:.3s}
+.step.on::before{background:var(--bl);border-color:var(--bl);box-shadow:0 0 0 5px color-mix(in srgb,var(--bl) 22%,transparent)}
+.ctrl{display:flex;gap:8px;align-items:center;margin:12px 0}
+button.btn{background:var(--card2);border:1px solid var(--line);color:var(--tx);font:inherit;
+  font-weight:700;font-size:.88rem;padding:10px 16px;border-radius:10px;cursor:pointer;min-height:44px}
+button.btn.pri{background:var(--bl);border-color:var(--bl);color:#04121d}
+
+/* ── 督工清單 ─────────────────────────────────── */
+label.chk{display:flex;gap:10px;align-items:flex-start;background:var(--card);
+  border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:8px;cursor:pointer}
+label.chk input{width:22px;height:22px;margin-top:2px;accent-color:var(--gr);flex:0 0 auto}
+label.chk.done{opacity:.5}
+label.chk .t{font-weight:700;font-size:.95rem}
+label.chk .h{font-size:.88rem;color:var(--dim);margin-top:2px}
+.cam{color:var(--am);font-size:.78rem;font-weight:700;display:block;margin-top:4px}
+.pg{font-size:.85rem;color:var(--dim);margin-bottom:10px}
+
+/* ── 摺疊 ─────────────────────────────────────── */
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:12px 14px;margin-bottom:8px}
+details[open]{background:var(--card2)}
+summary{cursor:pointer;font-weight:700;font-size:.95rem;list-style:none;min-height:32px;display:flex;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";margin-left:auto;color:var(--dim)}
+details[open] summary::after{content:"−"}
+details p{margin-top:8px;font-size:.92rem;color:var(--dim)}
+.risk{border-left:4px solid var(--am)}
+.risk summary::before{content:"⚠ ";color:var(--am)}
+.law{border-left:4px solid var(--pu)}
+.law summary::before{content:"⚖ ";color:var(--pu)}
+
+footer{margin:28px 0 8px;padding-top:14px;border-top:1px solid var(--line);
+  font-size:.78rem;color:var(--dim);line-height:1.9}
+
+@media (min-width:700px){
+  body{font-size:17px}
+  h1{font-size:1.7rem}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .grid2 .card, .grid3 .card{margin-bottom:0}
+}
+@media (max-width:400px){
+  :root{--pad:12px}
+  h1{font-size:1.18rem} .tab{padding:9px 10px;font-size:.8rem}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<script>
+const DATA = {
+  "案號": "114002",
+  "案名": "公有房舍屋頂設置太陽光電發電系統標租案",
+  "一句話": "由得標廠商出資於華勛國小樂動樓、書香樓及星空樓屋頂興建太陽能光電系統（容量 257 kW，經增補協議擴充至 350.5 kW），廠商須負擔屋頂漏水修復責任並於通報後 30 日曆天內完成，另包含 65 吋教學展示電視、EMS 監控系統、不鏽鋼防護欄、模組回收費繳納等附帶工項。⚠ 漏水責任的「範圍」與「舉證責任在誰」，契約本文與附件寫法不同，見『名詞・爭議解析』第一則。",
+  "基本": [
+    { "k": "設置場址", "v": "樂動樓、書香樓、星空樓屋頂及活動中心" },
+    { "k": "契約期間", "v": "9 年 11 個月（119 個月，自台電併聯掛錶日起算）" },
+    { "k": "得標廠商", "v": "勳銘綠電能源有限公司" },
+    { "k": "設置容量", "v": "原 257 kW → 增補協議擴充為 350.5 kW" },
+    { "k": "回饋金機制", "v": "每年固定金額新臺幣 125,000 元整" }
+  ],
+  "區域": [
+    {
+      "id": "A",
+      "名": "樂動樓及活動中心",
+      "位置": "民國94年建，地上5層。包含樂動樓頂樓RC屋頂、活動中心圓弧浪板屋頂及平屋頂（預計設置大面積光電模組）。",
+      "現況": "大型金屬浪板及RC平屋頂，女兒牆為凹凸造型易有雨水飛濺；既有浪板若遭直接穿孔易產生漏水風險；高處無遮蔽風壓大。",
+      "完成": "設置鋼構支架與平鋪/架高式太陽能光電陣列；浪板區採用專用無穿孔扣夾固定；凹凸女兒牆加裝採光罩導水，並鋪設天溝與明管引流至既有排水孔。",
+      "示意": {
+        "前": "<svg viewBox='0 0 500 280' xmlns='http://www.w3.org/2000/svg'><rect width='500' height='280' fill='#242d3d'/><path d='M40 200 Q250 130 460 200 L460 250 L40 250 Z' fill='#475569'/><path d='M40 200 Q250 130 460 200' stroke='#64748b' stroke-width='4' fill='none'/><rect x='80' y='210' width='340' height='40' fill='#334155'/><text x='250' y='180' font-size='16' fill='#94a3b8' text-anchor='middle' font-weight='bold'>活動中心圓弧頂金屬浪板（既有空置）</text><text x='250' y='265' font-size='14' fill='#cbd5e1' text-anchor='middle'>現況：金屬浪板直接曝曬・凹凸女兒牆雨水易回灌</text></svg>",
+        "後": "<svg viewBox='0 0 500 280' xmlns='http://www.w3.org/2000/svg'><rect width='500' height='280' fill='#132738'/><path d='M40 200 Q250 130 460 200 L460 250 L40 250 Z' fill='#334155'/><path d='M60 188 Q250 118 440 188' stroke='#0284c7' stroke-width='14' stroke-dasharray='18 4' fill='none'/><rect x='45' y='185' width='20' height='10' fill='#38bdf8'/><rect x='435' y='185' width='20' height='10' fill='#38bdf8'/><path d='M40 198 L30 240' stroke='#38bdf8' stroke-width='4'/><path d='M460 198 L470 240' stroke='#38bdf8' stroke-width='4'/><text x='250' y='105' font-size='15' fill='#38bdf8' text-anchor='middle' font-weight='bold'>光電板平鋪（固定工法待定＋天溝排水）</text><text x='250' y='265' font-size='14' fill='#7dd3fc' text-anchor='middle'>完工：天溝明管導水・女兒牆採光罩阻雨・光電隔熱</text></svg>"
+      },
+      "項目": [
+        {
+          "標": "金屬浪板固定工法（夾具或鑽孔，本案尚未確定）",
+          "圖號": "防漏規範一-7｜★ 待施工前會議確定",
+          "白話": "★ 注意：防漏注意事項第一段第 7 點允許兩種工法——(a) 用專用夾具夾緊、不鑽孔破壞浪板；(b) 鑽孔固定並於孔位打矽利康防漏縫材並定期檢視。規範用的是「較可避免破壞」而非「應採用」，兩種都合法。本案採哪一種，須在施工前會議請廠商書面確定，不能預設一定是夾具式。",
+          "材料": "耐候抗腐蝕金屬夾具（ISO 9223-C3 中度腐蝕等級以上）、防脫落螺栓組件、鐵氟龍絕緣墊片；若採鑽孔式則另需矽利康或適用之防漏縫材。",
+          "看點": "先確認採用哪一種工法並留書面紀錄；夾具式看咬合是否確實、螺栓有無彈簧華司與防鬆螺帽；鑽孔式則要看每一個孔位的填縫是否飽滿，並排入日後定期檢視。兩種都要看絕緣墊片有無漏裝。"
+        },
+        {
+          "標": "天溝集水與排水明管導流系統",
+          "圖號": "評審答詢 15、17｜細節待施工會議確認",
+          "白話": "廠商在評審會議答覆：排水會用天溝，導水排到既有排水孔，依現況需求再拉明管——但同一句話後面接的是「後續是後面施工溝通的部分，施工會議確認」。所以「一定會做天溝」有據，「怎麼做、拉到哪一個排水孔」尚未定案，要在施工會議談定並留紀錄。",
+          "材料": "耐候不鏽鋼/PVC排水天溝、導水明管、固定管夾。",
+          "看點": "天溝洩水坡度是否順暢；明管出水口有無確實對準並接入既有落水頭，避免雨水倒灌漫流。"
+        },
+        {
+          "標": "凹凸造型女兒牆採光罩防雨水回灌",
+          "圖號": "評審答詢 17｜★ 廠商用語是「可鋪設」",
+          "白話": "廠商答詢時說：女兒牆是凹凸形狀、雨水會打進去，「這部分可鋪設採光罩」。用的是「可」不是「將」——★ 這不等於已承諾的工項，要在施工前會議明確要求列入並書面確認，否則日後廠商可主張當時只是建議。",
+          "材料": "耐候 PC / 鋁框採光罩組件、耐候防霉矽利康填縫封邊。",
+          "看點": "採光罩與牆面銜接處矽利康是否打滿打實；骨架固定點之防水密封是否完善。"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "名": "書香樓三樓平台及頂樓",
+      "位置": "民國87年建，地上5層。面向校門側，包含三樓寬廣之戶外平台空間與五樓頂層屋頂。",
+      "現況": "三樓平台視野開闊，學校保有日後彩繪與學生活動權益；頂樓有校舍既有水塔及管線設備需配合調整。",
+      "完成": "三樓平台建置架高式光電遮陽棚架（廠商答詢：前面平台原則為 3 米、後面平面那一塊 2 米 2；開放空間仍保留供校方彩繪、活動使用）；大門口上方及平台外圍加裝 1.2 米不鏽鋼安全防護欄；頂樓既有水塔「若為設置需求而必須遷移」，經學校同意後由廠商負擔費用遷移。",
+      "示意": {
+        "前": "<svg viewBox='0 0 500 280' xmlns='http://www.w3.org/2000/svg'><rect width='500' height='280' fill='#242d3d'/><rect x='40' y='190' width='420' height='60' fill='#475569'/><rect x='90' y='140' width='45' height='50' fill='#64748b'/><text x='112' y='170' font-size='12' fill='#e2e8f0' text-anchor='middle'>既有水塔</text><rect x='40' y='180' width='420' height='10' fill='#334155'/><text x='250' y='100' font-size='16' fill='#94a3b8' text-anchor='middle' font-weight='bold'>三樓開放式平台與頂樓水塔設備</text><text x='250' y='270' font-size='14' fill='#cbd5e1' text-anchor='middle'>現況：頂樓水塔阻擋動線・三樓平台邊緣需強化防護</text></svg>",
+        "後": "<svg viewBox='0 0 500 280' xmlns='http://www.w3.org/2000/svg'><rect width='500' height='280' fill='#132738'/><rect x='40' y='190' width='420' height='60' fill='#334155'/><line x1='70' y1='190' x2='70' y2='100' stroke='#94a3b8' stroke-width='8'/><line x1='250' y1='190' x2='250' y2='100' stroke='#94a3b8' stroke-width='8'/><line x1='430' y1='190' x2='430' y2='100' stroke='#94a3b8' stroke-width='8'/><polygon points='50,95 450,85 450,105 50,115' fill='#0284c7'/><line x1='40' y1='160' x2='460' y2='160' stroke='#e2e8f0' stroke-width='3' stroke-dasharray='10 5'/><rect x='410' y='150' width='40' height='40' fill='#0ea5e9'/><text x='430' y='175' font-size='11' fill='#fff' text-anchor='middle'>水塔遷移</text><text x='250' y='65' font-size='15' fill='#38bdf8' text-anchor='middle' font-weight='bold'>3米架高光電棚架＋1.2m不鏽鋼防護欄</text><text x='250' y='270' font-size='14' fill='#7dd3fc' text-anchor='middle'>完工：水塔遷移歸位・三樓地面仍可供學校教學彩繪使用</text></svg>"
+      },
+      "項目": [
+        {
+          "標": "三樓平台架高型光電遮陽棚架（原則 3 米）",
+          "圖號": "評審答詢 8、9、18；規格見防漏規範附錄一",
+          "白話": "以 H 型鋼立柱架高，上方鋪設太陽能板形成遮陽頂蓋，下方空間淨空供學校活動與彩繪。廠商答詢原話是「前面平台原則為 3 米」、後面平面那一塊 2 米 2——★ 是「原則」，正式高度以施工前會議與結構技師圖說為準。",
+          "材料": "H 型結構鋼材（廠商答詢承諾「全部立柱用 H 型鋼、全為臺灣製，學校要派專門人員清點」）、耐風設計平均風速 32.5 m/s、防蝕等級 ISO 9223-C3 以上。",
+          "看點": "立柱高度與跨距是否與核定圖說相符；H 型鋼出廠證明與臺灣製標籤要逐支清點（這是廠商自己答應的，學校要派人）；地面淨空高度是否達標。"
+        },
+        {
+          "標": "外圍 1.2 米不鏽鋼安全防護欄杆",
+          "圖號": "評審答詢 14",
+          "白話": "於大門口上方及平台外圍邊緣，增設不鏽鋼安全防護欄，保障學生與維修人員安全，防止高處墜落。",
+          "材料": "不鏽鋼管材、高度 1.2 公尺、立柱間距 1.5 公尺、雙層水平欄杆間距 60 公分（以上為廠商答詢原話）。★ 廠商只說「不鏽鋼的材質，可以防鏽」，未指明鋼種；SUS 304 是常見規格但本案未載明，要進料時確認。",
+          "看點": "欄杆立柱固定強度；焊道防鏽與打磨光滑度；欄杆間隙是否符合校園安全防墜標準。"
+        },
+        {
+          "標": "頂樓既有設施（水塔）遷移，費用由廠商負擔",
+          "圖號": "契約附件〈施工及維護期間注意及配合事項〉第 11 項 b",
+          "白話": "契約附件原文是「屋頂樓地板之現有設施（如水塔等），為達前項設置之需求，必須遷移者，應經不動產管理機關（單位）同意後遷移至適當地點，遷移設施費用由乙方負擔」。★ 是條件式——「必須遷移才遷、要學校先同意」，不是無條件承諾一定會遷。本案是否需要遷、遷到哪裡，要在現勘時談定並留紀錄。",
+          "材料": "自來水配管及閥門更換、水塔基座固定架、保溫防震配件。",
+          "看點": "遷移後水管接頭有無漏水；供水加壓測試是否正常；新位置是否穩固不影響建築排水。"
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "名": "星空樓屋頂",
+      "位置": "民國83年建，地上5層。校內資深教學棟，頂樓為標準 RC 平屋頂。",
+      "現況": "既有 RC 屋頂防水層已歷經歲月，最忌諱因施工鑽孔或重壓破壞造成教室頂板漏水滲漏。",
+      "完成": "★ 本案尚未指定工法。防漏注意事項列出兩條路：自重式（不植筋，防水最佳但屋頂載重大）與植筋／鑽鑿鎖固式（穩固、載重小，但防水工程要求較嚴）。不論走哪一條，以下三項都要做到：基墩須預留排水孔徑或邊溝使水路暢通；鎖固處施作營建署《建築工程施工規範》屋頂防水層篇之防水，並與原防水層交疊密接；金屬接觸面加裝鐵氟龍絕緣墊片。",
+      "示意": {
+        "前": "<svg viewBox='0 0 500 280' xmlns='http://www.w3.org/2000/svg'><rect width='500' height='280' fill='#242d3d'/><rect x='40' y='180' width='420' height='70' fill='#475569'/><path d='M100 200 Q110 215 125 210' stroke='#64748b' stroke-width='3' fill='none'/><path d='M280 195 Q300 220 320 205' stroke='#64748b' stroke-width='3' fill='none'/><text x='250' y='110' font-size='16' fill='#94a3b8' text-anchor='middle' font-weight='bold'>星空樓既有 RC 混凝土屋頂平臺</text><text x='250' y='270' font-size='14' fill='#cbd5e1' text-anchor='middle'>現況：既有防水層年久・嚴格要求施工絕不可鑽裂滲水</text></svg>",
+        "後": "<svg viewBox='0 0 500 280' xmlns='http://www.w3.org/2000/svg'><rect width='500' height='280' fill='#132738'/><rect x='40' y='180' width='420' height='70' fill='#334155'/><rect x='90' y='160' width='60' height='20' rx='4' fill='#64748b'/><circle cx='120' cy='170' r='5' fill='#38bdf8'/><rect x='230' y='160' width='60' height='20' rx='4' fill='#64748b'/><circle cx='260' cy='170' r='5' fill='#38bdf8'/><rect x='370' y='160' width='60' height='20' rx='4' fill='#64748b'/><circle cx='400' cy='170' r='5' fill='#38bdf8'/><polygon points='60,110 440,80 450,95 70,125' fill='#0284c7'/><text x='250' y='55' font-size='15' fill='#38bdf8' text-anchor='middle' font-weight='bold'>混凝土基墩（預留排水孔）＋交疊防水層</text><text x='250' y='270' font-size='14' fill='#7dd3fc' text-anchor='middle'>完工：水路暢通無積水・鎖固點防水與原層交疊密接</text></svg>"
+      },
+      "項目": [
+        {
+          "標": "混凝土基墩排水孔與洩水水路（採水泥基墩時適用）",
+          "圖號": "防漏規範一-4；同文亦見契約附件第 11 項 a",
+          "白話": "若採水泥基（墩）座型式，規劃設計時就要預留排水孔徑、排水邊溝或預埋排水管（實際依案場洩水坡度及方位），讓水路暢通、不因新增基座擋水而積水。",
+          "材料": "高強度早強混凝土、預埋排水管件、無收縮水泥砂漿。",
+          "看點": "基墩四周是否有預留洩水孔（水流可穿過）；下雨時基墩迎水面有無積水滯留現象。"
+        },
+        {
+          "標": "鎖固錨定處營建署標準雙層防水交疊",
+          "圖號": "防漏規範一-5",
+          "白話": "任何鎖固於屋頂結構之螺栓點，周邊必須施作防水層，且新防水材料必須與原屋頂防水層緊密交疊交接。",
+          "材料": "符合營建署規範之高分子彈性防水塗料、抗裂玻纖網、耐候封縫材。",
+          "看點": "防水塗佈範圍是否確實延伸至基座周邊、並與原屋頂防水層交疊密接，無翹皮裂紋。★ 防漏注意事項只寫「應符合營建署《建築工程施工規範》屋頂防水層篇」，未訂具體公分數——要在施工前會議請廠商依規範提出搭接寬度並載明，現場才有得比對。"
+        },
+        {
+          "標": "鐵氟龍絕緣墊片隔絕金屬接觸面",
+          "圖號": "防漏規範附錄一(三)末項；同文亦見一-5",
+          "白話": "不同金屬接觸會產生電位差而加速鏽蝕。鋁框與鋼構、螺絲與鋁框之間全面加裝鐵氟龍絕緣墊片隔開。",
+          "材料": "耐候耐溫鐵氟龍（PTFE）絕緣墊片、抗腐蝕不鏽鋼螺絲組。",
+          "看點": "平板華司下方及金屬交接面是否確實墊入絕緣片，不得漏裝或因鎖過緊擠碎。"
+        }
+      ]
+    }
+  ],
+  "漏水專題": {
+    "標題": "本案屋頂漏水防治與責任機制（★ 含一處尚未釐清的條款衝突）",
+    "重點": [
+      {
+        "t": "事前現勘防漏評估",
+        "d": "廠商設置前須評估場址範圍內有無漏水或可能漏水情事，若有則須先施作防漏措施。★ 費用不是全由廠商吸收——防漏注意事項寫「相關費用由甲乙雙方議定或由回饋金比例折抵」，現勘時就要把這筆錢談清楚並留紀錄。"
+      },
+      {
+        "t": "★ 責任範圍與舉證責任：契約本文與附件寫法不同",
+        "d": "附件〈防漏之注意事項〉寫的是「設置場址範圍（包含設置場址同水平面屋頂範圍）內若有漏水，除由乙方提出經公正第三方證明非屬其責任之文件外，概由乙方負責」——範圍大、且舉證責任在廠商。但契約本文第六條(八)寫的是「設置場址範圍內若有漏水的情事發生，且可歸責於乙方之責任，概由乙方負責」——沒有「同水平面屋頂」、也沒有舉證倒置。而契約第二十四條(一)明定「本契約附件⋯⋯二者如有不同約定者，以本契約為準」。⚠ 這代表附件那個對學校有利的版本，可能被廠商用第二十四條擋掉。詳見『名詞・爭議解析』第一則。"
+      },
+      {
+        "t": "30 日曆天修復時限",
+        "d": "學校發現漏水並完成通報後，廠商須於三十日曆天內辦理修復工程，改善完成前應先做臨時防水措施覆蓋屋頂。若廠商未能於協商期間內完成，學校可自行完成修復工程，金額得自履約保證金扣除，不足部分再求償，且修復方式廠商不得異議。（依附件〈防漏之注意事項〉二、之3、4）"
+      }
+    ]
+  },
+  "附帶工項": [
+    {
+      "項": "既有水塔與管線遷移",
+      "內容": "頂樓現有設施（如水塔、管路等），為達光電設置需求必須遷移者，經學校同意後遷移至適當地點，費用全由廠商負擔。",
+      "來源": "契約附件〈施工及維護期間注意及配合事項〉第 11 項 b"
+    },
+    {
+      "項": "教學展示用 65 吋液晶電視螢幕",
+      "內容": "契約要求「一台四十吋以上展示用液晶螢幕，安裝位置由案場管理機關指定」；廠商於評審會議承諾提供 65 吋、連 WiFi、直接顯示每日發電量數據供教學使用。★ 安裝位置由學校指定，尚未指定。",
+      "來源": "契約第二十七條(一)2. ＋ 評審答詢 19"
+    },
+    {
+      "項": "EMS 智慧用電與發電監控管理網頁",
+      "內容": "負責建立用電管理系統與監控展示網頁，能查詢即時發電、日/月/年報及學校總用電資訊（V、A、W、kWh、功率因數），數據即時連線更新。",
+      "來源": "契約第二十七條(一)3."
+    },
+    {
+      "項": "不鏽鋼安全防護欄工程",
+      "內容": "大門口上方及三樓平台周邊設置高度 1.2 公尺、立柱間距 1.5 公尺、雙層間距 60 公分之不鏽鋼安全護欄，防止人員墜落墜物。★ 鋼種未載明（廠商只說「不鏽鋼的材質，可以防鏽」）。",
+      "來源": "評審答詢 14"
+    },
+    {
+      "項": "結構安全查驗與技師簽證報告",
+      "內容": "依法登記開業之建築師或結構技師出具結構計算書，耐風設計平均風速達 32.5 m/s、抗腐蝕達 ISO 9223-C3 中度腐蝕等級以上，並現場簽認檢驗表。",
+      "來源": "防漏規範附錄一(二)、(三) ＋ 一-8（現場查驗簽認）"
+    },
+    {
+      "項": "中央能源局「模組回收費」繳納保證",
+      "內容": "廠商須逐年繳納中央能源局模組回收費（共 10 年 10 次），並將繳費憑證送交學校備查，確保 25~35 年後光電板除役時學校可直接通知能源局全數回收。",
+      "來源": "評審答詢 5"
+    },
+    {
+      "項": "施工水電補貼與每日環境清運",
+      "內容": "施工及日後維護所需之水電由廠商補貼學校臨時水電費（或另設水電表）；每日施工結束須清理工區及廁所，垃圾當日清運離校，嚴禁菸檳酒。",
+      "來源": "契約附件〈施工及維護期間注意及配合事項〉第 5、6、7 項"
+    }
+  ],
+  "階段": [
+    {
+      "週": "第 1 階段",
+      "名": "簽約與技師審查",
+      "現場": "甲乙雙方完成契約簽訂（114.09.04 簽約）；專業技師進行結構計算與耐風檢核；辦理台電及能源主管機關之設置備案。",
+      "你要": "核對技師結構計算書與各式連結安全檢核文件；確認契約變更協議書（容量 257 kW → 350.5 kW）雙方完成簽署用印——★ 現有版本落款日期欄仍空白，要追這一份。"
+    },
+    {
+      "週": "第 2 階段",
+      "名": "事前現勘與水塔遷移",
+      "現場": "廠商與總務處現勘各棟屋頂現況（含既有漏水評估與費用議定）；頂樓既有設施如經確認必須遷移者，遷移定位並完成水管接合；現場放樣標示基座位置及排水水路。",
+      "你要": "進行「事前漏水狀況點交拍照」；檢查水塔遷移後出水壓力與水管接頭有無滲水；確認施工動線與校園安全圍籬。"
+    },
+    {
+      "週": "第 3 階段",
+      "名": "基墩水路與鋼構安裝",
+      "現場": "屋頂基座施作（若採水泥基墩型式，須預留排水孔徑或邊溝）；H 型鋼立柱吊裝與焊接；安裝 1.2m 不鏽鋼安全護欄與排水天溝。★ 具高噪音之鑽孔、吊裝、灌漿作業依契約附件應安排於假日並事先申請。",
+      "你要": "檢查基墩排水水路是否暢通無阻；檢查螺栓與基座防水層交疊塗佈；確認假日才進行高噪音吊裝與灌漿作業。"
+    },
+    {
+      "週": "第 4 階段",
+      "名": "光電模組鋪設與電氣工程",
+      "現場": "鋪設高效能太陽能光電模組（加裝絕緣墊片與抗腐蝕扣件）；活動中心凹凸女兒牆安裝採光罩；進行外線管路開挖與受電箱安裝。",
+      "你要": "抽查光電模組與鋼構接觸面是否全數安裝絕緣墊片；確認管線全數走入專用管槽；外線開挖防護措施是否完善。"
+    },
+    {
+      "週": "第 5 階段",
+      "名": "EMS系統建置與台電掛錶",
+      "現場": "安裝 65 吋教學展示電視螢幕；建置 EMS 智慧用電管理系統並連線測試；台電完成併聯掛錶；工區環境徹底清潔。",
+      "你要": "確認 65 吋電視已正確顯示即時發電數據與用電資訊；點收技師查驗報告正本；取得第一期模組回收費繳費收據備查。"
+    }
+  ],
+  "督工": [
+    { "區": "屋頂防漏", "項": "基座預留排水孔徑與水路暢通", "怎麼看": "檢查水泥基墩是否留有排水孔或邊溝，下水測試水流是否順暢、無積水滯留。", "拍照": true },
+    { "區": "屋頂防漏", "項": "鎖固點防水層與原防水層交疊密接", "怎麼看": "鎖固螺栓周邊須依營建署《建築工程施工規範》屋頂防水層篇施作，並與原屋頂防水材料交疊密接、無翹曲裂紋。★ 搭接寬度規範未訂數字，施工前會議先請廠商載明，現場才有得比對。", "拍照": true },
+    { "區": "屋頂防漏", "項": "浪板固定工法與絕緣墊片", "怎麼看": "先確認本案採夾具式或鑽孔式（兩者規範都允許）。夾具式看咬合是否確實、有無不當穿孔；鑽孔式看每個孔位填縫是否飽滿。金屬接觸面一律須有鐵氟龍絕緣墊片。", "拍照": true },
+    { "區": "附帶工項", "項": "既有設施（水塔）遷移定位與供水測試", "怎麼看": "★ 先確認本案是否有需遷移之設施、學校是否已同意。若有遷移：檢查新定位是否穩固；開啟加壓馬達確認各出水接頭無滴漏。", "拍照": true },
+    { "區": "附帶工項", "項": "三樓平台與外圍不鏽鋼護欄規格", "怎麼看": "測量高度是否達 1.2 公尺、立柱間距 1.5 公尺、雙層水平欄杆間距 60 公分；搖晃測試固定強度與焊接防鏽。", "拍照": true },
+    { "區": "附帶工項", "項": "H 型鋼臺灣製標籤與出廠證明清點", "怎麼看": "廠商答詢自承「全部立柱用 H 型鋼、全為臺灣製，學校要派專門人員清點」——進料時要真的派人逐支對標籤與出廠證明，不要只收一疊文件。", "拍照": true },
+    { "區": "契約管理", "項": "漏水責任範圍先以書面談定", "怎麼看": "★ 開工前現勘時，把「同水平面屋頂範圍」與「舉證責任在誰」寫進會勘紀錄請雙方簽認，補上契約本文與附件不一致的缺口。同時完成設置前現況點交拍照。", "拍照": true },
+    { "區": "附帶工項", "項": "65 吋教學電視與 EMS 監控系統", "怎麼看": "開啟電視確認連上 WiFi 並顯示當日發電度數、歷史報表及學校總用電資訊。", "拍照": true },
+    { "區": "附帶工項", "項": "中央能源局模組回收費繳款收據", "怎麼看": "核對廠商提送之能源局模組回收費繳費憑證，確認已登錄備查。", "拍照": false },
+    { "區": "校園安全", "項": "每日工區清運與廁所環境清潔", "怎麼看": "每日放學前巡查施工區域與使用廁所，廢料垃圾必須當日運走，嚴禁留置校園。", "拍照": true }
+  ],
+  "名詞": [
+    {
+      "詞": "責任歸屬倒置原則（本案有爭議，見下方爭議第一則）",
+      "白": "一般情況是機關要舉證「這是廠商弄壞的」，舉不出來就自己修。「倒置」是指反過來：只要在範圍內漏水就推定是廠商責任，除非廠商自己花錢請土木技師公會、結構技師公會或建築師公會鑑定非其責任。本案附件〈防漏之注意事項〉寫的是倒置版，但契約本文第六條(八)寫的是「可歸責於乙方」的一般版——兩者不同，而契約第二十四條(一)說「不同時以本契約為準」。所以本頁不把倒置當成已經確定的保障。"
+    },
+    {
+      "詞": "30 日曆天修復時限",
+      "白": "學校發現漏水並完成通報後，廠商必須在三十日曆天內辦理修復工程，改善完成前要先做臨時防水措施蓋住屋頂。若廠商未能於協商期間內完成，學校可自行完成修復，費用從廠商繳的履約保證金扣除，不足部分再求償，而且學校採用什麼修復方式廠商不得有異議。"
+    },
+    {
+      "詞": "固定回饋金 125,000 元",
+      "白": "傳統標租案多採發電量百分比（若遇陰雨天或發電不佳回饋金會變少）；本案決標議定每年保證繳納固定回饋金新臺幣 125,000 元，無論日照多寡學校皆有穩定收益。"
+    },
+    {
+      "詞": "中央模組回收費用（10年10次）",
+      "白": "太陽能板壽命約 25~35 年。為避免廠商日後倒閉變成校園廢棄物，政府強制廠商建置後分 10 年將回收費用繳交給中央能源局基金。未來除役時學校直接請中央回收，不花學校一毛錢。"
+    },
+    {
+      "詞": "EMS 能源管理系統 (Energy Management System)",
+      "白": "一套結合感測器與網路的智慧電表系統，能即時抓取光電發電量、學校總用電量（包含電壓、電流、瓦數、用電度數），並自動轉成圖表於 65 吋電視與網頁呈現，做為學校綠能教學教材。"
+    },
+    {
+      "詞": "電位差腐蝕（異金屬接觸）",
+      "白": "當鋁合金（光電板邊框）與鍍鋅鋼（支架）直接碰在一起，遇到雨水會產生微弱電流而加速金屬氧化生鏽。因此規範強制在交接面墊入「鐵氟龍絕緣墊片」隔絕接觸。"
+    }
+  ],
+  "爭議": [
+    {
+      "地方": "★ 最重要的一則：漏水責任的範圍與舉證責任，契約本文與附件寫法不同",
+      "圖說": "附件〈防漏之注意事項〉二、之2：「設置場址範圍(包含設置場址同水平面屋頂範圍)內若有漏水情事發生，除由乙方提出經公正第三方證明非屬其責任之文件外，概由乙方負責。」／契約本文第六條(八)：「設置場址範圍內若有漏水的情事發生，且可歸責於之乙方之責任，概由乙方負責。」／契約第二十四條(一)：「本契約附件為本契約內容之一部分⋯⋯二者如有不同約定者，以本契約為準。」",
+      "為什麼吵": "兩處差了兩件事：一是範圍（附件含「同水平面屋頂」，本文沒有），二是誰要舉證（附件要廠商證明「不是我」，本文要學校證明「可歸責於你」）。附件那一版對學校有利，但第二十四條明文說衝突時以本文為準——廠商真的漏水時很可能援引這一條。而光電板一鋪，整層屋頂的雨水路徑都會改變，「只算板子正下方」在物理上站不住腳，卻可能在文字上站得住。",
+      "先問誰": "① 開工前現勘就把這件事談定：在會勘紀錄寫明雙方同意適用附件之範圍與舉證方式，雙方簽認——這是補洞成本最低的時點，廠商此時沒有理由拒絕。② 同時完成「設置前現況點交表」，把同水平面範圍逐處拍照。③ 若廠商不願簽，代表風險確實存在，應簽報並考慮以契約變更協議書處理（本案已有一次變更協議前例）。"
+    },
+    {
+      "地方": "三樓平台日後使用權與彩繪",
+      "圖說": "三樓平台架高 3 公尺，下方留設開放活動空間。",
+      "為什麼吵": "廠商可能堆放雜物或維修機具，影響師生通行與彩繪規劃。",
+      "先問誰": "評審答詢廠商原話：「三樓平台學校要彩繪或其它施作，學校可以自行決定。產權不是我們的，我們只是租賃。」建議把這句連同下方淨空高度一併寫進施工前會議紀錄，日後有爭執時直接引。"
+    },
+    {
+      "地方": "臨時水電費用如何計算補貼",
+      "圖說": "契約附件第 5 項：「乙方同意因架設、維護、修復及清潔太陽光電發電設備所需不動產管理機關之水電，補貼不動產管理機關之臨時水電費用。另前述乙方所需之水電，乙方亦得考慮於設置案場增設獨立電表及水表，以供因應。」",
+      "為什麼吵": "條文用的是「亦得考慮」增設獨立表——也就是廠商可以不裝。沒有獨立表就只能估算度數，而估算沒有基準，事後一定有得吵。",
+      "先問誰": "進場前二擇一談定並寫進會勘紀錄：① 增設獨立臨時水電表（建議，事實勝過估算）；② 議定固定補貼金額與繳納時點。不要拖到用完電再算。"
+    }
+  ],
+  "更新日": "2026-08-20",
+  "來源": "依 114002 案《華勛國民小學租賃契約書》（含附件〈施工及維護期間注意及配合事項〉）、招標文件附件《學校校舍裝置屋頂型太陽能發電設備－防漏之注意事項》（含附錄一規格）、《評審會議答詢紀錄》（提問共 19 題）、《租賃標的清冊》、《契約變更協議書》轉譯彙整。頁面內標「★」者為尚未定案或本頁推定之事項，不得逕行據以要求廠商。"
+};
+</script>
+
+<header>
+  <div class="wrap">
+    <div class="kicker" id="elKicker"></div>
+    <h1 id="elTitle"></h1>
+    <div class="lede" id="elLede"></div>
+    <div class="facts" id="elFacts"></div>
+  </div>
+</header>
+
+<main class="wrap" id="elMain"></main>
+
+<nav><div class="tabs" id="elTabs" role="tablist"></div></nav>
+
+<script>
+const el = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const store = {
+  get(k){ try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch { return null; } },
+  set(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+};
+
+document.title = `${DATA.案號}｜${DATA.案名}`;
+el('elKicker').textContent = `${DATA.案號} 標租案視覺化全覽`;
+el('elTitle').textContent = DATA.案名;
+el('elLede').textContent = DATA.一句話;
+el('elFacts').innerHTML = DATA.基本.map(f => `<span class="fact">${esc(f.k)}　<b>${esc(f.v)}</b></span>`).join('');
+
+const panels = [];
+const add = (id, 名, html) => { panels.push({ id, 名, html }); };
+
+// ① 施作區域（各棟現況、完工示意、工項細節）
+DATA.區域.forEach(r => add('r' + r.id, r.名, `
+  <h2>施作位置與現況</h2>
+  <div class="card"><p>${esc(r.位置)}</p></div>
+  
+  <h2>施工前後視覺對比</h2>
+  <div class="ba" data-ba>
+    <div class="before">${r.示意?.前 || '<p class="muted">（施工前現況）</p>'}<span class="lab">現況</span></div>
+    <div class="after">${r.示意?.後 || '<p class="muted">（完工後配置）</p>'}<span class="lab">完工後</span></div>
+  </div>
+  <input class="sp" type="range" min="0" max="100" value="50" aria-label="拖曳比較施工前後">
+  
+  <div class="grid2" style="margin-top:12px">
+    <div class="card"><h3>現況環境</h3><p class="muted">${esc(r.現況)}</p></div>
+    <div class="card"><h3>完工規劃</h3><p class="muted">${esc(r.完成)}</p></div>
+  </div>
+  
+  <h2>本區重點工項與防漏規範</h2>
+  ${(r.項目 || []).map(i => `
+    <div class="card">
+      <h3>${esc(i.標)}<span class="tag bl">${esc(i.圖號)}</span></h3>
+      <p>${esc(i.白話)}</p>
+      <dl class="kv">
+        <dt>材料工法</dt><dd>${esc(i.材料)}</dd>
+        <dt>現場看點</dt><dd>${esc(i.看點)}</dd>
+      </dl>
+    </div>`).join('')}
+`));
+
+// ② 漏水防治專區（契約核心保障）
+add('leak', '💧 漏水防治機制', `
+  <div class="banner-leak">
+    <h3>💧 屋頂漏水責任與 30 日曆天修復機制</h3>
+    <p>本案招標文件與契約就漏水建立三道機制：事前現勘、責任歸屬、限期修復＋扣抵保證金。<b>但第二道（責任歸屬）在契約本文與附件之間寫法不一致，出事時可能有爭執</b>——下面第二張卡片講的就是這件事，開工前現勘要先把它處理掉。</p>
+  </div>
+  
+  <div class="grid3">
+    ${DATA.漏水專題.重點.map(k => `
+      <div class="card" style="border-top:3px solid var(--bl)">
+        <h3 style="color:var(--bl)">${esc(k.t)}</h3>
+        <p class="muted">${esc(k.d)}</p>
+      </div>`).join('')}
+  </div>
+
+  <h2>關鍵防漏工法圖解</h2>
+  <div class="card">
+    <div class="grid-highlight">
+      <div class="h-box">
+        <b>1. 水泥基墩預留水路</b>
+        <p class="muted">基座預埋排水邊溝與洩水孔徑，雨水迅速排走不滯留積水。</p>
+      </div>
+      <div class="h-box">
+        <b>2. 雙層交疊防水密封</b>
+        <p class="muted">鎖固錨定處採營建署規範高分子防水層，與既有防水層緊密交疊。</p>
+      </div>
+      <div class="h-box">
+        <b>3. 浪板固定：夾具或鑽孔（本案未定）</b>
+        <p class="muted">規範允許兩種：夾具咬合不破壞浪板，或鑽孔固定並打防漏縫材＋定期檢視。施工前會議要請廠商書面確定採哪一種。</p>
+      </div>
+      <div class="h-box">
+        <b>4. 天溝集水與明管導流</b>
+        <p class="muted">光電板底端全設集水天溝，將雨水直接導至既有排水孔，防止強雨漫流。</p>
+      </div>
+    </div>
+  </div>
+`);
+
+// ③ 附帶工項與承諾服務
+add('extra', '🛠 附帶工項清單', `
+  <h2>廠商全額負擔之附帶工項與回饋服務</h2>
+  <div class="card" style="margin-bottom:14px">
+    <p>除安裝太陽能模組外，本案契約與評審答詢另含以下 <b>7 項附帶工項</b>，費用由廠商負擔。★ 其中「水塔遷移」是條件式（必須遷移、且經學校同意才遷），不是無條件承諾；每一項後面的灰底標籤是它的出處，現場有爭執時直接翻那一條。</p>
+  </div>
+  
+  ${DATA.附帶工項.map((item, idx) => `
+    <div class="card">
+      <h3>
+        <span style="background:var(--bl);color:#04121d;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:900">${idx+1}</span>
+        ${esc(item.項)}
+        <span class="tag gr">${esc(item.來源)}</span>
+      </h3>
+      <p style="margin-top:6px">${esc(item.內容)}</p>
+    </div>`).join('')}
+`);
+
+// ④ 施工階段
+add('st', '📅 施工階段進度', `
+  <h2>五大施工推動階段</h2>
+  <div class="card" style="border-left:4px solid var(--am);margin-bottom:12px">
+    <p><b>★ 推定｜這五個階段不是契約載明的工期表。</b>本案契約只約定「決標日次日起 365 日曆天內完成設置並取得台電併聯試運轉證明」，中間沒有分段里程碑。下面的順序是依契約附件〈施工及維護期間注意及配合事項〉的作業順序與廠商答詢（施工前會議 4～5 次、會先提供 3D 圖）推出來的，<b>用來安排督工節奏，不能拿來要求廠商在某一天完成某一段</b>。正式期程以施工前會議議定之工期計畫為準。</p>
+  </div>
+  <div class="ctrl">
+    <button class="btn pri" id="elPlay">▶ 自動播放</button>
+    <button class="btn" id="elPrev">上一步</button>
+    <button class="btn" id="elNext">下一步</button>
+  </div>
+  <div class="steps" id="elSteps">
+    ${DATA.階段.map((s, i) => `
+      <div class="step${i === 0 ? ' on' : ''}">
+        <div class="card">
+          <h3>${esc(s.名)}<span class="tag bl">${esc(s.週)}</span></h3>
+          <dl class="kv">
+            <dt>現場作業</dt><dd>${esc(s.現場)}</dd>
+            <dt>學校主辦確認</dt><dd style="color:var(--tx);font-weight:bold">${esc(s.你要)}</dd>
+          </dl>
+        </div>
+      </div>`).join('')}
+  </div>
+`);
+
+// ⑤ 督工檢核清單
+add('ck', '✅ 督工檢核清單', `
+  <h2>總務處現地走勘查驗清單</h2>
+  <div class="pg" id="elPg"></div>
+  ${DATA.督工.map((c, i) => `
+    <label class="chk" data-i="${i}">
+      <input type="checkbox">
+      <span>
+        <span class="t">${esc(c.項)}<span class="tag bl">${esc(c.區)}</span></span>
+        <span class="h">${esc(c.怎麼看)}</span>
+        ${c.拍照 ? '<span class="cam">📷 此項請拍照存證（列入會勘紀錄）</span>' : ''}
+      </span>
+    </label>`).join('')}
+  <p class="muted" style="margin-top:10px">★ 勾選狀態會即時保存在本機瀏覽器（LocalStorage），離線亦可使用。</p>
+`);
+
+// ⑥ 名詞與爭議解析
+add('gl', '❓ 名詞・爭議解析', `
+  <h2>關鍵合約條款與名詞白話解讀</h2>
+  ${DATA.名詞.map(g => `<details class="law"><summary>${esc(g.詞)}</summary><p>${esc(g.白)}</p></details>`).join('')}
+  
+  <h2>履約期間最容易產生的爭議與自保方式</h2>
+  ${DATA.爭議.map(w => `
+    <details class="risk"><summary>${esc(w.地方)}</summary>
+      <p><b>契約規範：</b>${esc(w.圖說)}</p>
+      <p><b>可能爭議：</b>${esc(w.為什麼吵)}</p>
+      <p style="color:var(--am)"><b>自保防範作法：</b>${esc(w.先問誰)}</p>
+    </details>`).join('')}
+  
+  <footer>
+    <div>資料來源：${esc(DATA.來源)}</div>
+    <div>更新日：${esc(DATA.更新日)}</div>
+    <div>★ 本頁為 114002 案光電標租專案之<b>圖說與契約白話視覺化轉譯</b>，實際施工規範與履約責任均以機關核定之契約書及相關招標文件為準。</div>
+  </footer>
+`);
+
+el('elMain').innerHTML = panels.map((p, i) => `<section id="${p.id}" class="${i ? '' : 'on'}">${p.html}</section>`).join('');
+el('elTabs').innerHTML = panels.map((p, i) =>
+  `<button class="tab" role="tab" aria-selected="${!i}" data-go="${p.id}">${esc(p.名)}</button>`).join('');
+
+el('elTabs').addEventListener('click', e => {
+  const b = e.target.closest('[data-go]'); if (!b) return;
+  document.querySelectorAll('nav .tab').forEach(t => t.setAttribute('aria-selected', t === b));
+  document.querySelectorAll('main section').forEach(s => s.classList.toggle('on', s.id === b.dataset.go));
+  scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// 前後對比：拖桿 + 直接在圖上拖
+document.querySelectorAll('[data-ba]').forEach(ba => {
+  const rng = ba.nextElementSibling;
+  const set = v => ba.style.setProperty('--split', Math.max(0, Math.min(100, v)) + '%');
+  rng.addEventListener('input', () => set(rng.value));
+  const drag = e => {
+    const t = e.touches ? e.touches[0] : e, r = ba.getBoundingClientRect();
+    const v = (t.clientX - r.left) / r.width * 100; rng.value = v; set(v);
+  };
+  ba.addEventListener('pointerdown', e => { ba.setPointerCapture(e.pointerId); drag(e); });
+  ba.addEventListener('pointermove', e => { if (e.pressure || e.buttons) drag(e); });
+});
+
+// 階段播放
+(() => {
+  const steps = [...document.querySelectorAll('#elSteps .step')]; if (!steps.length) return;
+  const play = el('elPlay'), prev = el('elPrev'), next = el('elNext');
+  let i = 0, timer = null;
+  const show = n => { i = (n + steps.length) % steps.length; steps.forEach((s, k) => s.classList.toggle('on', k <= i)); };
+  next.onclick = () => show(i + 1); prev.onclick = () => show(i - 1);
+  play.onclick = () => {
+    if (timer) { clearInterval(timer); timer = null; play.textContent = '▶ 自動播放'; return; }
+    play.textContent = '⏸ 暫停'; show(0);
+    timer = setInterval(() => { if (i >= steps.length - 1) { clearInterval(timer); timer = null; play.textContent = '▶ 自動播放'; } else show(i + 1); }, 1600);
+  };
+  show(0);
+})();
+
+// 督工清單
+(() => {
+  const key = 'ck-' + DATA.案號, saved = store.get(key) || {};
+  const boxes = [...document.querySelectorAll('label.chk')];
+  if (!boxes.length) return;
+  const paint = () => {
+    let n = 0;
+    boxes.forEach(l => { const c = l.querySelector('input'); l.classList.toggle('done', c.checked); if (c.checked) n++; });
+    el('elPg').textContent = `已確認 ${n} / ${boxes.length} 項`;
+  };
+  boxes.forEach(l => {
+    const c = l.querySelector('input'); c.checked = !!saved[l.dataset.i];
+    c.addEventListener('change', () => { saved[l.dataset.i] = c.checked; store.set(key, saved); paint(); });
+  });
+  paint();
+})();
+</script>
+</body>
+</html>

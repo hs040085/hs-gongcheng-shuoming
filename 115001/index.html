@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<title>115001｜星空樓廁所整修工程</title>
+<!--
+  ─────────────────────────────────────────────────────────────
+  工程說明頁母版　作者: claude　建立: 2026-08-09
+  規格與分級見 ..\..\01_案件庫\_wiki\概念頁\工程說明頁母版-分級對照表.md
+  ★ 本檔為母版：所有雙大括號佔位符與 DATA 內的值皆為本案特有，一律由 skill 填。
+     _build.js 會斷言產出的 HTML 裡一個佔位符都不剩，漏填即擋下不產出。
+  ★ 這一頁會被推上公開網際網路。可上什麼、不可上什麼，見 ..\README.md「可上網白名單」。
+     _scan.js 會逐檔斷言，違反即擋下不發布。
+     ⚠ 本註解不重抄禁項清單——理由同 CLAUDE.md §失誤型錄 006：摘要會漂移，
+       而漂移之後沒有一處是唯一權威。（且禁字寫在這裡會被掃描器自己抓到。）
+  ─────────────────────────────────────────────────────────────
+-->
+<style>
+:root{
+  --bg:#0f1420; --card:#1a2130; --card2:#232c3d; --line:rgba(255,255,255,.10);
+  --tx:#f1f5f9; --dim:#94a3b8; --bl:#38bdf8; --gr:#34d399; --am:#fbbf24; --ro:#fb7185;
+  --pad:16px; --r:14px;
+}
+@media (prefers-color-scheme: light){
+  :root{ --bg:#f4f6fb; --card:#fff; --card2:#eef2f9; --line:rgba(15,20,32,.10);
+         --tx:#0f1420; --dim:#5b6678; }
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  background:var(--bg); color:var(--tx); line-height:1.75;
+  font-size:16px; padding-bottom:calc(84px + env(safe-area-inset-bottom));
+}
+.wrap{max-width:820px;margin:0 auto;padding:0 var(--pad)}
+
+/* ── 頁首 ─────────────────────────────────────── */
+header{padding:20px var(--pad) 14px;border-bottom:1px solid var(--line)}
+.kicker{font-size:.78rem;color:var(--bl);letter-spacing:.06em;font-weight:700}
+h1{font-size:1.35rem;line-height:1.4;margin:6px 0 10px;font-weight:800}
+.lede{font-size:1rem;color:var(--tx);background:var(--card);border-left:4px solid var(--bl);
+      border-radius:0 var(--r) var(--r) 0;padding:12px 14px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.fact{background:var(--card2);border:1px solid var(--line);border-radius:999px;
+      padding:5px 12px;font-size:.82rem;color:var(--dim)}
+.fact b{color:var(--tx);font-weight:700}
+
+/* ── 分頁列（手機：底部固定；桌機：也固定，夠用就好）───── */
+nav{position:fixed;left:0;right:0;bottom:0;z-index:50;
+    background:color-mix(in srgb,var(--bg) 92%,transparent);
+    backdrop-filter:blur(14px);border-top:1px solid var(--line);
+    padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;max-width:820px;margin:0 auto}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:transparent;border:1px solid transparent;color:var(--dim);
+     font:inherit;font-size:.86rem;font-weight:700;padding:9px 14px;border-radius:10px;
+     cursor:pointer;white-space:nowrap;min-height:44px}
+.tab[aria-selected="true"]{background:color-mix(in srgb,var(--bl) 18%,transparent);
+     color:var(--bl);border-color:color-mix(in srgb,var(--bl) 35%,transparent)}
+
+/* ── 區塊 ─────────────────────────────────────── */
+section{display:none;padding-top:18px}
+section.on{display:block;animation:in .25s ease}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h2{font-size:1.08rem;margin:22px 0 10px;display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:4px;height:18px;background:var(--bl);border-radius:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+      padding:14px;margin-bottom:12px}
+.card h3{font-size:1rem;margin-bottom:6px}
+.tag{display:inline-block;background:var(--card2);border:1px solid var(--line);
+     border-radius:6px;padding:1px 7px;font-size:.72rem;color:var(--dim);margin-left:6px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:.92rem;margin-top:8px}
+.kv dt{color:var(--dim);white-space:nowrap}
+.muted{color:var(--dim);font-size:.9rem}
+
+/* ── 前後對比 ─────────────────────────────────── */
+.ba{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);
+    aspect-ratio:4/3;background:var(--card2);touch-action:pan-y}
+.ba>div{position:absolute;inset:0;display:grid;place-items:center;padding:18px;text-align:center}
+.ba .after{clip-path:inset(0 0 0 var(--split,50%))}
+.ba .before{clip-path:inset(0 calc(100% - var(--split,50%)) 0 0)}
+.ba .lab{position:absolute;top:8px;font-size:.74rem;font-weight:800;
+         background:rgba(0,0,0,.55);color:#fff;padding:3px 9px;border-radius:999px}
+.ba .before .lab{left:8px} .ba .after .lab{right:8px}
+.ba svg{width:100%;height:100%}
+input[type=range].sp{width:100%;margin-top:10px;accent-color:var(--bl);height:44px}
+
+/* ── 階段動畫 ─────────────────────────────────── */
+.steps{position:relative;padding-left:26px}
+.steps::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.step{position:relative;margin-bottom:10px;opacity:.42;transition:opacity .3s}
+.step.on{opacity:1}
+.step::before{content:"";position:absolute;left:-22px;top:16px;width:11px;height:11px;
+   border-radius:50%;background:var(--card2);border:2px solid var(--line);transition:.3s}
+.step.on::before{background:var(--bl);border-color:var(--bl);box-shadow:0 0 0 5px color-mix(in srgb,var(--bl) 22%,transparent)}
+.ctrl{display:flex;gap:8px;align-items:center;margin:12px 0}
+button.btn{background:var(--card2);border:1px solid var(--line);color:var(--tx);font:inherit;
+  font-weight:700;font-size:.88rem;padding:10px 16px;border-radius:10px;cursor:pointer;min-height:44px}
+button.btn.pri{background:var(--bl);border-color:var(--bl);color:#04121d}
+
+/* ── 督工清單 ─────────────────────────────────── */
+label.chk{display:flex;gap:10px;align-items:flex-start;background:var(--card);
+  border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:8px;cursor:pointer}
+label.chk input{width:22px;height:22px;margin-top:2px;accent-color:var(--gr);flex:0 0 auto}
+label.chk.done{opacity:.5}
+label.chk .t{font-weight:700;font-size:.95rem}
+label.chk .h{font-size:.88rem;color:var(--dim);margin-top:2px}
+.cam{color:var(--am);font-size:.78rem;font-weight:700}
+.pg{font-size:.85rem;color:var(--dim);margin-bottom:10px}
+
+/* ── 摺疊 ─────────────────────────────────────── */
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:12px 14px;margin-bottom:8px}
+details[open]{background:var(--card2)}
+summary{cursor:pointer;font-weight:700;font-size:.95rem;list-style:none;min-height:32px;display:flex;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";margin-left:auto;color:var(--dim)}
+details[open] summary::after{content:"−"}
+details p{margin-top:8px;font-size:.92rem;color:var(--dim)}
+.risk{border-left:4px solid var(--am)}
+.risk summary::before{content:"⚠ ";color:var(--am)}
+
+footer{margin:28px 0 8px;padding-top:14px;border-top:1px solid var(--line);
+  font-size:.78rem;color:var(--dim);line-height:1.9}
+
+@media (min-width:700px){
+  body{font-size:17px}
+  h1{font-size:1.7rem}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid2 .card{margin-bottom:0}
+}
+@media (max-width:400px){
+  :root{--pad:12px}
+  h1{font-size:1.18rem} .tab{padding:9px 10px;font-size:.8rem}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ═══ 這一段由 skill 填。上面的 CSS 與下面的 JS 一律不動 ═══ -->
+<script>
+const DATA = {
+  "案號": "115001",
+  "案名": "星空樓廁所整修工程",
+  "一句話": "把星空樓（圖說上寫 B 棟）1 樓到 5 樓的 6 間老舊廁所整間打掉重做：牆面地面敲到見底重新防水貼磚、馬桶小便斗洗手台全部換新、隔間換成防水的實心板，其中 2 樓那一間改成男女都能用的性別友善廁所。",
+  "基本": [
+    {
+      "k": "施工地點",
+      "v": "星空樓（B 棟）1 樓到 5 樓，共 6 間廁所"
+    },
+    {
+      "k": "工期",
+      "v": "機關通知日起 7 日內開工，開工之日起 80 日曆天竣工（契約）"
+    },
+    {
+      "k": "發包預算",
+      "v": "4,242,697 元（招標中，尚未決標）"
+    },
+    {
+      "k": "設計監造",
+      "v": "三禾聯合建築師事務所"
+    },
+    {
+      "k": "經費來源",
+      "v": "教育部補助（經桃園市教育局轉核）－ 114 年公立國民中小學老舊廁所整修工程計畫"
+    }
+  ],
+  "區域": [
+    {
+      "id": "A",
+      "名": "1F 106 女廁",
+      "位置": "星空樓就是教學大樓中間那一棟，圖說上一律寫「B 棟」。六間廁所上下疊在同一個位置，1 樓到 4 樓各一間、5 樓兩間分在樓梯兩側。這一間是 1 樓那間，走進去左手邊是洗手區、正對面是一整排廁間。★ 這是六間裡唯一給低年級用的，洗手台高度和其他五間不一樣。",
+      "現況": "5 間蹲式、1 間坐式，共 6 個廁間。洗手盆在廁所裡面，外面走廊另有一座 4 個水龍頭的洗手檯。牆面地面是舊磁磚，天花板是舊的明架天花板。",
+      "完成": "廁間數不變，還是 5 蹲 1 坐。廁所裡的舊洗手盆取消，改成入口處一整條人造石洗手檯搭 3 支長柄式龍頭，另加一座位置放低的拖布盆。牆面貼馬賽克壁磚配一條仿木紋腰帶，洗手台上方砌圓孔花格磚透光，地面換 R11 止滑磚。隔間換成 12mm 以上實心抗倍特板。",
+      "示意": {
+        "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='1樓女廁整修前示意：舊磁磚牆面、舊隔間板、廁所內的舊洗手盆'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='40' width='400' height='150' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 70h400M0 100h400M0 130h400M0 160h400M40 40v150M100 40v150M160 40v150M220 40v150M280 40v150M340 40v150'/></g><path d='M120 55l14 26-9 4z' fill='#a8a094' opacity='.7'/><path d='M250 120l10 30' stroke='#a8a094' stroke-width='2' fill='none'/><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#9a9184'><rect x='40' y='95' width='58' height='95'/><rect x='108' y='95' width='58' height='95'/><rect x='176' y='95' width='58' height='95'/><rect x='244' y='95' width='58' height='95'/></g><g fill='#8b8275'><rect x='62' y='130' width='6' height='6'/><rect x='130' y='130' width='6' height='6'/><rect x='198' y='130' width='6' height='6'/><rect x='266' y='130' width='6' height='6'/></g><ellipse cx='340' cy='168' rx='34' ry='15' fill='#ddd8ce'/><rect x='336' y='140' width='7' height='22' fill='#9a9184'/><rect x='324' y='183' width='32' height='8' fill='#a8a094'/><text x='14' y='285' font-size='15' fill='#4a453c'>現況：舊磁磚、舊隔間板、洗手盆在廁所裡面</text></svg>",
+        "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='1樓女廁完工後示意：新壁磚配仿木紋腰帶、圓孔花格磚、新隔間門與人造石洗手檯'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M0 172h400M50 40v150M100 40v150M150 40v150M200 40v150M250 40v150M300 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><g fill='#e8edf3' stroke='#cfd8e2'><rect x='296' y='44' width='96' height='56'/></g><g fill='#f6f8fb'><circle cx='312' cy='58' r='5'/><circle cx='330' cy='58' r='5'/><circle cx='348' cy='58' r='5'/><circle cx='366' cy='58' r='5'/><circle cx='312' cy='74' r='5'/><circle cx='330' cy='74' r='5'/><circle cx='348' cy='74' r='5'/><circle cx='366' cy='74' r='5'/><circle cx='312' cy='90' r='5'/><circle cx='330' cy='90' r='5'/><circle cx='348' cy='90' r='5'/><circle cx='366' cy='90' r='5'/></g><rect x='0' y='190' width='400' height='110' fill='#dfe5ec'/><g stroke='#cdd6e0' stroke-width='1'><path d='M0 214h400M0 238h400M0 262h400M60 190v110M120 190v110M180 190v110M240 190v110M300 190v110M360 190v110'/></g><g fill='#7fb5c9'><rect x='40' y='95' width='58' height='95' rx='2'/><rect x='108' y='95' width='58' height='95' rx='2'/><rect x='176' y='95' width='58' height='95' rx='2'/><rect x='244' y='95' width='58' height='95' rx='2'/></g><g fill='#f6f8fb'><circle cx='90' cy='142' r='4'/><circle cx='158' cy='142' r='4'/><circle cx='226' cy='142' r='4'/><circle cx='294' cy='142' r='4'/></g><rect x='300' y='150' width='96' height='9' fill='#3c4653'/><rect x='306' y='159' width='84' height='16' fill='#eef1f5'/><g stroke='#7d8794' stroke-width='3' fill='none'><path d='M318 138v12M342 138v12M366 138v12'/></g><text x='14' y='285' font-size='15' fill='#26303c'>完工後：新壁磚＋仿木紋腰帶、花格磚透光、人造石洗手檯</text></svg>"
+      },
+      "項目": [
+        {
+          "標": "拆到見底",
+          "圖號": "005（1F・2F 拆除平面）",
+          "白話": "把這間廁所裡面能拆的全部拆掉——舊隔間板和門、天花板、馬桶洗手台水龍頭、牆面地面的舊磁磚。磁磚不是把表面拆掉就算，圖說寫的是「打毛見底」，要敲到看得見底下的水泥結構為止。",
+          "材料": "拆除工項，沒有新材料。廢棄物全案以 3.5 噸車清運 8 車，要附清運證明。這一間拆除表列：舊隔間門窗 9 組、舊馬桶與龍頭 11 組、牆地磁磚打毛見底、舊明架天花板。",
+          "看點": "★ 只能在貼新磚之前看。用手掌摸牆面，摸得到光滑的舊磁磚背膠層就是沒敲乾淨。舊底沒清乾淨就貼新磚，兩三年後會整片鼓起來脫落，而那時保固已經過了。"
+        },
+        {
+          "標": "地面與牆面防水",
+          "圖號": "032（防水施工詳圖）",
+          "白話": "打毛之後先做防水層，再貼磁磚。防水做在磁磚底下，貼完就永遠看不到了。地面同時要做洩水坡度——讓地板有一點斜度，水會自己流到落水頭。",
+          "材料": "底油塗 1 道（每平方公尺 0.2 公斤）；高分子複合式防水材分 2 次塗，每次每平方公尺 1.25 公斤，合計 2.5 公斤。牆角轉角要先用 1:3 水泥砂漿抹成 45 度斜角再塗。施工時氣溫要 5℃ 以上且持續回升。防水保固 3 年。",
+          "看點": "★★ 只能在貼磁磚之前看，貼完就沒機會了。① 塗了幾道——要塗兩次，兩次顏色通常不同，看得出分層。② 牆角有沒有抹 45 度斜角，直角轉彎是最會漏的地方。③ 潑一桶水在地上，看水會不會自己流到落水頭；不流的那一塊就是坡度沒做。圖說第 4 條寫得很白：「完工後試水發現地面積水無法排除，承商須敲除重新施作。」"
+        },
+        {
+          "標": "貼磚",
+          "圖號": "028、029（磁磚計畫）、033（磁磚施工詳圖）",
+          "白話": "地板貼 20×20 公分止滑磚，牆面貼 25×40 公分馬賽克壁磚，中間有一條 5×120 公分仿木紋腰帶繞一圈，洗手台上方和入口牆面另外砌圓孔花格磚透光。",
+          "材料": "地磚「珍珠止滑磚 R11」（R11 是止滑等級，數字愈大愈不滑）；壁磚「高亮釉類馬賽克壁磚」；腰帶磚「高亮釉類仿木紋」，型號 CED512061；花格磚「圓球」19×19 公分，全案 648 塊。",
+          "看點": "① ★ 正式全面鋪貼之前，施工規範第 09310 章要求先在現場挑一處做 3 公尺×3 公尺的「實體樣品」，經核可才准往下做——這一關過了，後面整棟就照這個標準走，所以這一關要親自到場。② 規範另要求做拉拔試驗證明黏著力。③ 貼完用指節敲牆面，聲音空空的就是底下沒貼實。"
+        },
+        {
+          "標": "搗擺（廁間隔間）",
+          "圖號": "042（搗擺施工規範）",
+          "白話": "「搗擺」是廁所隔間的工地叫法。這次全部換成防水的實心板材，鉸鍊藏在裡面、螺絲不外露、門打得開 180 度以上。這一間 6 間廁間。",
+          "材料": "12mm 以上實心抗倍特板（熱固性樹脂板），要通過 CNS 12681 或 12682 認證，並附內政部防焰性能合格認證書；不鏽鋼腳座 50mm；下鉸鍊為一體成型不鏽鋼 8mm 厚承重型；金屬圓造型指示鎖為不鏽鋼加鋁合金。全案 37 間。",
+          "看點": "① 板厚——拿捲尺量板的斷面，要 12mm 以上，不是「差不多」。② 是不是實心——實心板斷面整片是實的，中空板敲起來會空。③ 腳座是不是不鏽鋼。④ 螺絲有沒有外露，圖說明寫「固定螺絲皆內藏不可外露」。⑤ 門是不是真的能開到 180 度。"
+        },
+        {
+          "標": "便器、洗手檯與龍頭",
+          "圖號": "035（人造石洗手槽）、036/037（龍頭）、038/039（馬桶安裝）",
+          "白話": "馬桶、水龍頭、洗手檯全部換新。洗手檯是一整條人造石檯面，不是一個一個的臉盆。另設一座位置放低的拖布盆，是給洗拖把用的。",
+          "材料": "蹲式馬桶（加長型，兩段式手壓沖水，含省水銅器全套）、坐式馬桶（上壓二段式）；洗手檯面為 12mm 以上透心抗菌人造石，含管線遮板，全案總長 1,044 公分；龍頭為長柄式（手小的孩子也扳得動）；人造石止水檻。",
+          "看點": "① ★ 這一間的洗手檯高度要 55 公分（低年級），其他五間是 65 公分——圖說這一格自己打架，見「名詞・爭議」第 2 則，開工前要先問定，做完再改就是敲掉重做。② 人造石是不是「透心」——看斷面，透心的花紋整塊都有，表面貼皮的斷面是白的。③ 檯面下方的管線遮板有沒有做，標單上有這一項。"
+        },
+        {
+          "標": "照明、感應開關與求救鈴",
+          "圖號": "019（燈具與電氣）",
+          "白話": "換 LED 筒燈，加裝人走進去燈就亮的感應開關，並裝緊急求救按鈕與閃光警報喇叭。",
+          "材料": "20W 筒燈，色溫 4000K，白色燈罩直徑 14 公分、燈頭 E27，這一間 12 盞；熱感自動開關（全案 6 只，每間 1 只）；緊急求救押扣（這一間 1 組）；閃光警報喇叭（每間 1 組）。",
+          "看點": "① ★ 求救按鈕要在驗收前實際按一次，看外面的閃光警報喇叭有沒有真的亮又叫——只確認「裝了」沒有用。② 燈的色溫是不是 4000K（燈體上會印），裝成 6500K 整間會冷白得像醫院。③ 站在門口試感應開關，感應不到就等於沒裝。"
+        },
+        {
+          "標": "油漆",
+          "圖號": "034（塗料規範）",
+          "白話": "沒有貼磁磚的牆面、和露出來的樑，批土磨平之後噴漆。",
+          "材料": "外牆耐候 3 合 1 晴雨漆，平光白；底膠 1 道、底漆噴 1 道、面漆噴 2 道。規範要求施工前先檢送健康綠建材標章證書與經濟部標準檢驗局正字標記證書，經核可才准施工。",
+          "看點": "① ★ 那兩張證書有沒有先送審——沒送就開噴，事後補不回來。② 用手電筒側光照牆面，凹凸和批土沒磨平的地方會現形。③ 面漆有沒有噴兩道——只噴一道會透出底色，靠近看不均勻。"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "名": "2F 206 性別友善廁所",
+      "位置": "2 樓那一間，位置就在 1 樓那間的正上方。★ 六間裡改得最多、規定最多、也最會出事的就是這一間——它從單純的女廁改成男女都能用的性別友善廁所，每一格都是有門的獨立小房間，連小便斗都關在自己的門裡。",
+      "現況": "原本是女廁，5 間蹲式、1 間坐式共 6 個廁間，洗手盆在裡面。★ 這一間現況的天花板高度是六間裡最矮的，比其他樓層矮了半公尺以上——這一點會直接影響「加高隔板」到底能做多高。",
+      "完成": "改成 7 個各自有門的獨立空間：蹲式 4、坐式 1、小便斗 2。每一格都做「加高隔板」，另加防偷拍隔板；小便斗前方做一道不鏽鋼長型地板排水槽；入口做 100 公分的坡道（圖說引用坡度規定，入口高低差 10 公分、坡度 1/10）；緊急求救按鈕從 1 組變成 8 組。洗手檯 65 公分高。",
+      "示意": {
+        "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='2樓廁所整修前示意：一般女廁配置、六個舊隔間'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='55' width='400' height='135' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 82h400M0 110h400M0 138h400M0 166h400M50 55v135M110 55v135M170 55v135M230 55v135M290 55v135M350 55v135'/></g><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#9a9184'><rect x='34' y='102' width='54' height='88'/><rect x='96' y='102' width='54' height='88'/><rect x='158' y='102' width='54' height='88'/><rect x='220' y='102' width='54' height='88'/><rect x='282' y='102' width='54' height='88'/></g><g fill='#8b8275'><rect x='54' y='134' width='6' height='6'/><rect x='116' y='134' width='6' height='6'/><rect x='178' y='134' width='6' height='6'/><rect x='240' y='134' width='6' height='6'/><rect x='302' y='134' width='6' height='6'/></g><path d='M0 55h400' stroke='#8b8275' stroke-width='3'/><text x='300' y='50' font-size='13' fill='#5a5347'>天花板偏低</text><text x='14' y='285' font-size='15' fill='#4a453c'>現況：一般女廁，隔板高度到此為止</text></svg>",
+        "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='2樓性別友善廁所完工後示意：加高隔板、小便斗也做成獨立有門隔間、地板排水槽與入口坡道'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M50 40v150M110 40v150M170 40v150M230 40v150M290 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><rect x='0' y='190' width='400' height='110' fill='#dfe5ec'/><g stroke='#cdd6e0' stroke-width='1'><path d='M0 216h400M0 244h400M60 190v110M140 190v110M220 190v110M300 190v110'/></g><g fill='#8d7bb8'><rect x='30' y='70' width='52' height='120' rx='2'/><rect x='90' y='70' width='52' height='120' rx='2'/><rect x='150' y='70' width='52' height='120' rx='2'/><rect x='210' y='70' width='52' height='120' rx='2'/></g><g fill='#c98fb4'><rect x='270' y='70' width='46' height='120' rx='2'/><rect x='324' y='70' width='46' height='120' rx='2'/></g><g fill='#f6f8fb'><circle cx='74' cy='134' r='4'/><circle cx='134' cy='134' r='4'/><circle cx='194' cy='134' r='4'/><circle cx='254' cy='134' r='4'/><circle cx='308' cy='134' r='4'/><circle cx='362' cy='134' r='4'/></g><rect x='262' y='190' width='138' height='9' fill='#9aa6b3'/><g stroke='#7d8794' stroke-width='1'><path d='M272 190v9M286 190v9M300 190v9M314 190v9M328 190v9M342 190v9M356 190v9M370 190v9M384 190v9'/></g><path d='M0 262l58 -14v14z' fill='#a9b6c4'/><text x='6' y='58' font-size='13' fill='#26303c'>隔板加高</text><text x='264' y='214' font-size='12' fill='#3c4653'>地板排水槽</text><text x='4' y='285' font-size='15' fill='#26303c'>完工後：每格獨立有門、隔板加高、入口做坡道</text></svg>"
+      },
+      "項目": [
+        {
+          "標": "★ 加高隔板",
+          "圖號": "008（2F 整修後平面）、042（搗擺施工規範）",
+          "白話": "把廁間的隔板做得比一般高，讓男女共用時看不到彼此。這是性別友善廁所最關鍵的一件事。",
+          "材料": "🔴 圖說在平面圖上只有「加高隔板」四個字，加到幾公分、離地留多少、板厚多少、門要不要一起加高，一個字都沒有。搗擺規範另有一組總高與門高的示意數字，但那是一般廁間、不是加高版。",
+          "看點": "★★ 這一項不是在現場看，是在開工前就要問定。這一間現況天花板本來就比其他樓層矮，「加高」的空間有限；等隔板做出來才發現不夠高，整批板材是廠製的，改就是整批重做。見「名詞・爭議」第 3 則。"
+        },
+        {
+          "標": "小便斗做成獨立有門的隔間",
+          "圖號": "008（2F 整修後平面）",
+          "白話": "一般男廁的小便斗是一整排開放的，這一間的 2 座小便斗各自關在自己的隔間裡、有門，所以任何性別的人都能用。",
+          "材料": "感應式小便斗（掛牆短斗式、背進水、感應器內嵌，附省水銅器全套）2 座；隔間同樣是 12mm 以上實心抗倍特板；配自動沖水器出線口 2 組。",
+          "看點": "① 隔間門關起來之後，站在裡面看不看得到外面、外面看不看得到裡面——這一間的隔間如果照一般廁間高度做，隱私就不成立。② 感應器是不是內嵌式（藏在裡面），外掛的容易被撞壞也容易被拆。"
+        },
+        {
+          "標": "不鏽鋼長型地板排水槽",
+          "圖號": "008（2F 整修後平面）、032（排水槽施工詳圖）",
+          "白話": "小便斗前方地上做一條長條形的不鏽鋼排水溝，蓋上格柵，讓濺出來的尿液和沖洗水直接流走，不會積在地上。",
+          "材料": "🔴 圖說只寫「不鏽鋼長型地板排水槽」，長度、寬度、深度、不鏽鋼材質等級、蓋板形式、承重都沒有寫。排水詳圖上另用「截水溝」這個名字，但也沒有位置和斷面。",
+          "看點": "① 排水槽是不是真的有洩水坡度往落水頭跑，倒一杯水下去看水會不會停在槽裡。② 槽的邊緣與磁磚交接處有沒有做好防水收邊——這裡是滲水第一名的位置。③ 蓋板拿不拿得起來，拿不起來以後就清不了。"
+        },
+        {
+          "標": "入口坡道",
+          "圖號": "008（2F 整修後平面）",
+          "白話": "廁所入口有 10 公分的高低差，要做一道 100 公分長的斜坡把它接平，坐輪椅或推推車的人才進得去。",
+          "材料": "🔴 圖說引用了坡度規定（高低差 10 公分以下、坡度不得大於 1/10），並標了 100 這個數字，但沒有畫出坡道本體、沒有標寬度、沒有寫防滑處理、也沒有警示帶。",
+          "看點": "① 坡道做出來之後，實際拿捲尺量高度與長度，算一下坡度有沒有超過 1/10。② 坡面有沒有做止滑——磁磚坡道一濕就會滑倒，這是最容易出人身事故的一項。③ 其他五間的圖上沒有標這個 100，開工前要一併問清楚是「不用做」還是「漏標」。"
+        },
+        {
+          "標": "防偷拍隔板",
+          "圖號": "023（2F 整修後立面）",
+          "白話": "在隔間上方加一片壓克力板，把上方的空隙擋掉，防止有人從上面往下拍。",
+          "材料": "上吊鎖 5mm 壓克力仿偷拍隔板。⚠ 標單列的是 6 組（六間各 1），但圖說只在 2 樓這一間標了這一項——標單和圖說對不上，見「名詞・爭議」第 5 則。",
+          "看點": "裝好之後，自己站到隔間外面往上看一次，看得到裡面就是沒擋住。這一項只有現場站著看才驗得出來，看圖是看不出來的。"
+        },
+        {
+          "標": "緊急求救按鈕（這一間有 8 組）",
+          "圖號": "019（燈具與電氣）",
+          "白話": "其他五間各只有 1 組求救按鈕，這一間有 8 組——等於每一格裡面都有一個。",
+          "材料": "緊急求救押扣 8 組（全案 13 組）；閃光警報喇叭 1 組。",
+          "看點": "★ 驗收前 8 顆按鈕要一顆一顆按過，看外面的警報有沒有反應。抽驗一顆不算——按鈕是給裡面出事的人用的，壞掉的那一顆不會有人告訴你。"
+        },
+        {
+          "標": "其餘與其他五間相同的工項",
+          "圖號": "005、028、030、032、033、034、035、042",
+          "白話": "拆到見底、地牆防水與洩水坡度、貼磚（地磚 R11／馬賽克壁磚／仿木紋腰帶／圓孔花格磚）、搗擺隔間、便器與人造石洗手檯、照明與感應開關、油漆——做法與 1 樓那一間相同，逐項的看法請看「1F 106 女廁」那一頁。",
+          "材料": "同 1F，唯洗手檯高度為 65 公分（非 55 公分）。",
+          "看點": "同 1F 各項。⚠ 這一間的洗手檯高度標註在圖說上有兩種寫法，見「名詞・爭議」第 2 則。"
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "名": "3F 306 女廁",
+      "位置": "3 樓那一間，在 2 樓那間的正上方。做法和 1 樓、4 樓、5 樓女廁一樣，是六間裡最「標準」的一間。★ 但圖說在這一間漏了兩樣東西，見下方。",
+      "現況": "5 間蹲式、1 間坐式共 6 個廁間，洗手盆在裡面，外面走廊有一座 4 個水龍頭的洗手檯。牆面地面舊磁磚、明架天花板。",
+      "完成": "廁間數不變。廁所內舊洗手盆取消，改為入口處人造石洗手檯 65 公分高、3 支長柄式龍頭加一座低位拖布盆。牆面貼馬賽克壁磚配仿木紋腰帶，洗手台上方砌圓孔花格磚，地面 R11 止滑磚，隔間換 12mm 以上實心抗倍特板。",
+      "示意": {
+        "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='3樓女廁整修前示意：舊磁磚與舊隔間'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='40' width='400' height='150' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 70h400M0 100h400M0 130h400M0 160h400M40 40v150M100 40v150M160 40v150M220 40v150M280 40v150M340 40v150'/></g><path d='M60 62l16 24-10 5z' fill='#a8a094' opacity='.7'/><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#9a9184'><rect x='40' y='95' width='58' height='95'/><rect x='108' y='95' width='58' height='95'/><rect x='176' y='95' width='58' height='95'/><rect x='244' y='95' width='58' height='95'/></g><g fill='#8b8275'><rect x='62' y='130' width='6' height='6'/><rect x='130' y='130' width='6' height='6'/><rect x='198' y='130' width='6' height='6'/><rect x='266' y='130' width='6' height='6'/></g><ellipse cx='340' cy='168' rx='34' ry='15' fill='#ddd8ce'/><rect x='336' y='140' width='7' height='22' fill='#9a9184'/><text x='14' y='285' font-size='15' fill='#4a453c'>現況：舊磁磚、舊隔間板、洗手盆在廁所裡面</text></svg>",
+        "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='3樓女廁完工後示意：新壁磚配腰帶、花格磚與新隔間門'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M0 172h400M50 40v150M100 40v150M150 40v150M200 40v150M250 40v150M300 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><rect x='296' y='44' width='96' height='56' fill='#e8edf3' stroke='#cfd8e2'/><g fill='#f6f8fb'><circle cx='312' cy='58' r='5'/><circle cx='330' cy='58' r='5'/><circle cx='348' cy='58' r='5'/><circle cx='366' cy='58' r='5'/><circle cx='312' cy='74' r='5'/><circle cx='330' cy='74' r='5'/><circle cx='348' cy='74' r='5'/><circle cx='366' cy='74' r='5'/><circle cx='312' cy='90' r='5'/><circle cx='330' cy='90' r='5'/><circle cx='348' cy='90' r='5'/><circle cx='366' cy='90' r='5'/></g><rect x='0' y='190' width='400' height='110' fill='#dfe5ec'/><g stroke='#cdd6e0' stroke-width='1'><path d='M0 214h400M0 238h400M0 262h400M60 190v110M120 190v110M180 190v110M240 190v110M300 190v110M360 190v110'/></g><g fill='#7fb5c9'><rect x='40' y='95' width='58' height='95' rx='2'/><rect x='108' y='95' width='58' height='95' rx='2'/><rect x='176' y='95' width='58' height='95' rx='2'/><rect x='244' y='95' width='58' height='95' rx='2'/></g><g fill='#f6f8fb'><circle cx='90' cy='142' r='4'/><circle cx='158' cy='142' r='4'/><circle cx='226' cy='142' r='4'/><circle cx='294' cy='142' r='4'/></g><rect x='300' y='150' width='96' height='9' fill='#3c4653'/><rect x='306' y='159' width='84' height='16' fill='#eef1f5'/><g stroke='#7d8794' stroke-width='3' fill='none'><path d='M318 138v12M342 138v12M366 138v12'/></g><text x='14' y='285' font-size='15' fill='#26303c'>完工後：新壁磚＋腰帶、花格磚、人造石洗手檯</text></svg>"
+      },
+      "項目": [
+        {
+          "標": "🔴 這一間的拆除數量表有一格是空白的",
+          "圖號": "006（3F・4F 拆除平面）",
+          "白話": "六間廁所的拆除數量表格式一樣，其他五間的「既有磚牆拆除」都填了數量，只有 3 樓這一間那一格是空的——但圖上明明畫了要拆的磚牆。",
+          "材料": "不適用。這是圖說本身的缺漏。",
+          "看點": "★ 這一項不是現場看，是開工前就要問。數量空白代表標單那一項的計價基礎不明，等到現場拆完才對數量，就變成追加。見「名詞・爭議」第 8 則。"
+        },
+        {
+          "標": "🔴 這一間沒有磁磚計畫圖",
+          "圖號": "028、029（磁磚計畫，圖名未含 306）",
+          "白話": "磁磚計畫圖是告訴廠商「哪一塊磚從哪裡開始貼、貼到哪裡」的圖。六間裡面，1F、2F、4F、5F 兩間都有，只有 3 樓這一間的編號沒有出現在任何一張磁磚計畫圖的圖名裡。",
+          "材料": "不適用。這是圖說本身的缺漏。",
+          "看點": "★ 開工前問定：3 樓是照哪一張磁磚計畫圖施作？沒有計畫圖就是由現場自己抓，抓出來的花格磚起訖位置和其他樓層不一樣，五間對一間，很難要求他重做。"
+        },
+        {
+          "標": "與 1F 相同的七項工項",
+          "圖號": "006、028、029、032、033、034、035、042",
+          "白話": "拆到見底、地牆防水與洩水坡度、貼磚、搗擺隔間、便器與人造石洗手檯、照明與感應開關與求救鈴、油漆——做法與 1 樓那一間相同，逐項的看法請看「1F 106 女廁」那一頁。",
+          "材料": "同 1F，唯洗手檯高度為 65 公分。筒燈 12 盞、緊急求救押扣 1 組、閃光警報喇叭 1 組。",
+          "看點": "同 1F 各項。防水與貼磚兩項的「只能在這個時間點看」提醒同樣適用。"
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "名": "4F 406 女廁",
+      "位置": "4 樓那一間，在 3 樓那間的正上方。六間裡做法最單純、圖說也最完整的一間，可以拿它當成其他幾間的對照組。",
+      "現況": "5 間蹲式、1 間坐式共 6 個廁間，洗手盆在裡面，外面走廊有一座 4 個水龍頭的洗手檯。牆面地面舊磁磚、明架天花板。",
+      "完成": "廁間數不變。舊洗手盆取消，改為入口處人造石洗手檯 65 公分高、3 支長柄式龍頭加一座低位拖布盆。牆面貼馬賽克壁磚配仿木紋腰帶，洗手台上方砌圓孔花格磚，地面 R11 止滑磚，隔間換 12mm 以上實心抗倍特板。",
+      "示意": {
+        "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='4樓女廁整修前示意：舊磁磚與舊隔間'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='40' width='400' height='150' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 70h400M0 100h400M0 130h400M0 160h400M40 40v150M100 40v150M160 40v150M220 40v150M280 40v150M340 40v150'/></g><path d='M200 108l12 28-9 3z' fill='#a8a094' opacity='.7'/><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#9a9184'><rect x='40' y='95' width='58' height='95'/><rect x='108' y='95' width='58' height='95'/><rect x='176' y='95' width='58' height='95'/><rect x='244' y='95' width='58' height='95'/></g><g fill='#8b8275'><rect x='62' y='130' width='6' height='6'/><rect x='130' y='130' width='6' height='6'/><rect x='198' y='130' width='6' height='6'/><rect x='266' y='130' width='6' height='6'/></g><ellipse cx='340' cy='168' rx='34' ry='15' fill='#ddd8ce'/><rect x='336' y='140' width='7' height='22' fill='#9a9184'/><text x='14' y='285' font-size='15' fill='#4a453c'>現況：舊磁磚、舊隔間板、洗手盆在廁所裡面</text></svg>",
+        "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='4樓女廁完工後示意：新壁磚配腰帶、花格磚與新隔間門'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M0 172h400M50 40v150M100 40v150M150 40v150M200 40v150M250 40v150M300 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><rect x='296' y='44' width='96' height='56' fill='#e8edf3' stroke='#cfd8e2'/><g fill='#f6f8fb'><circle cx='312' cy='58' r='5'/><circle cx='330' cy='58' r='5'/><circle cx='348' cy='58' r='5'/><circle cx='366' cy='58' r='5'/><circle cx='312' cy='74' r='5'/><circle cx='330' cy='74' r='5'/><circle cx='348' cy='74' r='5'/><circle cx='366' cy='74' r='5'/><circle cx='312' cy='90' r='5'/><circle cx='330' cy='90' r='5'/><circle cx='348' cy='90' r='5'/><circle cx='366' cy='90' r='5'/></g><rect x='0' y='190' width='400' height='110' fill='#dfe5ec'/><g stroke='#cdd6e0' stroke-width='1'><path d='M0 214h400M0 238h400M0 262h400M60 190v110M120 190v110M180 190v110M240 190v110M300 190v110M360 190v110'/></g><g fill='#7fb5c9'><rect x='40' y='95' width='58' height='95' rx='2'/><rect x='108' y='95' width='58' height='95' rx='2'/><rect x='176' y='95' width='58' height='95' rx='2'/><rect x='244' y='95' width='58' height='95' rx='2'/></g><g fill='#f6f8fb'><circle cx='90' cy='142' r='4'/><circle cx='158' cy='142' r='4'/><circle cx='226' cy='142' r='4'/><circle cx='294' cy='142' r='4'/></g><rect x='300' y='150' width='96' height='9' fill='#3c4653'/><rect x='306' y='159' width='84' height='16' fill='#eef1f5'/><g stroke='#7d8794' stroke-width='3' fill='none'><path d='M318 138v12M342 138v12M366 138v12'/></g><text x='14' y='285' font-size='15' fill='#26303c'>完工後：新壁磚＋腰帶、花格磚、人造石洗手檯</text></svg>"
+      },
+      "項目": [
+        {
+          "標": "與 1F 相同的七項工項",
+          "圖號": "006、028、029、032、033、034、035、042",
+          "白話": "拆到見底、地牆防水與洩水坡度、貼磚、搗擺隔間、便器與人造石洗手檯、照明與感應開關與求救鈴、油漆——這一間七項全部照標準做法，沒有本間特有的工項。逐項的看法請看「1F 106 女廁」那一頁。",
+          "材料": "同 1F，唯洗手檯高度為 65 公分。筒燈 12 盞、緊急求救押扣 1 組、閃光警報喇叭 1 組。",
+          "看點": "★ 建議把這一間當成標準間，第一次督工先來這裡把七項看熟，其他五間就是在這個基礎上加減。防水與貼磚兩項只能在被蓋住之前看，這一點在六間都一樣。"
+        },
+        {
+          "標": "管道間維修門",
+          "圖號": "025（4F 整修後立面）",
+          "白話": "牆上開一扇小門，將來管線要修的時候從這裡進去，不必再敲牆。",
+          "材料": "60×100 公分維修門，鋁製，白色。全案 6 處（每間 1 處）。",
+          "看點": "① 門打不打得開、開了手伸不伸得進去——維修門做成裝飾品是常見的事。② ⚠ 5 樓男廁那一間的立面圖上漏標了這一項，但標單列的是 6 處，所以六間都要做，見「名詞・爭議」第 9 則。"
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "名": "5F 505 男廁",
+      "位置": "5 樓有兩間廁所，分在樓梯兩側，這是其中的男廁。★ 這是全案唯一的男廁，也是唯一有小便斗排、唯一有無障礙小便斗、唯一地坪要做兩種材質的一間。",
+      "現況": "8 座小便斗沿牆一整排，中間有隔屏；另有 5 間蹲式、1 間坐式共 6 個廁間。洗手盆在裡面，外面走廊有一座 4 個水龍頭的洗手檯。",
+      "完成": "小便斗仍是 8 座，全部換成感應式，其中最靠邊那一座換成附扶手的長斗式（無障礙用）。廁間數不變。小便斗區地坪改成深灰色水泥混凝土鋪面加止滑塗料，其他區域鋪 R11 止滑磚。洗手檯 65 公分高。",
+      "示意": {
+        "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='5樓男廁整修前示意：一整排舊小便斗與舊隔屏'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='40' width='400' height='150' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 70h400M0 100h400M0 130h400M0 160h400M50 40v150M110 40v150M170 40v150M230 40v150M290 40v150M350 40v150'/></g><path d='M150 60l14 26-10 4z' fill='#a8a094' opacity='.7'/><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#d6d0c5' stroke='#a8a094'><rect x='24' y='108' width='34' height='52' rx='6'/><rect x='72' y='108' width='34' height='52' rx='6'/><rect x='120' y='108' width='34' height='52' rx='6'/><rect x='168' y='108' width='34' height='52' rx='6'/><rect x='216' y='108' width='34' height='52' rx='6'/><rect x='264' y='108' width='34' height='52' rx='6'/><rect x='312' y='108' width='34' height='52' rx='6'/><rect x='360' y='108' width='34' height='52' rx='6'/></g><g fill='#9a9184'><rect x='62' y='96' width='6' height='72'/><rect x='110' y='96' width='6' height='72'/><rect x='158' y='96' width='6' height='72'/><rect x='206' y='96' width='6' height='72'/><rect x='254' y='96' width='6' height='72'/><rect x='302' y='96' width='6' height='72'/><rect x='350' y='96' width='6' height='72'/></g><text x='14' y='285' font-size='15' fill='#4a453c'>現況：8 座舊小便斗，中間是舊隔屏</text></svg>",
+        "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='5樓男廁完工後示意：8座感應式小便斗、最左一座附扶手、地坪換深灰止滑鋪面'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M0 172h400M50 40v150M100 40v150M150 40v150M200 40v150M250 40v150M300 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><rect x='0' y='190' width='400' height='110' fill='#5e6873'/><g stroke='#727d8a' stroke-width='1'><path d='M0 220h400M0 250h400M0 280h400'/></g><g fill='#ffffff' stroke='#c3ccd6'><rect x='16' y='104' width='40' height='60' rx='7'/><rect x='72' y='108' width='34' height='52' rx='6'/><rect x='120' y='108' width='34' height='52' rx='6'/><rect x='168' y='108' width='34' height='52' rx='6'/><rect x='216' y='108' width='34' height='52' rx='6'/><rect x='264' y='108' width='34' height='52' rx='6'/><rect x='312' y='108' width='34' height='52' rx='6'/><rect x='360' y='108' width='34' height='52' rx='6'/></g><g stroke='#4d94a8' stroke-width='5' fill='none' stroke-linecap='round'><path d='M8 118v42M64 118v42'/></g><g fill='#7fb5c9'><rect x='62' y='96' width='6' height='68' rx='2'/><rect x='110' y='96' width='6' height='68' rx='2'/><rect x='158' y='96' width='6' height='68' rx='2'/><rect x='206' y='96' width='6' height='68' rx='2'/><rect x='254' y='96' width='6' height='68' rx='2'/><rect x='302' y='96' width='6' height='68' rx='2'/><rect x='350' y='96' width='6' height='68' rx='2'/></g><g fill='#8d99a6'><circle cx='36' cy='98' r='3'/><circle cx='89' cy='102' r='3'/><circle cx='137' cy='102' r='3'/><circle cx='185' cy='102' r='3'/><circle cx='233' cy='102' r='3'/><circle cx='281' cy='102' r='3'/><circle cx='329' cy='102' r='3'/><circle cx='377' cy='102' r='3'/></g><text x='6' y='182' font-size='12' fill='#26303c'>附扶手這一座</text><text x='6' y='285' font-size='15' fill='#f1f5f9'>完工後：感應式小便斗、深灰止滑鋪面</text></svg>"
+      },
+      "項目": [
+        {
+          "標": "8 座感應式小便斗",
+          "圖號": "010（5F 整修後平面）、041（小便斗安裝詳圖）",
+          "白話": "小便斗數量不變還是 8 座，但全部換成感應式——人離開就自己沖，不必按。",
+          "材料": "感應式小便斗（掛牆短斗式）7 座＋（掛牆長斗式，含扶手）1 座，皆為背進水、感應器內嵌、附省水銅器全套；配自動沖水器出線口 8 組；隔屏 8 組（12mm 以上抗倍特板）。",
+          "看點": "① 感應器要內嵌式，外掛的容易被小朋友撞壞或拔掉。② 8 座逐一站上去試沖，不要抽驗——不會沖的那一座每天都會有人踩到。③ 隔屏板厚同樣量斷面，要 12mm 以上。④ 背進水的接頭在牆裡，★ 只能在封牆之前看。"
+        },
+        {
+          "標": "★ 附扶手的無障礙小便斗",
+          "圖號": "010（5F 整修後平面）、040（無障礙小便斗組合安裝詳圖）",
+          "白話": "最靠邊那一座小便斗兩側各裝一支扶手，讓行動不方便的人扶著使用。這是全案唯一一件無障礙專用設備。",
+          "材料": "標單列的是「感應式小便斗（掛牆長斗式），背進水，含扶手」1 座。🔴 圖說把扶手畫出來了，但管徑、材質、壁厚、表面處理、固定方式、能承受多少重量，一項都沒有寫。",
+          "看點": "★★ 這一項最容易做壞而且後果最嚴重。① 扶手裝上去之後整個人吊上去壓一下，會晃就是固定不夠——扶手鬆脫是會摔傷人的。② 固定螺絲有沒有鎖進磚牆或有沒有加背板，不能只鎖在磁磚上。③ 材質是不是不鏽鋼、會不會生鏽。④ 安裝高度：圖說在兩張不同的圖上給了兩個對不上的數字，見「名詞・爭議」第 10 則，施作前要問定。"
+        },
+        {
+          "標": "小便斗區的深灰色止滑鋪面",
+          "圖號": "031（5F 505 磁磚計畫）",
+          "白話": "小便斗前方那一塊地不貼磁磚，改用深灰色的水泥混凝土鋪面，表面再做止滑塗料。",
+          "材料": "🔴 圖說只寫「深灰色水泥混凝土鋪面及面作止滑塗料」——沒有型號、沒有色號、沒有止滑等級（旁邊的地磚有 R11，這一項沒有）。全案只有這一間有這種做法。",
+          "看點": "① 潑水在上面用鞋底踩踩看滑不滑——這是全校最容易濕的一塊地。② 與旁邊 R11 止滑磚的交接處有沒有做平，高低差會絆倒人。③ 這一項因為規格空白，開工前要請設計監造單位補一份材料規格再送審，見「名詞・爭議」第 6 則。"
+        },
+        {
+          "標": "與 1F 相同的七項工項",
+          "圖號": "007、028、031、032、033、034、035、042",
+          "白話": "拆到見底、地牆防水與洩水坡度、貼磚、搗擺隔間、便器與人造石洗手檯、照明與感應開關與求救鈴、油漆——做法與 1 樓那一間相同，逐項的看法請看「1F 106 女廁」那一頁。",
+          "材料": "同 1F，唯洗手檯高度為 65 公分。筒燈 12 盞、緊急求救押扣 1 組、閃光警報喇叭 1 組。",
+          "看點": "同 1F 各項。⚠ 這一間的拆除數量表有一個要特別注意的地方：它比其他五間多了 8 片小便斗隔屏，但「既有隔間門窗」那一列的數量和其他五間一樣，見「名詞・爭議」第 8 則。"
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "名": "5F 506 女廁",
+      "位置": "5 樓兩間廁所中的女廁，在樓梯的另一側，與 505 男廁隔著樓梯相對。做法與 3 樓、4 樓那兩間相同。",
+      "現況": "5 間蹲式、1 間坐式共 6 個廁間，洗手盆在裡面，外面走廊有一座 4 個水龍頭的洗手檯。牆面地面舊磁磚、明架天花板。",
+      "完成": "廁間數不變。舊洗手盆取消，改為入口處人造石洗手檯 65 公分高、3 支長柄式龍頭加一座低位拖布盆。牆面貼馬賽克壁磚配仿木紋腰帶，洗手台上方砌圓孔花格磚，地面 R11 止滑磚，隔間換 12mm 以上實心抗倍特板。",
+      "示意": {
+        "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='5樓女廁整修前示意：舊磁磚與舊隔間'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='40' width='400' height='150' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 70h400M0 100h400M0 130h400M0 160h400M40 40v150M100 40v150M160 40v150M220 40v150M280 40v150M340 40v150'/></g><path d='M96 148l14 24-10 5z' fill='#a8a094' opacity='.7'/><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#9a9184'><rect x='40' y='95' width='58' height='95'/><rect x='108' y='95' width='58' height='95'/><rect x='176' y='95' width='58' height='95'/><rect x='244' y='95' width='58' height='95'/></g><g fill='#8b8275'><rect x='62' y='130' width='6' height='6'/><rect x='130' y='130' width='6' height='6'/><rect x='198' y='130' width='6' height='6'/><rect x='266' y='130' width='6' height='6'/></g><ellipse cx='340' cy='168' rx='34' ry='15' fill='#ddd8ce'/><rect x='336' y='140' width='7' height='22' fill='#9a9184'/><text x='14' y='285' font-size='15' fill='#4a453c'>現況：舊磁磚、舊隔間板、洗手盆在廁所裡面</text></svg>",
+        "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='5樓女廁完工後示意：新壁磚配腰帶、花格磚與新隔間門'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M0 172h400M50 40v150M100 40v150M150 40v150M200 40v150M250 40v150M300 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><rect x='296' y='44' width='96' height='56' fill='#e8edf3' stroke='#cfd8e2'/><g fill='#f6f8fb'><circle cx='312' cy='58' r='5'/><circle cx='330' cy='58' r='5'/><circle cx='348' cy='58' r='5'/><circle cx='366' cy='58' r='5'/><circle cx='312' cy='74' r='5'/><circle cx='330' cy='74' r='5'/><circle cx='348' cy='74' r='5'/><circle cx='366' cy='74' r='5'/><circle cx='312' cy='90' r='5'/><circle cx='330' cy='90' r='5'/><circle cx='348' cy='90' r='5'/><circle cx='366' cy='90' r='5'/></g><rect x='0' y='190' width='400' height='110' fill='#dfe5ec'/><g stroke='#cdd6e0' stroke-width='1'><path d='M0 214h400M0 238h400M0 262h400M60 190v110M120 190v110M180 190v110M240 190v110M300 190v110M360 190v110'/></g><g fill='#7fb5c9'><rect x='40' y='95' width='58' height='95' rx='2'/><rect x='108' y='95' width='58' height='95' rx='2'/><rect x='176' y='95' width='58' height='95' rx='2'/><rect x='244' y='95' width='58' height='95' rx='2'/></g><g fill='#f6f8fb'><circle cx='90' cy='142' r='4'/><circle cx='158' cy='142' r='4'/><circle cx='226' cy='142' r='4'/><circle cx='294' cy='142' r='4'/></g><rect x='300' y='150' width='96' height='9' fill='#3c4653'/><rect x='306' y='159' width='84' height='16' fill='#eef1f5'/><g stroke='#7d8794' stroke-width='3' fill='none'><path d='M318 138v12M342 138v12M366 138v12'/></g><text x='14' y='285' font-size='15' fill='#26303c'>完工後：新壁磚＋腰帶、花格磚、人造石洗手檯</text></svg>"
+      },
+      "項目": [
+        {
+          "標": "與 1F 相同的七項工項",
+          "圖號": "007、028、029、032、033、034、035、042",
+          "白話": "拆到見底、地牆防水與洩水坡度、貼磚、搗擺隔間、便器與人造石洗手檯、照明與感應開關與求救鈴、油漆——這一間七項全部照標準做法。逐項的看法請看「1F 106 女廁」那一頁。",
+          "材料": "同 1F，唯洗手檯高度為 65 公分。筒燈 12 盞、緊急求救押扣 1 組、閃光警報喇叭 1 組。管道間維修門 1 處。",
+          "看點": "同 1F 各項。★ 這一間在 5 樓，是給水管路的最末端——驗收時特別要試「尖峰時間水量夠不夠」：五樓同時開三支龍頭沖一間馬桶，水勢會不會明顯變小。頂樓水箱與加壓設備在圖說上都只寫「既有」，見「名詞・爭議」第 11 則。"
+        }
+      ]
+    }
+  ],
+  "階段": [
+    {
+      "週": "推定 第 1～10 天",
+      "名": "開工前置與材料送審",
+      "現場": "現場還看不出在動什麼。廠商在做的是提送施工計畫書、品質計畫、照相計畫，以及材料樣品送審。同時要設置工程告示牌與施工圍籬（本案標的有告示牌 1 式、H295 公分安全圍籬 36 公尺、電梯保護 1 處）。",
+      "你要": "① 發開工通知（契約：機關通知日起 7 日內開工）。② ★ 材料送審這一關最重要，而且只有這一次機會——磁磚（含花格磚、腰帶磚、馬賽克壁磚、地磚）、油漆（要附健康綠建材標章與正字標記證書）、抗倍特板（要附 CNS 12681 或 12682 認證與內政部防焰性能合格證書）、人造石、五金、燈具、衛浴設備，全部在這個階段定案。③ 同等品申請依規範第 01630 章：契約中提及特定廠牌者，簽約後 15 天內提出；同等品單價低於設計單價要辦扣款、高於不予調整——★ 所以廠商換便宜的同等品，學校是要扣錢的，不要放過。④ 🔴 這個階段就要把「名詞・爭議」那一頁的 14 則逐則問完，尤其洗手檯高度、加高隔板、工期天數三則——那三則做下去就改不回來了。⑤ 補助案：工程完成發包即為第 2 期款請撥的條件成立，記得同步啟動請撥。"
+    },
+    {
+      "週": "推定 第 11～20 天",
+      "名": "假設工程與拆除",
+      "現場": "最吵、最髒的十天。敲磁磚、拆隔間、拆天花板、拆馬桶，粉塵和噪音都會沿樓梯往上下擴散。六間廁所會分批或同時封閉，該樓層的學生要改用別層的廁所。廢棄物用 3.5 噸車分批載走，全案 8 車。",
+      "你要": "① 事先把「哪幾天哪一層的廁所不能用、學生改去哪裡」公告給各班和導師，不要等當天才知道。② ★ 拆除當天到現場看「打毛見底」的程度，這是唯一一次機會。③ 清點清運車次並要求提供清運證明——圖說明訂違法棄置由承商自負且未清理者不得驗收。④ 拆下來的舊設備如有回收價值，要指定堆置位置，不能讓廠商直接載走。⑤ 施工期間含學生上課日，圍籬與動線防護要每天看一次。"
+    },
+    {
+      "週": "推定 第 15～25 天（與拆除重疊）",
+      "名": "既有管線整理、局部截水斷電",
+      "現場": "配合拆除，把舊的給水、排水、電氣管線整理掉。會有局部停水停電——影響範圍通常不只施工那一層，因為立管是上下貫通的。",
+      "你要": "① 停水停電的日期與範圍要提前至少三天通知全校，尤其是有飲水機、有實驗課、有午餐加熱設備的樓層。② ★ 這個階段要盯「既有樓板孔洞」的處理——舊便器移位、2 樓新增小便斗都會動到樓板上的舊孔，孔封不好，樓下天花板就會滴水，而那時廁所已經貼好磚了。圖說對這一項沒有任何交代，見「名詞・爭議」第 12 則。③ 樓下天花板如果被打開，復原範圍要先講清楚算誰的。"
+    },
+    {
+      "週": "推定 第 21～50 天",
+      "名": "防水、泥作與水電同時進行",
+      "現場": "工程的主體。地面牆面做防水、抓洩水坡度、砌矮牆、打底粉光，同時牆內埋水管電管。這段期間現場看起來一片灰，但底下藏的東西最多。",
+      "你要": "① ★★ 全期最關鍵的督工時段。防水層、埋在牆裡的水管電管、樓板孔洞封堵，全部會在這 30 天內被磁磚和粉刷蓋掉，蓋掉就再也看不到。② 依施工規範第 01321 章，隱蔽部分在覆蓋前必須拍照，需要顯示尺寸的還要放標尺一起拍——這件事要在覆蓋前提醒，而不是事後要照片。③ 洩水坡度做完、貼磚前潑水試一次。④ 排定至少每週到現場一次，而不是等他報完工才去。"
+    },
+    {
+      "週": "推定 第 40～60 天",
+      "名": "貼磚與油漆",
+      "現場": "地磚壁磚上牆、腰帶磚繞一圈、花格磚砌起來，廁所開始看得出完成後的樣子。沒貼磚的牆面批土、噴底漆與兩道面漆。",
+      "你要": "① ★ 正式全面鋪貼之前，先看那面 3 公尺×3 公尺的實體樣品並簽核可——規範第 09310 章要求做這一關，過了之後整棟就照這個標準。② 拉拔試驗報告要收。③ 花格磚的起訖位置與放樣起始點，圖說沒有定位尺寸，第一間貼出來就是後面五間的標準，第一間要親自到場看。④ 油漆的兩張證書如果第一階段沒送審，這時候要擋下不准噴。"
+    },
+    {
+      "週": "推定 第 55～72 天",
+      "名": "衛浴設備、燈具開關與隔間安裝",
+      "現場": "馬桶小便斗洗手檯裝上去、筒燈與感應開關裝上去、抗倍特板隔間進場組裝。搗擺是廠製後現場組裝的，所以進場前尺寸就已經定死了。廁所這時候看起來已經像完成品。",
+      "你要": "① 隔間板進場當天量板厚（12mm 以上）、看是不是實心、看螺絲有沒有外露。② ★ 求救按鈕全案 13 顆要一顆一顆按過，看閃光警報喇叭有沒有反應——2 樓那一間就有 8 顆。③ 感應式小便斗 8 座、感應開關 6 只逐一實測。④ 無障礙小便斗的扶手裝好後用力壓一次，會晃就不能收。⑤ 洗手檯高度用捲尺量，1 樓 55 公分、其餘 65 公分（以第一階段問定的結果為準）。"
+    },
+    {
+      "週": "推定 第 66～75 天",
+      "名": "油漆收尾、清潔與雜項",
+      "現場": "補漆、收邊、填縫、裝標示牌、全面清潔。標單有「施工範圍完工後清潔、施工期工地及周邊環境清潔」6 間。",
+      "你要": "① 標示牌這時候才會裝——而圖說對標示牌的材質、尺寸單位、顏色、安裝高度都沒有寫定（明文寫「安裝高度由另外訂定」），所以裝之前要先確認一次，見「名詞・爭議」第 4 則。② 側光照牆面檢查油漆，凹凸與批土痕會現形。③ 全面試水一次：每一間潑水看排水、每一支龍頭開一次、每一個馬桶沖一次。④ 通知廠商整理竣工文件與施工照片（規範第 01321 章：施工前中後各 5 套送備查）。"
+    },
+    {
+      "週": "推定 第 76～80 天",
+      "名": "竣工、驗收與啟用",
+      "現場": "廠商申報竣工、學校辦理驗收、完工點交、開放使用。",
+      "你要": "① 依採購法第五章辦理驗收（規範第 01773 章）。② ★ 驗收前先自己走一遍「督工清單」，把還沒打勾的項目補看完——驗收會議上才第一次看到問題，處理成本最高。③ 竣工文件、施工照片、材料證明、試驗報告、清運證明要齊。④ 補助案的結案動作要同步啟動：成果報告書、完工成果照片（核定函載明教育局將依完工成果照片書面查核）、賸餘款繳回、有價資源回收處理費繳回，執行完成後 2 週內備文。⑤ 保固起算：非結構物 2 年、結構物 5 年；防水材與標示系統另有 3 年保固之規範條款，要一併記進保固管制表。"
+    }
+  ],
+  "督工": [
+    {
+      "區": "全部",
+      "項": "舊磁磚有沒有真的敲到見底",
+      "怎麼看": "★ 只有拆除當天到貼新磚之前這段時間看得到。用手掌摸牆面和地面，摸得到光滑的舊磁磚背膠層就是沒敲乾淨。圖說寫的是「打毛見底」，見底就是要看見底下的水泥結構。舊底沒清乾淨就貼新磚，兩三年後整片鼓起脫落，而那時保固已經過了。",
+      "拍照": true
+    },
+    {
+      "區": "全部",
+      "項": "防水塗了幾道、牆角有沒有抹 45 度斜角",
+      "怎麼看": "★★ 只能在貼磁磚之前看，貼完就永遠看不到。防水材要分兩次塗（每次每平方公尺 1.25 公斤，合計 2.5 公斤），兩次顏色通常不同、看得出分層。牆與地的交界（陰角）要先用 1:3 水泥砂漿抹成 45 度斜角再塗防水——直角轉彎是最會漏的地方。",
+      "拍照": true
+    },
+    {
+      "區": "全部",
+      "項": "潑一桶水試洩水坡度",
+      "怎麼看": "★ 地面打底做完、貼磚之前試一次，貼完磚、設備裝上去之前再試一次。潑一桶水在地上，看水會不會自己流到落水頭；不流、會積在原地的那一塊就是坡度沒做。圖說第 4 條寫明：完工後試水發現地面積水無法排除，承商須敲除重新施作——所以現在講還來得及。",
+      "拍照": true
+    },
+    {
+      "區": "全部",
+      "項": "埋在牆裡地下的水管電管，封起來之前拍照",
+      "怎麼看": "★★ 依施工規範第 01321 章，隱蔽部分與完成後回填覆蓋部分，在覆蓋前必須拍照，需要顯示尺寸的要放標尺或標示板一起拍。這件事要在覆蓋「之前」提醒廠商，不是事後跟他要照片——事後要不到，就只能拆牆。",
+      "拍照": true
+    },
+    {
+      "區": "全部",
+      "項": "既有樓板孔洞封堵",
+      "怎麼看": "★★ 舊便器移位、2 樓新增小便斗都會動到樓板上的舊孔。孔封不好，樓下天花板會滴水，而發現的時候廁所已經貼好磚了。圖說對這一項完全沒有交代，所以要自己在管線整理階段到現場看一次：孔有沒有封、封了有沒有做防水、樓下對應位置的天花板有沒有被打開、復原算誰的。",
+      "拍照": true
+    },
+    {
+      "區": "全部",
+      "項": "磁磚 3 公尺×3 公尺實體樣品",
+      "怎麼看": "★ 施工規範第 09310 章要求，正式全面鋪貼之前先在現場挑一處做 3 公尺×3 公尺的實體樣品，經核可才准往下做。這一關過了，後面整棟就照這個標準——所以這一關要親自到場，不要用電話或照片核可。核可過的樣品在工作完成前不可以拆掉或移動。",
+      "拍照": true
+    },
+    {
+      "區": "全部",
+      "項": "貼完的磁磚敲一敲，聽有沒有空心",
+      "怎麼看": "用指節或硬幣沿牆面地面敲過去，聲音空空的就是底下砂漿沒填實。抽敲要有覆蓋率，不要只敲門口那一面。規範另要求做拉拔試驗證明黏著力，試驗報告要收。",
+      "拍照": false
+    },
+    {
+      "區": "全部",
+      "項": "抗倍特板隔間的板厚與實心",
+      "怎麼看": "板材進場當天量：拿捲尺量板的斷面，要 12mm 以上；實心板的斷面整片是實的，中空板敲起來會空。另看不鏽鋼腳座、下鉸鍊是不是一體成型不鏽鋼 8mm 厚承重型、固定螺絲有沒有外露（圖說明寫「固定螺絲皆內藏不可外露」）、門能不能開到 180 度。板材是廠製後現場組裝的，進場才發現不對就是整批重做。",
+      "拍照": true
+    },
+    {
+      "區": "全部",
+      "項": "13 顆緊急求救按鈕逐一按過",
+      "怎麼看": "★ 全案 13 組緊急求救押扣（2F 那一間就佔 8 組）、閃光警報喇叭 6 組。驗收前一顆一顆按，看外面的喇叭有沒有真的亮又叫。抽驗不算——按鈕是給裡面出事的人用的，壞掉的那一顆不會有人告訴你。",
+      "拍照": false
+    },
+    {
+      "區": "E 5F 男廁",
+      "項": "無障礙小便斗的扶手，整個人壓上去",
+      "怎麼看": "★★ 這是全案唯一一件無障礙專用設備，也是最容易做壞而後果最嚴重的一件。裝好之後用整個身體重量壓一次，會晃就是固定不夠。看固定螺絲有沒有鎖進磚牆或有沒有加背板——只鎖在磁磚上一定會鬆脫，而鬆脫是會摔傷人的。圖說對扶手的管徑、材質、壁厚、承重完全沒有寫，所以現場實測是唯一的關卡。",
+      "拍照": true
+    },
+    {
+      "區": "全部",
+      "項": "洗手檯高度用捲尺量",
+      "怎麼看": "1 樓要 55 公分（低年級）、其餘五間 65 公分。★ 圖說在立面圖與磁磚計畫圖上給了兩個不同的數字，開工前要先問定（見「名詞・爭議」第 2 則）；人造石檯面是廠製的，做完再改就是敲掉重做。同時看人造石是不是「透心」——看斷面，透心的花紋整塊都有，表面貼皮的斷面是白的。",
+      "拍照": true
+    },
+    {
+      "區": "B 2F",
+      "項": "加高隔板站到外面往上看一次",
+      "怎麼看": "★★ 2 樓改成性別友善廁所，男女共用，隔板做多高就是隱私成不成立的關鍵。裝好之後自己站到隔間外面往上看、往門縫看，看得到裡面就是沒做到。這一間現況天花板本來就比其他樓層矮，「加高」的空間有限，所以這一項在開工前就要把高度問定，見「名詞・爭議」第 3 則。",
+      "拍照": true
+    },
+    {
+      "區": "B 2F",
+      "項": "入口坡道量坡度、試止滑",
+      "怎麼看": "拿捲尺量高低差與坡道長度，算坡度有沒有超過 1/10（圖說引用的規定：高低差 10 公分以下者坡度不得大於 1/10）。再潑水用鞋底踩踩看滑不滑——磁磚坡道一濕就會滑倒，這是最容易出人身事故的一項。",
+      "拍照": true
+    },
+    {
+      "區": "全部",
+      "項": "油漆的兩張證書有沒有先送審",
+      "怎麼看": "★ 規範要求施工前先檢送健康綠建材標章證書與經濟部標準檢驗局正字標記證書，經核可才准施工。沒送就開噴，事後補不回來——那時漆已經在牆上了。這一項在材料送審階段就要盯，噴完再問就太晚。",
+      "拍照": false
+    },
+    {
+      "區": "全部",
+      "項": "同等品換了什麼、有沒有扣款",
+      "怎麼看": "規範第 01630 章：契約中提及特定廠牌者，簽約後 15 天內提出同等品申請；★ 同等品單價低於設計單價，差額應予辦理扣款，高於設計單價原則不予調整。所以廠商改用便宜的同等品，學校是要扣錢的。把送審核准的同等品清單留一份，驗收時逐項對現場，未經核准的同等品應予拆除。",
+      "拍照": false
+    },
+    {
+      "區": "全部",
+      "項": "全面試水一次再收",
+      "怎麼看": "驗收前每一間都走一次：每一支龍頭開一次、每一個馬桶沖一次、每一座小便斗站上去感應一次、地上潑水看排不排得掉。★ 5 樓是給水管路的最末端，特別要試尖峰：五樓同時開三支龍頭再沖一間馬桶，水勢會不會明顯變小。頂樓水箱與加壓設備在圖說上只寫「既有」，容量欄還是空白的。",
+      "拍照": false
+    }
+  ],
+  "名詞": [
+    {
+      "詞": "搗擺",
+      "白": "廁所隔間的工地叫法（台語音譯），就是把廁間一格一格隔開的那些板子和門。本案全部換成 12mm 以上的實心抗倍特板。"
+    },
+    {
+      "詞": "抗倍特板／熱固性樹脂板",
+      "白": "一種高壓製成的實心板材，整塊都是實的、不怕水、不會像木板一樣泡爛。廁所隔間現在幾乎都用它。要注意「實心」兩個字——市面上有中空的便宜版本，敲起來聲音是空的。"
+    },
+    {
+      "詞": "打毛見底",
+      "白": "把舊磁磚敲掉之後，還要繼續把底下的舊水泥層鑿出粗糙面，直到看得見原本的結構體為止。目的是讓新的防水層和砂漿咬得住。只把磁磚剝掉、留下光滑的舊底，新的貼上去過幾年就會整片掉。"
+    },
+    {
+      "詞": "洩水坡度",
+      "白": "地板刻意做出一點斜度，讓水自己流向落水頭。看起來是平的，其實有坡。做不好就會積水，而積水是廁所變臭、地面長黴、磁磚鼓起的起點。"
+    },
+    {
+      "詞": "落水頭",
+      "白": "地板上那個排水孔和它的濾網蓋。本案用的是方型無牙地板落水頭 2 吋，全案 12 只。"
+    },
+    {
+      "詞": "R11",
+      "白": "地磚的止滑等級。這個等級是用斜坡實驗測出來的，R 後面的數字愈大愈不滑，R11 是濕區常用的等級。本案地磚指定 R11。"
+    },
+    {
+      "詞": "透心人造石",
+      "白": "人造石有兩種：透心的是整塊都有花紋，表面貼皮的只有薄薄一層。透心的刮傷磨掉還是原色，貼皮的一刮就露白。分辨方法是看斷面。本案指定 12mm 以上透心抗菌人造石。"
+    },
+    {
+      "詞": "腰帶磁磚",
+      "白": "在牆面中間高度橫著繞一圈的細長磁磚，作用是視覺分隔和裝飾。本案用 5×120 公分的仿木紋磚。"
+    },
+    {
+      "詞": "花格磚",
+      "白": "本身有孔洞的磚，砌成牆之後光和風可以透過去，但看不清楚裡面。本案用 19×19 公分的圓孔款（圖說寫「圓球」），全案 648 塊，砌在洗手台上方和入口牆面。"
+    },
+    {
+      "詞": "存水彎",
+      "白": "排水管做成 U 形或 S 形的那一段，裡面永遠積著一點水，用這一點水把下水道的臭味和蟲擋在外面。存水彎沒做或做錯，廁所就會一直有味道，而且怎麼洗都沒用。"
+    },
+    {
+      "詞": "昇位圖",
+      "白": "把整棟樓的管線用側面展開的方式畫成一張圖，看得出水從哪裡來、往哪一層分出去。它不按比例，只表達上下關係。"
+    },
+    {
+      "詞": "同等品",
+      "白": "契約指定了某個廠牌型號，但廠商可以提出品質性能不低於它的替代品。依規範第 01630 章要事前申請、核准後才能用；★ 同等品單價低於設計單價的差額要辦扣款，未經核准就用的應予拆除。"
+    },
+    {
+      "詞": "實體樣品（現場試作）",
+      "白": "在正式全面施工之前，先在現場做一小塊出來給人看，核可了才准往下做。本案磁磚要求做 3 公尺×3 公尺。核可過的樣品在工程完成前不可以拆掉，它就是後面所有工作的驗收標準。"
+    },
+    {
+      "詞": "隱蔽部分",
+      "白": "做完之後會被別的東西蓋住、再也看不到的部分，例如防水層、埋在牆裡的管線、封起來的樓板孔。規範要求這些地方在覆蓋前一定要拍照存證——因為事後想確認只剩下拆開一途。"
+    }
+  ],
+  "爭議": [
+    {
+      "地方": "🔴 1・工期到底是 75 天還是 80 天",
+      "圖說": "圖說第 001 張「施工說明」頁底第 2 條寫：「本工程履約期限為 75 日曆天，承包商應於開工之日起 75 日內竣工」；但同一頁的「伍、其他說明」第三條又寫「本工程工期依合約規定」。而契約與招標公告載明的是 80 日曆天。設計監造單位 2026-08-24 交付的預定進度表，也是把施工階段排成 75 天、整體 80 天。",
+      "為什麼吵": "兩個數字差 5 天，而 5 天在逾期違約金上是實打實的錢。真正麻煩的是它可以有兩種讀法：① 契約 80 天是總工期，圖說 75 天只是施工段——那圖說的措辭「開工之日起 75 日內竣工」就寫錯了；② 圖說是後手、應以圖說為準。等到廠商第 76 天還沒竣工、學校要開始計違約金的時候才來吵，卷面上兩份文件各說各話，機關會很難站得住。而且圖說的「伍、一」還明訂「廠商應於開標前提出，決標後承商不得異議」——那句話保護的是機關，但前提是機關自己沒有留下矛盾。",
+      "先問誰": "★★ 這一則最好在開標前就處理掉。決標後由學校行文給設計監造單位（三禾聯合建築師事務所）與得標廠商，三方確認「履約期限以契約 80 日曆天為準，圖說 001 張所載 75 日曆天係施工階段作業天數，不作為履約期限之依據」，並把這句話寫進第一次工地會議紀錄。★ 依鐵則 10，公告與契約不一致本身就是缺失，這一則要一併記進監造工作日誌。"
+    },
+    {
+      "地方": "🔴 2・洗手檯高度 55 公分還是 65 公分",
+      "圖說": "六張整修後立面圖的文字框寫：「依教育部國中小學設備基準：洗手盆高度低年級約 55 公分、中高年級約 65 公分，本樓層為中、高年級設置於 65 公分」（2F～5F）。但四張磁磚計畫圖上的標註一律寫「符合國小高度洗手台 55CM」，連 2F、5F 那幾張也是。而立面圖的尺寸鏈量出來也是 55。只有 1F 那一張立面寫的是「本樓層為低年級設置於 55 公分」，前後一致。",
+      "為什麼吵": "同一間廁所，兩張圖給了兩個數字，第三個地方（尺寸鏈）又支持其中一個。人造石檯面是廠製後現場組裝，尺寸一旦下料就定了；做完發現高度錯，不是調一調就好，是整條檯面連支撐架敲掉重做。而且做錯的方向也很麻煩：中高年級用 55 公分會太矮、低年級用 65 公分會構不到，兩種都是使用上的問題，不是純粹的美觀問題。",
+      "先問誰": "★★ 開工前置階段（第 1～10 天）就要問定，不能等到人造石送審才問。請設計監造單位出具書面（電子郵件或工地會議紀錄都可以，但要有文字）明確載明：1F 為 55 公分、2F～5F 為 65 公分，並請他一併修正磁磚計畫圖上的標註。★ 這一則同時要通知廠商，因為報價時他看到的可能是 55 那一版。"
+    },
+    {
+      "地方": "🔴 3・2 樓「加高隔板」到底加到多高",
+      "圖說": "2F 206 整修後平面圖上有 6 處引線，全部只寫「加高隔板」四個字。加到幾公分、離地留多少、板厚多少、門要不要一起加高、材質是不是同樣的抗倍特板，一個字都沒有。 搗擺施工規範那一張另外給了一組總高與門高的示意數字，但那是一般廁間的做法，不是加高版。而這一間現況的天花板高度，是六間裡最矮的一間，比其他樓層矮了半公尺以上。",
+      "為什麼吵": "這是本案最會吵、也最貴的一格。① 隔板加高就是加料，加多少沒寫，廠商報價時抓的量和學校期待的量幾乎一定不同。② 這一間天花板本來就矮，「加高」的空間有限——有可能做到頂、也有可能做到某個高度就卡住，而那個高度到底夠不夠遮，是性別友善廁所成不成立的關鍵。③ 板材是廠製後現場組裝，做出來才發現不夠高，是整批重做，不是加一片。④ 性別友善廁所是本案的補助重點與外界關注點，做不好會被放大檢視。",
+      "先問誰": "★★ 開工前置階段就要辦一次專案討論，同時找設計監造單位與廠商，並且要拿捲尺到現場實量 2 樓的天花板淨高。要問到的三件事：① 隔板頂端離地幾公分（或做到距天花板幾公分）② 離地留幾公分 ③ 門要不要一起加高。結論要寫成書面並附一張大樣圖，不要只在現場口頭說。★ 同時確認標單的搗擺單價有沒有含這個加高量。"
+    },
+    {
+      "地方": "🔴 4・標示牌沒有材質、沒有單位、沒有顏色、沒有高度",
+      "圖說": "標示系統規範（第 044 張）列了 6 種標示、規格寫成「12*12」「44.5*108」「43*100」「50*93」，但沒有寫單位是公分還是公厘；整張圖沒有出現「壓克力」三個字，也沒有厚度；顏色只有表格上印出來的圖形顏色，沒有任何色號；安裝高度那一欄明文寫「標示系統安裝高度皆由另外訂定之，需由設計監造單位於施工現場確認後方可施作」。而六張立面圖上寫的是「5MM 壓克力標誌」，標單寫的是「壓克力造型直徑 120CM（人形）含底板內貼大圖輸出 12 組」與「入口標示牌 TH3MM 壓克力貼卡典西德字（中英）37 組」。",
+      "為什麼吵": "同一件東西在三個地方有三種寫法：圖說規範說 44.5×108（無單位）、立面說 5MM 壓克力、標單說直徑 120CM 加大圖輸出。數量也對不起來——圖說規範的性別標示合計 6 片，標單是 12 組。單價差很多：一片 44.5×108 的壓克力牌和一片直徑 120 公分、內貼大圖輸出的造型牌，價差是好幾倍。而且顏色沒有色號、高度明文「另訂」，等於把整件事都推到施工階段才決定——那時候價錢已經定了，決定的人卻不是出錢的人。",
+      "先問誰": "★ 材料送審階段請設計監造單位補一份標示系統的詳細規格表：尺寸單位、材質與厚度、顏色色號、每一種各幾片裝在哪裡、安裝高度。★ 同時請他明確答覆「標單的 12 組直徑 120 公分人形」與「規範表的 6 片性別標示」是不是同一件事——如果是，以哪一個為準；如果不是，另一件在哪一張圖上。這一題不問清楚，驗收時廠商拿小的來裝，機關沒有依據要求換。"
+    },
+    {
+      "地方": "🔴 5・防偷拍隔板：標單 6 組，圖說只標了 1 間",
+      "圖說": "標單第四項裝修工程列有「上吊鎖 5MM 壓克力仿偷拍隔板 6 組」，備註「色另選」。但六張整修後立面圖裡，只有 2F 206 那一張標了這一項，其餘五間一個字都沒有。而且「上吊鎖」是安裝方式還是五金名稱、尺寸多大、裝在哪個位置，圖說都沒有寫。",
+      "為什麼吵": "6 組對上 6 間廁所，數字很像是「每間 1 組」；但圖說只在 1 間標了，也可以讀成「2 樓那一間裝 6 組」。兩種讀法差 5 間廁所的防偷拍設施——而這正是家長與媒體最在意的一項，做不足是會上新聞的。另外「色另選」代表顏色也還沒定。",
+      "先問誰": "★ 開工前置階段一併問定：① 6 組是六間各 1 組，還是集中在 2 樓？② 裝在隔間的什麼位置、多大、怎麼固定？③ 顏色由誰決定、什麼時候決定？結論要進工地會議紀錄。裝好之後自己站到隔間外面往上看一次，這一項只有現場站著看才驗得出來。"
+    },
+    {
+      "地方": "🔴 6・磁磚與塗料的顏色，全案沒有一個色號",
+      "圖說": "整套圖說裡，只有腰帶磚有型號（CED512061）。花格磚（圓球 19×19）、馬賽克壁磚（25×40）、地磚（珍珠止滑磚 R11）、5 樓男廁的深灰色水泥混凝土鋪面、油漆的平光白、發泡板門片，全部沒有色號、沒有廠牌。發泡板門片的封邊材寫「色同櫃體」——但本案沒有櫃體。人造石檯面的施工標準第 7 條寫「本工程材料，顏色，及配件等，於施工前，須經審核認可，並轉送業主備查後，方可進場施工」。磁磚計畫圖上有 4 處「放樣起始點」記號，但沒有任何定位尺寸告訴人那個點在哪裡。",
+      "為什麼吵": "顏色留白的後果不是「難看」，是「沒有依據要求他換」。廠商送一組深色系來，學校說想要淺的，他可以說圖說沒有規定；反過來學校指定一個色號，他可以說那是加價。而 3D 模擬圖上的檯面是深色近黑、人形圖案是綠色，但立面圖上的人形是粉紅與黑、性別友善是紫色——3D 是唯一的顏色線索，而 3D 不是施工依據。「放樣起始點」沒有定位尺寸也是同一種形狀：第一間貼出來就是後面五間的標準，而第一間是廠商自己抓的。",
+      "先問誰": "★ 材料送審階段一次解決：請設計監造單位提出各項材料的樣品與色號（磁磚、油漆、發泡板門片、標示牌、深灰色鋪面），由學校確認後才准進場。★ 花格磚的放樣起始點請他在圖上補標定位尺寸，或至少在第一間放樣時到場定位。這件事在送審階段做是免費的，在施工階段做是加價的。"
+    },
+    {
+      "地方": "🔴 7・熱水管畫在圖上，但整棟沒有熱水",
+      "圖說": "1F～5F 六張給水管路圖上，主幹管一律標「50ϕ CW」（冷水）加「20ϕ HW」（熱水）。但給水系統昇位圖從屋頂水箱一路畫到 1 樓，只有冷水立管，一條熱水立管都沒有；整套圖說也沒有任何熱水器、熱源設備。標單的給排水設備工程裡，也找不到熱水管與熱水設備。",
+      "為什麼吵": "「HW」兩個字寫在圖上，就是一個可以被主張的東西。廠商如果照圖配了熱水管，他會來請款；如果沒配，將來有人問「圖上明明有熱水為什麼沒有」，責任在誰也說不清楚。更實際的問題是：如果學校本來就期待這幾間廁所有熱水（例如冬天洗手），那現在這個設計是給不了的，而發現的時機愈晚愈貴。",
+      "先問誰": "★ 開工前置階段問設計監造單位一句話：「20ϕ HW 這一段要不要做？如果不做，請確認平面圖上的 HW 標註不生效；如果要做，熱源在哪裡、標單哪一項含它？」答案要書面。同時請他順便說明頂樓水箱那一格「既有屋頂水箱容量：」為什麼是空白的。"
+    },
+    {
+      "地方": "🔴 8・拆除與給排水的數量表，好幾格對不上",
+      "圖說": "① 3F 306 的「既有磚牆拆除」數量欄是空白的（其他五間都有數字），但圖上畫了要拆的磚牆。② 拆除表把「既有隔間、門窗」合併成 9 組、「既有馬桶、龍頭」合併成 11 組，沒有分開列；5F 男廁多了 8 片小便斗隔屏，「隔間門窗」那一列還是 9 組（但「馬桶龍頭小便斗」那一列有加到 19 組——同一張表兩種算法）。③「既有牆面地面磁磚拆除打毛見底」寫成「76+6.5 M2」，沒說哪個是牆、哪個是地，2F 寫的又是「76+3.4」。④ 給水表：2F 標 13 組、圖上只畫得出 11 個；5F 男廁標 10 組、圖上有 18 個（差的正好是 8 座小便斗）。⑤ 排水表：2F 標「小便器 4 組」，但 2F 整修後平面只畫 2 座。",
+      "為什麼吵": "這些格子就是標單計價的基礎。空白的那一格代表這一項沒有計價依據；合併的那幾格代表拆一片隔間和拆一樘門窗同價，而兩者工資差很多；數量對不上的那幾格代表現場做出來的東西比表上多或少。任何一種，等到現場做完才對數量，結論都只有兩個：追加、或者機關認賠。而工程會的圖說又寫著「本施工圖數量及尺寸若與標單不相符時，以圖面標示或設計單位解釋為準，廠商應於開標前提出，決標後承商不得異議」——這句話是保護機關的，但它只在機關自己先把數量弄清楚的時候才有用。",
+      "先問誰": "★★ 這一則要在開標前或決標後第一時間處理。把上面五項列成一張表行文給設計監造單位，請他逐項答覆並修正圖說。★ 第一次工地會議上，同時請廠商確認他報價時採用的數量，把雙方的認知寫進紀錄。★ 尤其 3F 那一格空白，一定要補上數字。"
+    },
+    {
+      "地方": "🔴 9・5 樓男廁的管道間維修門，立面圖漏標了",
+      "圖說": "六張整修後立面圖裡，1F、2F、3F、4F、5F 女廁都標了「新增 60×100CM 維修門（鋁製）（白）」，只有 5F 505 男廁那一張沒有。但標單第四項裝修工程列的是「管道間維修門 6 處」。",
+      "為什麼吵": "標單 6 處對上 6 間，代表六間都要做，5 樓男廁只是立面圖漏標。這一則本身不大，但如果沒有人指出來，廠商完全可以主張「圖上沒有，我不做」——因為他的施作依據是圖說。到驗收時才發現少一扇門，門要開在已經貼好磁磚的牆上，做起來很難看。",
+      "先問誰": "★ 開工前置階段口頭確認即可，但要留紀錄：請設計監造單位確認 5F 505 男廁的管道間維修門照做，並請他補標在圖上。★ 順帶請他確認 2F 那一張立面的標註「（白]」括號沒關，是不是也是「（白）」。"
+    },
+    {
+      "地方": "🔴 10・無障礙小便斗的高度，兩張圖給了兩個數字",
+      "圖說": "5F 505 男廁的立面圖上，8 座小便斗逐支標了高度：27、45、45、45、45、36、36、26（單位為公分），最左那一座 27 是附扶手的無障礙用。但同一頁的文字框只寫「小便器兩緣高度：低年級約 36 公分、中高年級約 45 公分，本樓層為中高年級設置於 36 公分及 45 公分」——27 和 26 這兩個數字不在文字框裡。而無障礙小便斗安裝詳圖上標的是 370（公厘，即 37 公分），一般小便斗安裝詳圖標的範圍是 360～450（公厘，即 36～45 公分）。",
+      "為什麼吵": "同一座小便斗，立面說 27 公分、詳圖說 37 公分，差 10 公分。而最右那一座立面標 26 公分，比詳圖給的下限 36 公分還低。小便斗是掛牆的，背進水的接頭在牆裡，高度一旦封牆就定了，改就是打掉磁磚重來。而且高度做錯在無障礙這一項上，是會被查的。",
+      "先問誰": "★ 開工前置階段（封牆之前絕對要問定）請設計監造單位逐支確認 8 座小便斗的安裝高度，出一張書面的高度對照表。★ 同時請他把扶手的規格補齊：管徑、材質、壁厚、固定方式、承重要求——圖說上這一項是完全空白的，而扶手鬆脫是會摔傷人的。"
+    },
+    {
+      "地方": "🔴 11・既有的水箱、管路、化糞池，全部只寫「既有」兩個字",
+      "圖說": "給水系統昇位圖上標「既有屋頂水箱容量：」——冒號後面是空白的，沒有填任何數字；另有「既有揚水管」；設備表列了一組加壓泵浦規格，但沒寫是新設還是既有。排水系統昇位圖上每層都標「既設污排水幹管」，底部標「既設污水處理設施」「大門排水溝」，全部只有名稱，沒有管徑、沒有容量、沒有要不要清疏。另外排水昇位圖左上角那張「設備單位合計」表，列的是 WC=2、UR=0、LAV=0，還出現了 K.T（廚房流理台）3 個——本案是廁所整修，沒有廚房。",
+      "為什麼吵": "六間廁所全面換新之後，用水量與排水量都會變（2 樓還新增了小便斗），但圖說完全沒有回答「既有的管路與化糞池撐不撐得住」。這件事的出事時點在啟用之後：新設備裝好了、驗收也過了，開學一用才發現 5 樓水壓不夠、或者排水回堵。那時候要追是誰的責任會非常難，因為圖上寫的就是「既有」。而那張「設備單位合計」表的內容與本案完全對不上，看起來是別的案子的表沒有改過來——如果連這張表都是別案的，那「既有管路夠用」這個結論就沒有經過任何計算。",
+      "先問誰": "★ 開工前置階段行文請設計監造單位補三件事：① 屋頂水箱的實際容量，以及新設備裝上後夠不夠。② 既有污排水幹管與污水處理設施的容量檢核。③ 說明「設備單位合計」表為何與本案不符，並提出修正。★ 同時在驗收前實測一次尖峰用水（5 樓同時開三支龍頭再沖一間馬桶），把結果寫進驗收紀錄。"
+    },
+    {
+      "地方": "🔴 12・既有樓板孔洞怎麼處理，整套圖說沒有一個字",
+      "圖說": "排水管路圖上有引線寫「樓板下排水 PVC 檢查口螺帽」，代表施工要進到樓下的天花板內。但整套圖說沒有任何一頁交代既有樓板孔洞的處理——舊便器移位、2 樓新增 2 座小便斗，一定會動到樓板上原有的排水孔，而封堵、防水、結構補強、樓下天花板的拆除與復原範圍，全部沒有寫。",
+      "為什麼吵": "樓板孔沒封好的後果是樓下天花板漏水，而發現的時候廁所已經貼好磚、驗收也過了。要修就得從樓下天花板進去，或者把樓上剛貼好的地磚打開——兩種都很貴，而且看起來像是學校驗收沒驗到。另一個問題是「樓下天花板要不要拆、拆了誰復原」：這一項如果標單裡沒有，廠商拆完不會幫你裝回去。",
+      "先問誰": "★ 開工前置階段問設計監造單位三件事，並請廠商同時在場：① 既有樓板孔洞怎麼封、封了做不做防水？② 標單哪一項含這個工作？③ 樓下天花板如果要打開，復原算誰的、標單有沒有？★ 這一則在「既有管線整理」階段（推定第 15～25 天）要到現場親自看一次，並拍照。"
+    },
+    {
+      "地方": "🔴 13・圖說裡夾了別的案子的兩頁",
+      "圖說": "圖說 PDF 共 51 頁，正式圖框只到第 47 頁。第 48、49 兩頁是簡報格式，頁首案名寫的是「桃園市平鎮親子館及桃園龍安親子館室內裝修規劃設計監造委託技術服務案」——別的案子。不過這兩頁裡面的平面圖畫的確實是本案 2 樓那一間，形狀是「別案的版面套上本案的圖」。另外第 51 頁的 3D 模擬圖，頁首案名寫「B 棟老舊廁所整修工程規劃設計監造委託技術服務案」，與圖框上的「星空樓廁所整修工程規劃設計委託技術服務案」是兩個不同的名稱，而且「華勛國民國小」多了一個字。另外第 17、18 兩頁是完全相同的重複頁（同一張排水管路圖印了兩次），所以「頁碼＝圖號＋2」這個對應關係從第 19 頁起變成「＋3」。",
+      "為什麼吵": "① 這一套圖說是要發給投標廠商、也會進契約檔的，裡面夾著別案的頁面，稽核看到會問。② 那兩頁上寫的內容與本案不完全一致（例如洗手台寫 65CM、把隔間稱為「親子廁所」），將來如果有人拿那兩頁來主張什麼，機關要花力氣說明它不算數。③ 重複頁會讓點收頁數的人算錯，也可能讓人以為少了一張圖。④ 3D 圖上有三面圓鏡，但六張立面圖與整套規範都沒有鏡子——如果有人拿 3D 來主張要裝鏡子，圖說裡沒有規格可依循。",
+      "先問誰": "★ 決標後、契約用印前，行文請設計監造單位提供修正版圖說：抽掉第 48、49 兩頁（或改成本案的頁首）、刪掉重複的那一頁、統一案名寫法。★ 契約檔要收的是修正版。★ 另請他明確答覆「3D 圖上的鏡子做不做」——不做就不做，做就要補規格。"
+    },
+    {
+      "地方": "🔴 14・六間廁所整修完，沒有一間是無障礙廁間",
+      "圖說": "整套圖說裡，沒有任何一間廁間標示為無障礙廁所：沒有輪椅迴轉空間的標註、沒有馬桶旁的扶手、沒有無障礙求救鈴的規格與高度。唯一與無障礙有關的三樣東西是：2 樓入口的 100 公分坡道（圖說只引用了坡度規定，沒有畫坡道本體）、5 樓男廁最靠邊那一座附扶手的小便斗（扶手無任何規格）、各層的低位拖布盆（那是清潔用的，不是無障礙設施）。而本案的招標前文件裡放了教育部「校園性別友善廁所及宿舍設置指引」、國教署「廁所設計規劃標準原則」與市府性別友善廁所規劃設計檢核表。",
+      "為什麼吵": "【待查證】這一則不是說設計一定有問題——這棟樓的其他位置可能本來就有無障礙廁所，而本案的範圍只有這 6 間。但這件事要有人明確回答過、而且留下紀錄。理由是：① 這是一筆教育部的老舊廁所整修補助，成果會被書面查核；② 性別友善廁所是本案的重點，而外界對「性別友善」的期待通常包含無障礙可及性；③ 如果將來有人問「花了四百多萬整修六間廁所，為什麼沒有一間無障礙」，機關手上要有答案。",
+      "先問誰": "★ 這一則要問兩邊。① 問設計監造單位：本棟建築物既有的無障礙廁所在哪裡、與這六間的關係、本案是否需要另設，請他書面答覆並註明依據的法規條文。② 如果他的答覆是「不需要」，把那份答覆留進卷裡，並在補助結案的成果報告書裡一併說明。★ 如果他的答覆是「需要」，那就是變更設計，而變更設計愈早提愈便宜——現在提是設計問題，開工後提是追加。"
+    }
+  ],
+  "更新日": "2026-08-28",
+  "來源": "依 115001 案 02.招標文件\\08.細設計圖說.pdf（三禾聯合建築師事務所，2026-06-03 修正版，51 頁 A3）逐頁轉譯，並與 02.招標文件\\07.星空樓廁所整修工程標單.xls（設計監造單位 2026-08-24 交付之發包版，91 項工項）、02.招標文件\\09.施工規範.pdf（221 頁）、01.招標前文件\\20260824-工程預定進度.pdf 逐項勾稽。★ 圖說 PDF 無文字層，全部內容為逐頁目視判讀，數量與規格已與標單交叉核對。★ 施工階段的天數為推定：本案尚未決標，尚無廠商提送並經核定之施工預定進度表；此處的天數係依設計監造單位 2026-08-24 版預定進度表（施工階段 75 天、整體 80 天）換算為「開工後第 N 天」，實際期程以決標後廠商提送並經核定之進度表為準。★ 本頁列出的爭議點為圖說內部與圖說對標單之比對結果，不代表設計有誤，僅表示該處存在第二種合理讀法、應於開工前問定。"
+};
+</script>
+<!-- ═══ 以下不動 ═══ -->
+
+<header>
+  <div class="wrap">
+    <div class="kicker" id="elKicker"></div>
+    <h1 id="elTitle"></h1>
+    <div class="lede" id="elLede"></div>
+    <div class="facts" id="elFacts"></div>
+  </div>
+</header>
+
+<main class="wrap" id="elMain"></main>
+
+<nav><div class="tabs" id="elTabs" role="tablist"></div></nav>
+
+<script>
+// ★ 一律用 getElementById，不靠 id 自動變成全域變數。
+//   `title`、`name`、`length` 這些 id 會與 window 既有屬性打架，而打架時不會報錯，
+//   只會靜默拿到錯的東西——那是最難查的一種壞法。
+const el = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const store = {
+  get(k){ try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch { return null; } },
+  set(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+};
+
+document.title = `${DATA.案號}｜${DATA.案名}`;
+el('elKicker').textContent = `${DATA.案號} 工程說明`;
+el('elTitle').textContent = DATA.案名;
+el('elLede').textContent = DATA.一句話;
+el('elFacts').innerHTML = DATA.基本.map(f => `<span class="fact">${esc(f.k)}　<b>${esc(f.v)}</b></span>`).join('');
+
+const panels = [];
+const add = (id, 名, html) => { panels.push({ id, 名, html }); };
+
+// ① 各區域：現況→完成 對比 + 逐項白話
+DATA.區域.forEach(r => add('r' + r.id, r.名, `
+  <h2>這一區在哪裡</h2>
+  <div class="card"><p>${esc(r.位置)}</p></div>
+  <h2>做之前 / 做之後</h2>
+  <div class="ba" data-ba>
+    <div class="before">${r.示意?.前 || '<p class="muted">（施工前示意）</p>'}<span class="lab">現況</span></div>
+    <div class="after">${r.示意?.後 || '<p class="muted">（完工後示意）</p>'}<span class="lab">完工後</span></div>
+  </div>
+  <input class="sp" type="range" min="0" max="100" value="50" aria-label="拖曳比較施工前後">
+  <div class="grid2" style="margin-top:12px">
+    <div class="card"><h3>現況</h3><p class="muted">${esc(r.現況)}</p></div>
+    <div class="card"><h3>完工後</h3><p class="muted">${esc(r.完成)}</p></div>
+  </div>
+  <h2>這一區做哪些事</h2>
+  ${(r.項目 || []).map(i => `
+    <div class="card">
+      <h3>${esc(i.標)}<span class="tag">圖號 ${esc(i.圖號)}</span></h3>
+      <p>${esc(i.白話)}</p>
+      <dl class="kv">
+        <dt>材料規格</dt><dd>${esc(i.材料)}</dd>
+        <dt>現場看點</dt><dd>${esc(i.看點)}</dd>
+      </dl>
+    </div>`).join('')}
+`));
+
+// ② 施工階段
+add('st', '施工階段', `
+  <h2>工程會怎麼進行</h2>
+  <div class="ctrl">
+    <button class="btn pri" id="elPlay">▶ 播放</button>
+    <button class="btn" id="elPrev">上一步</button>
+    <button class="btn" id="elNext">下一步</button>
+  </div>
+  <div class="steps" id="elSteps">
+    ${DATA.階段.map((s, i) => `
+      <div class="step${i === 0 ? ' on' : ''}">
+        <div class="card">
+          <h3>${esc(s.名)}<span class="tag">${esc(s.週)}</span></h3>
+          <dl class="kv">
+            <dt>現場情形</dt><dd>${esc(s.現場)}</dd>
+            <dt>你要做的</dt><dd>${esc(s.你要)}</dd>
+          </dl>
+        </div>
+      </div>`).join('')}
+  </div>`);
+
+// ③ 督工看點（可勾選，勾選狀態存在這支手機上）
+add('ck', '督工清單', `
+  <h2>現場走一趟要看什麼</h2>
+  <div class="pg" id="elPg"></div>
+  ${DATA.督工.map((c, i) => `
+    <label class="chk" data-i="${i}">
+      <input type="checkbox">
+      <span>
+        <span class="t">${esc(c.項)}<span class="tag">${esc(c.區)}</span></span>
+        <span class="h">${esc(c.怎麼看)}</span>
+        ${c.拍照 ? '<span class="cam">📷 這一項要拍照存證</span>' : ''}
+      </span>
+    </label>`).join('')}
+  <p class="muted" style="margin-top:10px">勾選只存在這支手機上，不會上傳，換手機就要重勾。</p>`);
+
+// ④ 名詞 + 爭議
+add('gl', '名詞・爭議', `
+  <h2>圖說上那些看不懂的詞</h2>
+  ${DATA.名詞.map(g => `<details><summary>${esc(g.詞)}</summary><p>${esc(g.白)}</p></details>`).join('')}
+  <h2>這幾處將來最容易吵</h2>
+  ${DATA.爭議.map(w => `
+    <details class="risk"><summary>${esc(w.地方)}</summary>
+      <p><b>圖說怎麼寫：</b>${esc(w.圖說)}</p>
+      <p><b>為什麼會吵：</b>${esc(w.為什麼吵)}</p>
+      <p><b>開工前先問：</b>${esc(w.先問誰)}</p>
+    </details>`).join('')}
+  <footer>
+    <div>資料來源：${esc(DATA.來源)}</div>
+    <div>更新日：${esc(DATA.更新日)}</div>
+    <div>★ 本頁是圖說的<b>白話轉譯</b>，不是契約文件。施工範圍、尺寸、規格一律以核定圖說與契約為準。</div>
+  </footer>`);
+
+el('elMain').innerHTML = panels.map((p, i) => `<section id="${p.id}" class="${i ? '' : 'on'}">${p.html}</section>`).join('');
+el('elTabs').innerHTML = panels.map((p, i) =>
+  `<button class="tab" role="tab" aria-selected="${!i}" data-go="${p.id}">${esc(p.名)}</button>`).join('');
+
+el('elTabs').addEventListener('click', e => {
+  const b = e.target.closest('[data-go]'); if (!b) return;
+  document.querySelectorAll('nav .tab').forEach(t => t.setAttribute('aria-selected', t === b));
+  document.querySelectorAll('main section').forEach(s => s.classList.toggle('on', s.id === b.dataset.go));
+  scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// 前後對比：拖桿 + 直接在圖上拖
+document.querySelectorAll('[data-ba]').forEach(ba => {
+  const rng = ba.nextElementSibling;
+  const set = v => ba.style.setProperty('--split', Math.max(0, Math.min(100, v)) + '%');
+  rng.addEventListener('input', () => set(rng.value));
+  const drag = e => {
+    const t = e.touches ? e.touches[0] : e, r = ba.getBoundingClientRect();
+    const v = (t.clientX - r.left) / r.width * 100; rng.value = v; set(v);
+  };
+  ba.addEventListener('pointerdown', e => { ba.setPointerCapture(e.pointerId); drag(e); });
+  ba.addEventListener('pointermove', e => { if (e.pressure || e.buttons) drag(e); });
+});
+
+// 階段播放
+(() => {
+  const steps = [...document.querySelectorAll('#elSteps .step')]; if (!steps.length) return;
+  const play = el('elPlay'), prev = el('elPrev'), next = el('elNext');
+  let i = 0, timer = null;
+  const show = n => { i = (n + steps.length) % steps.length; steps.forEach((s, k) => s.classList.toggle('on', k <= i)); };
+  next.onclick = () => show(i + 1); prev.onclick = () => show(i - 1);
+  play.onclick = () => {
+    if (timer) { clearInterval(timer); timer = null; play.textContent = '▶ 播放'; return; }
+    play.textContent = '⏸ 暫停'; show(0);
+    timer = setInterval(() => { if (i >= steps.length - 1) { clearInterval(timer); timer = null; play.textContent = '▶ 播放'; } else show(i + 1); }, 1600);
+  };
+  show(0);
+})();
+
+// 督工清單
+(() => {
+  const key = 'ck-' + DATA.案號, saved = store.get(key) || {};
+  const boxes = [...document.querySelectorAll('label.chk')];
+  if (!boxes.length) return;
+  const paint = () => {
+    let n = 0;
+    boxes.forEach(l => { const c = l.querySelector('input'); l.classList.toggle('done', c.checked); if (c.checked) n++; });
+    el('elPg').textContent = `已確認 ${n} / ${boxes.length} 項`;
+  };
+  boxes.forEach(l => {
+    const c = l.querySelector('input'); c.checked = !!saved[l.dataset.i];
+    c.addEventListener('change', () => { saved[l.dataset.i] = c.checked; store.set(key, saved); paint(); });
+  });
+  paint();
+})();
+</script>
+</body>
+</html>

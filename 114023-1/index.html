@@ -9,7 +9,8 @@
 <title>114023-1｜115學年度改善無障礙校園環境工程</title>
 <!--
   ─────────────────────────────────────────────────────────────
-  工程說明頁母版　作者: claude　建立: 2026-08-09
+  工程說明頁母版　作者: claude　建立: 2026-08-09　改版: 2026-08-31（加「工項清單」「原始圖說」
+  兩頁籤、前後圖改可多組；Ken 核，方案見 00_系統文件\工作流演進討論\20260831-01；改版前存 _舊版\）
   規格與分級見 ..\..\01_案件庫\_wiki\概念頁\工程說明頁母版-分級對照表.md
   ★ 本檔為母版：所有雙大括號佔位符與 DATA 內的值皆為本案特有，一律由 skill 填。
      _build.js 會斷言產出的 HTML 裡一個佔位符都不剩，漏填即擋下不產出。
@@ -123,6 +124,17 @@ details[open] summary::after{content:"−"}
 details p{margin-top:8px;font-size:.92rem;color:var(--dim)}
 .risk{border-left:4px solid var(--am)}
 .risk summary::before{content:"⚠ ";color:var(--am)}
+
+/* ── 工項表・原始文件（2026-08-31 改版新增）──────── */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px}
+table.boq{width:100%;border-collapse:collapse;font-size:.88rem;min-width:480px}
+.boq th,.boq td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.boq thead th{background:var(--card2)}
+.boq td:nth-child(1),.boq td:nth-child(3),.boq td:nth-child(4){white-space:nowrap}
+button.btn.go{padding:4px 10px;min-height:0;font-size:.8rem;color:var(--bl)}
+h3.ba-t{margin:12px 0 6px;font-size:.95rem}
+a.doc-a{color:var(--bl);font-weight:700}
+iframe.doc-f{width:100%;height:70vh;border:0;border-radius:10px;margin-top:8px;background:var(--card2)}
 
 footer{margin:28px 0 8px;padding-top:14px;border-top:1px solid var(--line);
   font-size:.78rem;color:var(--dim);line-height:1.9}
@@ -560,15 +572,21 @@ const panels = [];
 const add = (id, 名, html) => { panels.push({ id, 名, html }); };
 
 // ① 各區域：現況→完成 對比 + 逐項白話
-DATA.區域.forEach(r => add('r' + r.id, r.名, `
+//    2026-08-31 改版：一區可有多組前後圖（示意組）。沒有 示意組 的舊 JSON 走原本的單組 示意。
+DATA.區域.forEach(r => {
+  const 組 = (r.示意組 && r.示意組.length) ? r.示意組
+           : [{ 前: r.示意?.前, 後: r.示意?.後 }];
+  add('r' + r.id, r.名, `
   <h2>這一區在哪裡</h2>
   <div class="card"><p>${esc(r.位置)}</p></div>
   <h2>做之前 / 做之後</h2>
+  ${組.map(g => `
+  ${(g.題 || g.涵蓋) ? `<h3 class="ba-t">${esc(g.題 || '')}${g.涵蓋 ? `<span class="tag">${esc(g.涵蓋)}</span>` : ''}</h3>` : ''}
   <div class="ba" data-ba>
-    <div class="before">${r.示意?.前 || '<p class="muted">（施工前示意）</p>'}<span class="lab">現況</span></div>
-    <div class="after">${r.示意?.後 || '<p class="muted">（完工後示意）</p>'}<span class="lab">完工後</span></div>
+    <div class="before">${g.前 || '<p class="muted">（施工前示意）</p>'}<span class="lab">現況</span></div>
+    <div class="after">${g.後 || '<p class="muted">（完工後示意）</p>'}<span class="lab">完工後</span></div>
   </div>
-  <input class="sp" type="range" min="0" max="100" value="50" aria-label="拖曳比較施工前後">
+  <input class="sp" type="range" min="0" max="100" value="50" aria-label="拖曳比較施工前後">`).join('')}
   <div class="grid2" style="margin-top:12px">
     <div class="card"><h3>現況</h3><p class="muted">${esc(r.現況)}</p></div>
     <div class="card"><h3>完工後</h3><p class="muted">${esc(r.完成)}</p></div>
@@ -583,7 +601,8 @@ DATA.區域.forEach(r => add('r' + r.id, r.名, `
         <dt>現場看點</dt><dd>${esc(i.看點)}</dd>
       </dl>
     </div>`).join('')}
-`));
+`);
+});
 
 // ② 施工階段
 add('st', '施工階段', `
@@ -631,22 +650,60 @@ add('gl', '名詞・爭議', `
       <p><b>圖說怎麼寫：</b>${esc(w.圖說)}</p>
       <p><b>為什麼會吵：</b>${esc(w.為什麼吵)}</p>
       <p><b>開工前先問：</b>${esc(w.先問誰)}</p>
-    </details>`).join('')}
+    </details>`).join('')}`);
+
+// ⑤ 工項清單（2026-08-31 改版新增。取標價清單的項次與數量，單價一律不上網）
+//    ★ 欄位缺席就不長這個頁籤——舊 JSON 重建不能壞。
+if (DATA.工項 && DATA.工項.length) add('bq', '工項清單', `
+  <h2>本工程有哪些施作項目</h2>
+  <p class="muted">本表取自本案標價清單（詳細價目表）的項次與數量，名稱照原件抄。
+  <b>單價與金額不放上網</b>，要看單價請到「原始圖說」頁籤開原件。</p>
+  <div class="tbl-wrap"><table class="boq">
+    <thead><tr><th>項次</th><th>工項</th><th>單位</th><th>數量</th><th>對應圖</th></tr></thead>
+    <tbody>${DATA.工項.map(i => `
+      <tr><td>${esc(i.項次)}</td><td>${esc(i.名)}</td><td>${esc(i.單位)}</td><td>${esc(i.數量)}</td>
+      <td>${i.區 ? `<button class="btn go" data-go="r${esc(i.區)}">${esc(i.圖 || '看圖')}</button>`
+                  : `<span class="muted">${esc(i.圖 || '—')}</span>`}</td></tr>`).join('')}
+    </tbody>
+  </table></div>
+  <p class="muted">共 ${DATA.工項.length} 項，與原件逐項對齊。</p>`);
+
+// ⑥ 原始圖說（2026-08-31 改版新增。只放 Google Drive 連結，原件一頁都不進本站）
+if (DATA.原始文件 && DATA.原始文件.length) add('doc', '原始圖說', `
+  <h2>原始文件（原件）</h2>
+  <p class="muted">設計單位交付的原始文件存放在學校的雲端硬碟，本頁只放連結、不存放檔案。
+  <b>原始文件之開啟權限由學校管理</b>，打不開請洽總務處。</p>
+  ${DATA.原始文件.map(d => `
+    <div class="card">
+      <h3>${esc(d.名)}</h3>
+      <p><a class="doc-a" href="${esc(d.連結)}" target="_blank" rel="noopener noreferrer">在雲端硬碟開啟 ↗</a></p>
+      ${d.預覽 ? `<details><summary>頁內預覽</summary>
+        <iframe class="doc-f" src="${esc(d.預覽)}" loading="lazy" allow="fullscreen" title="${esc(d.名)} 預覽"></iframe>
+      </details>` : ''}
+    </div>`).join('')}`);
+
+// 頁尾放在所有 section 之外，每個頁籤都看得到（不可退讓 6）
+el('elMain').innerHTML = panels.map((p, i) => `<section id="${p.id}" class="${i ? '' : 'on'}">${p.html}</section>`).join('') + `
   <footer>
     <div>資料來源：${esc(DATA.來源)}</div>
     <div>更新日：${esc(DATA.更新日)}</div>
     <div>★ 本頁是圖說的<b>白話轉譯</b>，不是契約文件。施工範圍、尺寸、規格一律以核定圖說與契約為準。</div>
-  </footer>`);
-
-el('elMain').innerHTML = panels.map((p, i) => `<section id="${p.id}" class="${i ? '' : 'on'}">${p.html}</section>`).join('');
+  </footer>`;
 el('elTabs').innerHTML = panels.map((p, i) =>
   `<button class="tab" role="tab" aria-selected="${!i}" data-go="${p.id}">${esc(p.名)}</button>`).join('');
 
-el('elTabs').addEventListener('click', e => {
-  const b = e.target.closest('[data-go]'); if (!b) return;
+// 換頁：nav 的頁籤與內文裡的 [data-go]（工項表「對應圖」按鈕）走同一條路
+const goTab = id => {
+  const b = document.querySelector(`nav [data-go="${id}"]`); if (!b) return;
   document.querySelectorAll('nav .tab').forEach(t => t.setAttribute('aria-selected', t === b));
-  document.querySelectorAll('main section').forEach(s => s.classList.toggle('on', s.id === b.dataset.go));
+  document.querySelectorAll('main section').forEach(s => s.classList.toggle('on', s.id === id));
   scrollTo({ top: 0, behavior: 'smooth' });
+};
+el('elTabs').addEventListener('click', e => {
+  const b = e.target.closest('[data-go]'); if (b) goTab(b.dataset.go);
+});
+el('elMain').addEventListener('click', e => {
+  const b = e.target.closest('[data-go]'); if (b) goTab(b.dataset.go);
 });
 
 // 前後對比：拖桿 + 直接在圖上拖

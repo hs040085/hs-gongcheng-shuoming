@@ -9,7 +9,8 @@
 <title>115001｜星空樓廁所整修工程</title>
 <!--
   ─────────────────────────────────────────────────────────────
-  工程說明頁母版　作者: claude　建立: 2026-08-09
+  工程說明頁母版　作者: claude　建立: 2026-08-09　改版: 2026-08-31（加「工項清單」「原始圖說」
+  兩頁籤、前後圖改可多組；Ken 核，方案見 00_系統文件\工作流演進討論\20260831-01；改版前存 _舊版\）
   規格與分級見 ..\..\01_案件庫\_wiki\概念頁\工程說明頁母版-分級對照表.md
   ★ 本檔為母版：所有雙大括號佔位符與 DATA 內的值皆為本案特有，一律由 skill 填。
      _build.js 會斷言產出的 HTML 裡一個佔位符都不剩，漏填即擋下不產出。
@@ -124,6 +125,17 @@ details p{margin-top:8px;font-size:.92rem;color:var(--dim)}
 .risk{border-left:4px solid var(--am)}
 .risk summary::before{content:"⚠ ";color:var(--am)}
 
+/* ── 工項表・原始文件（2026-08-31 改版新增）──────── */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px}
+table.boq{width:100%;border-collapse:collapse;font-size:.88rem;min-width:480px}
+.boq th,.boq td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.boq thead th{background:var(--card2)}
+.boq td:nth-child(1),.boq td:nth-child(3),.boq td:nth-child(4){white-space:nowrap}
+button.btn.go{padding:4px 10px;min-height:0;font-size:.8rem;color:var(--bl)}
+h3.ba-t{margin:12px 0 6px;font-size:.95rem}
+a.doc-a{color:var(--bl);font-weight:700}
+iframe.doc-f{width:100%;height:70vh;border:0;border-radius:10px;margin-top:8px;background:var(--card2)}
+
 footer{margin:28px 0 8px;padding-top:14px;border-top:1px solid var(--line);
   font-size:.78rem;color:var(--dim);line-height:1.9}
 
@@ -177,10 +189,6 @@ const DATA = {
       "位置": "星空樓就是教學大樓中間那一棟，圖說上一律寫「B 棟」。六間廁所上下疊在同一個位置，1 樓到 4 樓各一間、5 樓兩間分在樓梯兩側。這一間是 1 樓那間，走進去左手邊是洗手區、正對面是一整排廁間。★ 這是六間裡唯一給低年級用的，洗手台高度和其他五間不一樣。",
       "現況": "5 間蹲式、1 間坐式，共 6 個廁間。洗手盆在廁所裡面，外面走廊另有一座 4 個水龍頭的洗手檯。牆面地面是舊磁磚，天花板是舊的明架天花板。",
       "完成": "廁間數不變，還是 5 蹲 1 坐。廁所裡的舊洗手盆取消，改成入口處一整條人造石洗手檯搭 3 支長柄式龍頭，另加一座位置放低的拖布盆。牆面貼馬賽克壁磚配一條仿木紋腰帶，洗手台上方砌圓孔花格磚透光，地面換 R11 止滑磚。隔間換成 12mm 以上實心抗倍特板。",
-      "示意": {
-        "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='1樓女廁整修前示意：舊磁磚牆面、舊隔間板、廁所內的舊洗手盆'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='40' width='400' height='150' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 70h400M0 100h400M0 130h400M0 160h400M40 40v150M100 40v150M160 40v150M220 40v150M280 40v150M340 40v150'/></g><path d='M120 55l14 26-9 4z' fill='#a8a094' opacity='.7'/><path d='M250 120l10 30' stroke='#a8a094' stroke-width='2' fill='none'/><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#9a9184'><rect x='40' y='95' width='58' height='95'/><rect x='108' y='95' width='58' height='95'/><rect x='176' y='95' width='58' height='95'/><rect x='244' y='95' width='58' height='95'/></g><g fill='#8b8275'><rect x='62' y='130' width='6' height='6'/><rect x='130' y='130' width='6' height='6'/><rect x='198' y='130' width='6' height='6'/><rect x='266' y='130' width='6' height='6'/></g><ellipse cx='340' cy='168' rx='34' ry='15' fill='#ddd8ce'/><rect x='336' y='140' width='7' height='22' fill='#9a9184'/><rect x='324' y='183' width='32' height='8' fill='#a8a094'/><text x='14' y='285' font-size='15' fill='#4a453c'>現況：舊磁磚、舊隔間板、洗手盆在廁所裡面</text></svg>",
-        "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='1樓女廁完工後示意：新壁磚配仿木紋腰帶、圓孔花格磚、新隔間門與人造石洗手檯'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M0 172h400M50 40v150M100 40v150M150 40v150M200 40v150M250 40v150M300 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><g fill='#e8edf3' stroke='#cfd8e2'><rect x='296' y='44' width='96' height='56'/></g><g fill='#f6f8fb'><circle cx='312' cy='58' r='5'/><circle cx='330' cy='58' r='5'/><circle cx='348' cy='58' r='5'/><circle cx='366' cy='58' r='5'/><circle cx='312' cy='74' r='5'/><circle cx='330' cy='74' r='5'/><circle cx='348' cy='74' r='5'/><circle cx='366' cy='74' r='5'/><circle cx='312' cy='90' r='5'/><circle cx='330' cy='90' r='5'/><circle cx='348' cy='90' r='5'/><circle cx='366' cy='90' r='5'/></g><rect x='0' y='190' width='400' height='110' fill='#dfe5ec'/><g stroke='#cdd6e0' stroke-width='1'><path d='M0 214h400M0 238h400M0 262h400M60 190v110M120 190v110M180 190v110M240 190v110M300 190v110M360 190v110'/></g><g fill='#7fb5c9'><rect x='40' y='95' width='58' height='95' rx='2'/><rect x='108' y='95' width='58' height='95' rx='2'/><rect x='176' y='95' width='58' height='95' rx='2'/><rect x='244' y='95' width='58' height='95' rx='2'/></g><g fill='#f6f8fb'><circle cx='90' cy='142' r='4'/><circle cx='158' cy='142' r='4'/><circle cx='226' cy='142' r='4'/><circle cx='294' cy='142' r='4'/></g><rect x='300' y='150' width='96' height='9' fill='#3c4653'/><rect x='306' y='159' width='84' height='16' fill='#eef1f5'/><g stroke='#7d8794' stroke-width='3' fill='none'><path d='M318 138v12M342 138v12M366 138v12'/></g><text x='14' y='285' font-size='15' fill='#26303c'>完工後：新壁磚＋仿木紋腰帶、花格磚透光、人造石洗手檯</text></svg>"
-      },
       "項目": [
         {
           "標": "拆到見底",
@@ -231,6 +239,26 @@ const DATA = {
           "材料": "外牆耐候 3 合 1 晴雨漆，平光白；底膠 1 道、底漆噴 1 道、面漆噴 2 道。規範要求施工前先檢送健康綠建材標章證書與經濟部標準檢驗局正字標記證書，經核可才准施工。",
           "看點": "① ★ 那兩張證書有沒有先送審——沒送就開噴，事後補不回來。② 用手電筒側光照牆面，凹凸和批土沒磨平的地方會現形。③ 面漆有沒有噴兩道——只噴一道會透出底色，靠近看不均勻。"
         }
+      ],
+      "示意組": [
+        {
+          "題": "A-1 廁間與地坪",
+          "涵蓋": "涵蓋工項：二-3、二-5、三-5、三-8、四-1",
+          "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='1樓女廁整修前示意：舊磁磚牆面、舊隔間板、廁所內的舊洗手盆'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='40' width='400' height='150' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 70h400M0 100h400M0 130h400M0 160h400M40 40v150M100 40v150M160 40v150M220 40v150M280 40v150M340 40v150'/></g><path d='M120 55l14 26-9 4z' fill='#a8a094' opacity='.7'/><path d='M250 120l10 30' stroke='#a8a094' stroke-width='2' fill='none'/><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#9a9184'><rect x='40' y='95' width='58' height='95'/><rect x='108' y='95' width='58' height='95'/><rect x='176' y='95' width='58' height='95'/><rect x='244' y='95' width='58' height='95'/></g><g fill='#8b8275'><rect x='62' y='130' width='6' height='6'/><rect x='130' y='130' width='6' height='6'/><rect x='198' y='130' width='6' height='6'/><rect x='266' y='130' width='6' height='6'/></g><ellipse cx='340' cy='168' rx='34' ry='15' fill='#ddd8ce'/><rect x='336' y='140' width='7' height='22' fill='#9a9184'/><rect x='324' y='183' width='32' height='8' fill='#a8a094'/><text x='14' y='285' font-size='15' fill='#4a453c'>現況：舊磁磚、舊隔間板、洗手盆在廁所裡面</text></svg>",
+          "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='1樓女廁完工後示意：新壁磚配仿木紋腰帶、圓孔花格磚、新隔間門與人造石洗手檯'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M0 172h400M50 40v150M100 40v150M150 40v150M200 40v150M250 40v150M300 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><g fill='#e8edf3' stroke='#cfd8e2'><rect x='296' y='44' width='96' height='56'/></g><g fill='#f6f8fb'><circle cx='312' cy='58' r='5'/><circle cx='330' cy='58' r='5'/><circle cx='348' cy='58' r='5'/><circle cx='366' cy='58' r='5'/><circle cx='312' cy='74' r='5'/><circle cx='330' cy='74' r='5'/><circle cx='348' cy='74' r='5'/><circle cx='366' cy='74' r='5'/><circle cx='312' cy='90' r='5'/><circle cx='330' cy='90' r='5'/><circle cx='348' cy='90' r='5'/><circle cx='366' cy='90' r='5'/></g><rect x='0' y='190' width='400' height='110' fill='#dfe5ec'/><g stroke='#cdd6e0' stroke-width='1'><path d='M0 214h400M0 238h400M0 262h400M60 190v110M120 190v110M180 190v110M240 190v110M300 190v110M360 190v110'/></g><g fill='#7fb5c9'><rect x='40' y='95' width='58' height='95' rx='2'/><rect x='108' y='95' width='58' height='95' rx='2'/><rect x='176' y='95' width='58' height='95' rx='2'/><rect x='244' y='95' width='58' height='95' rx='2'/></g><g fill='#f6f8fb'><circle cx='90' cy='142' r='4'/><circle cx='158' cy='142' r='4'/><circle cx='226' cy='142' r='4'/><circle cx='294' cy='142' r='4'/></g><rect x='300' y='150' width='96' height='9' fill='#3c4653'/><rect x='306' y='159' width='84' height='16' fill='#eef1f5'/><g stroke='#7d8794' stroke-width='3' fill='none'><path d='M318 138v12M342 138v12M366 138v12'/></g><text x='14' y='285' font-size='15' fill='#26303c'>完工後：新壁磚＋仿木紋腰帶、花格磚透光、人造石洗手檯</text></svg>"
+        },
+        {
+          "題": "A-2 洗手檯與入口立面",
+          "涵蓋": "涵蓋工項：三-7、三-9、三-10、三-11、三-12、七(一)-5、七(一)-6",
+          "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='1樓女廁洗手區現況：廁所內側牆掛式舊洗手盆、舊磁磚牆、無腰帶無花格磚'><rect width='400' height='300' fill='#f3f0ea'/><rect x='0' y='0' width='400' height='40' fill='#d5d0c4'/>\n<rect x='0' y='40' width='400' height='214' fill='#e2ded4'/>\n<g stroke='#cbc4b6' stroke-width='1'><path d='M0 76h400M0 112h400M0 148h400M0 184h400M0 220h400M56 40v214M112 40v214M168 40v214M224 40v214M280 40v214M336 40v214'/></g>\n<rect x='0' y='254' width='400' height='12' fill='#bdb5a7'/>\n<g fill='#e6e2da' stroke='#a89f8f' stroke-width='2'>\n<ellipse cx='96' cy='150' rx='30' ry='16'/><ellipse cx='218' cy='150' rx='30' ry='16'/></g>\n<g stroke='#a89f8f' stroke-width='3' fill='none'><path d='M96 134v-14h-8'/><path d='M218 134v-14h-8'/></g>\n<g stroke='#b0a797' stroke-width='4'><path d='M96 166v34M218 166v34'/></g>\n<g fill='#b6ac99'><circle cx='300' cy='120' r='4'/><circle cx='320' cy='176' r='3'/><circle cx='60' cy='96' r='4'/></g>\n<text x='200' y='240' font-size='13' text-anchor='middle' fill='#8b8477'>洗手盆在廁所裡面，牆面素磚無腰帶</text><text x='200' y='292' font-size='15' text-anchor='middle' fill='#4a463f'>現況：廁所內舊掛式洗手盆、素色舊磁磚</text></svg>",
+          "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='1樓女廁洗手區完成示意：入口人造石一體洗手檯搭三支長柄龍頭、仿木紋腰帶磚、上方圓孔花格磚、旁側低位拖布盆'><rect width='400' height='300' fill='#f3f0ea'/><rect x='0' y='0' width='400' height='40' fill='#dfe6e8'/>\n<rect x='0' y='40' width='400' height='214' fill='#eef1ee'/>\n<g fill='#dfeaf2' stroke='#c3d2dc' stroke-width='1'>\n<rect x='0' y='40' width='400' height='58'/></g>\n<g fill='#f6f9fb' stroke='#a9bfcd' stroke-width='2'>\n<circle cx='42' cy='69' r='13'/><circle cx='86' cy='69' r='13'/><circle cx='130' cy='69' r='13'/><circle cx='174' cy='69' r='13'/>\n<circle cx='218' cy='69' r='13'/><circle cx='262' cy='69' r='13'/><circle cx='306' cy='69' r='13'/><circle cx='350' cy='69' r='13'/></g>\n<text x='200' y='30' font-size='13' text-anchor='middle' fill='#5d7286'>圓孔花格磚（透光）</text>\n<rect x='0' y='118' width='400' height='14' fill='#b98a5a'/>\n<text x='200' y='113' font-size='12' text-anchor='middle' fill='#8a6a44'>5×120 cm 仿木紋腰帶磚</text>\n<g fill='#e7edf0' stroke='#c7d3d9' stroke-width='1'>\n<rect x='0' y='132' width='400' height='58'/></g>\n<g stroke='#cfd9de' stroke-width='1'><path d='M0 152h400M0 172h400M50 132v58M100 132v58M150 132v58M200 132v58M250 132v58M300 132v58M350 132v58'/></g>\n<rect x='36' y='178' width='268' height='16' rx='4' fill='#eae7e0' stroke='#b9b3a6' stroke-width='2'/>\n<rect x='36' y='194' width='268' height='10' fill='#ded9cf'/>\n<g stroke='#8e959a' stroke-width='4' fill='none' stroke-linecap='round'>\n<path d='M96 178v-18q0-8 8-8'/><path d='M170 178v-18q0-8 8-8'/><path d='M244 178v-18q0-8 8-8'/></g>\n<text x='170' y='222' font-size='12' text-anchor='middle' fill='#6c6a63'>人造石一體洗手檯・3 支長柄龍頭</text>\n<rect x='324' y='196' width='56' height='28' rx='4' fill='#eae7e0' stroke='#b9b3a6' stroke-width='2'/>\n<path d='M352 196v-14q0-8 8-8' stroke='#8e959a' stroke-width='4' fill='none' stroke-linecap='round'/>\n<text x='352' y='242' font-size='11' text-anchor='middle' fill='#6c6a63'>低位拖布盆</text>\n<rect x='0' y='254' width='400' height='12' fill='#bdb5a7'/><text x='200' y='292' font-size='15' text-anchor='middle' fill='#4a463f'>完成：花格磚＋腰帶磚＋人造石洗手檯＋拖布盆</text></svg>"
+        },
+        {
+          "題": "A-3 天花、照明與求救鈴",
+          "涵蓋": "涵蓋工項：二-7、五-2、六(一)-1、六(一)-3、六(三)-1、六(三)-2",
+          "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='1樓女廁天花現況：舊明架天花板、老舊燈具、無緊急求救設備'><rect width='400' height='300' fill='#f3f0ea'/><rect x='0' y='0' width='400' height='150' fill='#dcd7cb'/>\n<g stroke='#bdb5a6' stroke-width='2'><path d='M0 38h400M0 76h400M0 114h400M80 0v150M160 0v150M240 0v150M320 0v150'/></g>\n<g fill='#cfc8b8' stroke='#b0a797' stroke-width='1'><rect x='96' y='46' width='48' height='22'/><rect x='256' y='84' width='48' height='22'/></g>\n<g fill='#c6bdaa'><rect x='20' y='8' width='40' height='26'/></g>\n<text x='200' y='140' font-size='13' text-anchor='middle' fill='#8b8477'>舊明架天花板（本案全部拆除，144 ㎡）</text>\n<rect x='0' y='150' width='400' height='104' fill='#e2ded4'/>\n<g stroke='#cbc4b6' stroke-width='1'><path d='M0 186h400M0 222h400M70 150v104M150 150v104M230 150v104M310 150v104'/></g>\n<text x='200' y='210' font-size='13' text-anchor='middle' fill='#8b8477'>牆面無求救按鈕、無警報喇叭</text>\n<rect x='0' y='254' width='400' height='12' fill='#bdb5a7'/><text x='200' y='292' font-size='15' text-anchor='middle' fill='#4a463f'>現況：舊明架天花板與老舊燈具，無求救設備</text></svg>",
+          "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='1樓女廁天花完成示意：拆除明架天花見樑、露樑刷晴雨漆、12盞20W4000K筒燈、熱感自動開關與緊急求救押扣及閃光警報喇叭'><rect width='400' height='300' fill='#f3f0ea'/><rect x='0' y='0' width='400' height='150' fill='#f1efe8'/>\n<g fill='#e6e2d6'><rect x='0' y='30' width='400' height='18'/><rect x='0' y='96' width='400' height='18'/></g>\n<g fill='#ffe9b0' opacity='.5'><circle cx='70' cy='68' r='20'/><circle cx='160' cy='68' r='20'/><circle cx='250' cy='68' r='20'/><circle cx='340' cy='68' r='20'/>\n<circle cx='70' cy='134' r='20'/><circle cx='160' cy='134' r='20'/><circle cx='250' cy='134' r='20'/><circle cx='340' cy='134' r='20'/></g>\n<g fill='#fff4d8' stroke='#d7b567' stroke-width='2'>\n<circle cx='70' cy='68' r='9'/><circle cx='160' cy='68' r='9'/><circle cx='250' cy='68' r='9'/><circle cx='340' cy='68' r='9'/>\n<circle cx='70' cy='134' r='9'/><circle cx='160' cy='134' r='9'/><circle cx='250' cy='134' r='9'/><circle cx='340' cy='134' r='9'/></g>\n<text x='200' y='22' font-size='13' text-anchor='middle' fill='#8a8578'>露樑批土刷耐候 3 合 1 晴雨漆</text>\n<text x='200' y='166' font-size='13' text-anchor='middle' fill='#6c6a63'>20W 筒燈 4000K（這一間 12 盞）</text>\n<rect x='0' y='176' width='400' height='78' fill='#f0efe6'/>\n<rect x='44' y='196' width='34' height='34' rx='5' fill='#f6d7d2' stroke='#c0554a' stroke-width='3'/>\n<circle cx='61' cy='213' r='9' fill='#e05a49'/>\n<text x='61' y='250' font-size='11' text-anchor='middle' fill='#8a4a41'>求救押扣</text>\n<rect x='176' y='198' width='46' height='26' rx='4' fill='#fff0c9' stroke='#c99a2e' stroke-width='3'/>\n<text x='199' y='250' font-size='11' text-anchor='middle' fill='#8a6a2e'>閃光警報喇叭</text>\n<rect x='320' y='198' width='30' height='26' rx='4' fill='#e8eef2' stroke='#5d7286' stroke-width='3'/>\n<text x='335' y='250' font-size='11' text-anchor='middle' fill='#4f6577'>熱感自動開關</text>\n<rect x='0' y='254' width='400' height='12' fill='#bdb5a7'/><text x='200' y='292' font-size='15' text-anchor='middle' fill='#4a463f'>完成：拆天花見樑上漆、筒燈 12 盞、求救鈴與警報</text></svg>"
+        }
       ]
     },
     {
@@ -239,10 +267,6 @@ const DATA = {
       "位置": "2 樓那一間，位置就在 1 樓那間的正上方。★ 六間裡改得最多、規定最多、也最會出事的就是這一間——它從單純的女廁改成男女都能用的性別友善廁所，每一格都是有門的獨立小房間，連小便斗都關在自己的門裡。",
       "現況": "原本是女廁，5 間蹲式、1 間坐式共 6 個廁間，洗手盆在裡面。★ 這一間現況的天花板高度是六間裡最矮的，比其他樓層矮了半公尺以上——這一點會直接影響「加高隔板」到底能做多高。",
       "完成": "改成 7 個各自有門的獨立空間：蹲式 4、坐式 1、小便斗 2。每一格都做「加高隔板」，另加防偷拍隔板；小便斗前方做一道不鏽鋼長型地板排水槽；入口做 100 公分的坡道（圖說引用坡度規定，入口高低差 10 公分、坡度 1/10）；緊急求救按鈕從 1 組變成 8 組。洗手檯 65 公分高。",
-      "示意": {
-        "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='2樓廁所整修前示意：一般女廁配置、六個舊隔間'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='55' width='400' height='135' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 82h400M0 110h400M0 138h400M0 166h400M50 55v135M110 55v135M170 55v135M230 55v135M290 55v135M350 55v135'/></g><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#9a9184'><rect x='34' y='102' width='54' height='88'/><rect x='96' y='102' width='54' height='88'/><rect x='158' y='102' width='54' height='88'/><rect x='220' y='102' width='54' height='88'/><rect x='282' y='102' width='54' height='88'/></g><g fill='#8b8275'><rect x='54' y='134' width='6' height='6'/><rect x='116' y='134' width='6' height='6'/><rect x='178' y='134' width='6' height='6'/><rect x='240' y='134' width='6' height='6'/><rect x='302' y='134' width='6' height='6'/></g><path d='M0 55h400' stroke='#8b8275' stroke-width='3'/><text x='300' y='50' font-size='13' fill='#5a5347'>天花板偏低</text><text x='14' y='285' font-size='15' fill='#4a453c'>現況：一般女廁，隔板高度到此為止</text></svg>",
-        "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='2樓性別友善廁所完工後示意：加高隔板、小便斗也做成獨立有門隔間、地板排水槽與入口坡道'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M50 40v150M110 40v150M170 40v150M230 40v150M290 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><rect x='0' y='190' width='400' height='110' fill='#dfe5ec'/><g stroke='#cdd6e0' stroke-width='1'><path d='M0 216h400M0 244h400M60 190v110M140 190v110M220 190v110M300 190v110'/></g><g fill='#8d7bb8'><rect x='30' y='70' width='52' height='120' rx='2'/><rect x='90' y='70' width='52' height='120' rx='2'/><rect x='150' y='70' width='52' height='120' rx='2'/><rect x='210' y='70' width='52' height='120' rx='2'/></g><g fill='#c98fb4'><rect x='270' y='70' width='46' height='120' rx='2'/><rect x='324' y='70' width='46' height='120' rx='2'/></g><g fill='#f6f8fb'><circle cx='74' cy='134' r='4'/><circle cx='134' cy='134' r='4'/><circle cx='194' cy='134' r='4'/><circle cx='254' cy='134' r='4'/><circle cx='308' cy='134' r='4'/><circle cx='362' cy='134' r='4'/></g><rect x='262' y='190' width='138' height='9' fill='#9aa6b3'/><g stroke='#7d8794' stroke-width='1'><path d='M272 190v9M286 190v9M300 190v9M314 190v9M328 190v9M342 190v9M356 190v9M370 190v9M384 190v9'/></g><path d='M0 262l58 -14v14z' fill='#a9b6c4'/><text x='6' y='58' font-size='13' fill='#26303c'>隔板加高</text><text x='264' y='214' font-size='12' fill='#3c4653'>地板排水槽</text><text x='4' y='285' font-size='15' fill='#26303c'>完工後：每格獨立有門、隔板加高、入口做坡道</text></svg>"
-      },
       "項目": [
         {
           "標": "★ 加高隔板",
@@ -293,6 +317,26 @@ const DATA = {
           "材料": "同 1F，唯洗手檯高度為 65 公分（非 55 公分）。",
           "看點": "同 1F 各項。⚠ 這一間的洗手檯高度標註在圖說上有兩種寫法，見「名詞・爭議」第 2 則。"
         }
+      ],
+      "示意組": [
+        {
+          "題": "B-1 七格獨立空間的配置",
+          "涵蓋": "涵蓋工項：四-1、四-3、七(一)-1、七(一)-2",
+          "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='2樓廁所整修前示意：一般女廁配置、六個舊隔間'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='55' width='400' height='135' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 82h400M0 110h400M0 138h400M0 166h400M50 55v135M110 55v135M170 55v135M230 55v135M290 55v135M350 55v135'/></g><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#9a9184'><rect x='34' y='102' width='54' height='88'/><rect x='96' y='102' width='54' height='88'/><rect x='158' y='102' width='54' height='88'/><rect x='220' y='102' width='54' height='88'/><rect x='282' y='102' width='54' height='88'/></g><g fill='#8b8275'><rect x='54' y='134' width='6' height='6'/><rect x='116' y='134' width='6' height='6'/><rect x='178' y='134' width='6' height='6'/><rect x='240' y='134' width='6' height='6'/><rect x='302' y='134' width='6' height='6'/></g><path d='M0 55h400' stroke='#8b8275' stroke-width='3'/><text x='300' y='50' font-size='13' fill='#5a5347'>天花板偏低</text><text x='14' y='285' font-size='15' fill='#4a453c'>現況：一般女廁，隔板高度到此為止</text></svg>",
+          "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='2樓性別友善廁所完工後示意：加高隔板、小便斗也做成獨立有門隔間、地板排水槽與入口坡道'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M50 40v150M110 40v150M170 40v150M230 40v150M290 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><rect x='0' y='190' width='400' height='110' fill='#dfe5ec'/><g stroke='#cdd6e0' stroke-width='1'><path d='M0 216h400M0 244h400M60 190v110M140 190v110M220 190v110M300 190v110'/></g><g fill='#8d7bb8'><rect x='30' y='70' width='52' height='120' rx='2'/><rect x='90' y='70' width='52' height='120' rx='2'/><rect x='150' y='70' width='52' height='120' rx='2'/><rect x='210' y='70' width='52' height='120' rx='2'/></g><g fill='#c98fb4'><rect x='270' y='70' width='46' height='120' rx='2'/><rect x='324' y='70' width='46' height='120' rx='2'/></g><g fill='#f6f8fb'><circle cx='74' cy='134' r='4'/><circle cx='134' cy='134' r='4'/><circle cx='194' cy='134' r='4'/><circle cx='254' cy='134' r='4'/><circle cx='308' cy='134' r='4'/><circle cx='362' cy='134' r='4'/></g><rect x='262' y='190' width='138' height='9' fill='#9aa6b3'/><g stroke='#7d8794' stroke-width='1'><path d='M272 190v9M286 190v9M300 190v9M314 190v9M328 190v9M342 190v9M356 190v9M370 190v9M384 190v9'/></g><path d='M0 262l58 -14v14z' fill='#a9b6c4'/><text x='6' y='58' font-size='13' fill='#26303c'>隔板加高</text><text x='264' y='214' font-size='12' fill='#3c4653'>地板排水槽</text><text x='4' y='285' font-size='15' fill='#26303c'>完工後：每格獨立有門、隔板加高、入口做坡道</text></svg>"
+        },
+        {
+          "題": "B-2 小便斗獨立隔間與地板排水槽",
+          "涵蓋": "涵蓋工項：七(一)-4、四-6（排水槽本身標單未單列，見爭議）",
+          "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='2樓廁所小便斗區現況：開放式小便斗無隔間、地面為一般地磚無排水槽'><rect width='400' height='300' fill='#f3f0ea'/><rect x='0' y='0' width='400' height='36' fill='#d5d0c4'/>\n<rect x='0' y='36' width='400' height='180' fill='#e2ded4'/>\n<g stroke='#cbc4b6' stroke-width='1'><path d='M0 72h400M0 108h400M0 144h400M0 180h400M64 36v180M128 36v180M192 36v180M256 36v180M320 36v180'/></g>\n<g fill='#e8e5dd' stroke='#a89f8f' stroke-width='2'>\n<rect x='96' y='86' width='44' height='68' rx='16'/><rect x='260' y='86' width='44' height='68' rx='16'/></g>\n<text x='200' y='202' font-size='13' text-anchor='middle' fill='#8b8477'>開放式，兩座之間沒有隔間</text>\n<rect x='0' y='216' width='400' height='40' fill='#d8d2c6'/>\n<g stroke='#c3bcae' stroke-width='1'><path d='M0 236h400M80 216v40M160 216v40M240 216v40M320 216v40'/></g>\n<text x='200' y='250' font-size='12' text-anchor='middle' fill='#8b8477'>地面一般地磚，無地板排水槽</text><text x='200' y='292' font-size='15' text-anchor='middle' fill='#4a463f'>現況：開放式小便斗、無隔間、無排水槽</text></svg>",
+          "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='2樓性別友善廁所完成示意：小便斗做成各自有門的獨立隔間、加防偷拍隔板、前方不鏽鋼長型地板排水槽'><rect width='400' height='300' fill='#f3f0ea'/><rect x='0' y='0' width='400' height='36' fill='#dfe6e8'/>\n<rect x='0' y='36' width='400' height='180' fill='#eef1ee'/>\n<g fill='#f3f6f4' stroke='#7f8f86' stroke-width='3'>\n<rect x='72' y='48' width='92' height='158'/><rect x='236' y='48' width='92' height='158'/></g>\n<g fill='#e8eef0' stroke='#9aa8a2' stroke-width='2'>\n<rect x='100' y='84' width='36' height='58' rx='14'/><rect x='264' y='84' width='36' height='58' rx='14'/></g>\n<g fill='#cfd9d4'><rect x='150' y='120' width='9' height='16' rx='2'/><rect x='314' y='120' width='9' height='16' rx='2'/></g>\n<g fill='#dbe6ea' stroke='#6e8794' stroke-width='2'><rect x='72' y='40' width='92' height='12'/><rect x='236' y='40' width='92' height='12'/></g>\n<text x='200' y='30' font-size='12' text-anchor='middle' fill='#4f6577'>上吊鎖 5mm 壓克力仿偷拍隔板</text>\n<text x='200' y='176' font-size='12' text-anchor='middle' fill='#4f6577'>各自有門的獨立隔間（12mm 以上實心板）</text>\n<rect x='0' y='216' width='400' height='40' fill='#e7e4dc'/>\n<rect x='56' y='224' width='288' height='18' rx='3' fill='#c9d1d4' stroke='#8a9499' stroke-width='2'/>\n<g stroke='#8a9499' stroke-width='2'><path d='M84 224v18M112 224v18M140 224v18M168 224v18M196 224v18M224 224v18M252 224v18M280 224v18M308 224v18'/></g>\n<text x='200' y='256' font-size='12' text-anchor='middle' fill='#5d6a70'>不鏽鋼長型地板排水槽（尺寸未載，見爭議）</text><text x='200' y='292' font-size='15' text-anchor='middle' fill='#4a463f'>完成：獨立隔間＋防偷拍隔板＋長型排水槽</text></svg>"
+        },
+        {
+          "題": "B-3 入口坡道與加高隔板",
+          "涵蓋": "涵蓋工項：（兩項圖說有、標單未單列，見爭議第 1、3 則）",
+          "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='2樓廁所入口現況：入口與走廊有約10公分高低差、廁間隔板為一般高度'><rect width='400' height='300' fill='#f3f0ea'/><rect x='0' y='0' width='400' height='30' fill='#d5d0c4'/>\n<rect x='0' y='30' width='400' height='150' fill='#e2ded4'/>\n<g fill='#d3ccbe' stroke='#a89f8f' stroke-width='2'><rect x='60' y='56' width='70' height='118'/><rect x='150' y='56' width='70' height='118'/><rect x='240' y='56' width='70' height='118'/></g>\n<text x='200' y='48' font-size='12' text-anchor='middle' fill='#8b8477'>一般高度隔板</text>\n<rect x='0' y='180' width='400' height='40' fill='#cfc8bb'/>\n<rect x='0' y='220' width='400' height='36' fill='#ddd8ce'/>\n<path d='M0 220h400' stroke='#a89f8f' stroke-width='3'/>\n<path d='M330 186v28' stroke='#8b8275' stroke-width='2'/>\n<path d='M324 186h12M324 214h12' stroke='#8b8275' stroke-width='2'/>\n<text x='352' y='206' font-size='12' fill='#8b8275'>10 cm</text>\n<text x='150' y='244' font-size='13' text-anchor='middle' fill='#8b8477'>入口有高低差，輪椅與推車過不去</text><text x='200' y='292' font-size='15' text-anchor='middle' fill='#4a463f'>現況：入口 10 公分高低差、隔板一般高度</text></svg>",
+          "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='2樓性別友善廁所完成示意：入口做100公分坡道消除高低差、廁間改為加高隔板'><rect width='400' height='300' fill='#f3f0ea'/><rect x='0' y='0' width='400' height='30' fill='#dfe6e8'/>\n<rect x='0' y='30' width='400' height='150' fill='#eef1ee'/>\n<g fill='#f3f6f4' stroke='#7f8f86' stroke-width='3'><rect x='60' y='38' width='70' height='136'/><rect x='150' y='38' width='70' height='136'/><rect x='240' y='38' width='70' height='136'/></g>\n<g fill='#dbe6ea'><rect x='60' y='38' width='70' height='14'/><rect x='150' y='38' width='70' height='14'/><rect x='240' y='38' width='70' height='14'/></g>\n<text x='200' y='28' font-size='12' text-anchor='middle' fill='#c0554a'>★ 加高隔板：加到幾公分、離地留多少，圖說沒寫</text>\n<rect x='0' y='180' width='400' height='40' fill='#e7e4dc'/>\n<path d='M0 256 L200 220 L200 256 Z' fill='#cfd9d4' stroke='#7f8f86' stroke-width='2'/>\n<rect x='0' y='220' width='400' height='36' fill='none'/>\n<path d='M200 220h200' stroke='#7f8f86' stroke-width='2'/>\n<path d='M0 262h200' stroke='#5d6a70' stroke-width='2'/>\n<path d='M0 258v8M200 258v8' stroke='#5d6a70' stroke-width='2'/>\n<text x='100' y='278' font-size='12' text-anchor='middle' fill='#5d6a70'>坡道 100 cm（坡度 1/10）</text>\n<text x='300' y='246' font-size='12' text-anchor='middle' fill='#4f6577'>與走廊齊平</text><text x='200' y='292' font-size='15' text-anchor='middle' fill='#4a463f'>完成：入口 100 cm 坡道＋加高隔板（規格待定）</text></svg>"
+        }
       ]
     },
     {
@@ -301,10 +345,6 @@ const DATA = {
       "位置": "3 樓那一間，在 2 樓那間的正上方。做法和 1 樓、4 樓、5 樓女廁一樣，是六間裡最「標準」的一間。★ 但圖說在這一間漏了兩樣東西，見下方。",
       "現況": "5 間蹲式、1 間坐式共 6 個廁間，洗手盆在裡面，外面走廊有一座 4 個水龍頭的洗手檯。牆面地面舊磁磚、明架天花板。",
       "完成": "廁間數不變。廁所內舊洗手盆取消，改為入口處人造石洗手檯 65 公分高、3 支長柄式龍頭加一座低位拖布盆。牆面貼馬賽克壁磚配仿木紋腰帶，洗手台上方砌圓孔花格磚，地面 R11 止滑磚，隔間換 12mm 以上實心抗倍特板。",
-      "示意": {
-        "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='3樓女廁整修前示意：舊磁磚與舊隔間'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='40' width='400' height='150' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 70h400M0 100h400M0 130h400M0 160h400M40 40v150M100 40v150M160 40v150M220 40v150M280 40v150M340 40v150'/></g><path d='M60 62l16 24-10 5z' fill='#a8a094' opacity='.7'/><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#9a9184'><rect x='40' y='95' width='58' height='95'/><rect x='108' y='95' width='58' height='95'/><rect x='176' y='95' width='58' height='95'/><rect x='244' y='95' width='58' height='95'/></g><g fill='#8b8275'><rect x='62' y='130' width='6' height='6'/><rect x='130' y='130' width='6' height='6'/><rect x='198' y='130' width='6' height='6'/><rect x='266' y='130' width='6' height='6'/></g><ellipse cx='340' cy='168' rx='34' ry='15' fill='#ddd8ce'/><rect x='336' y='140' width='7' height='22' fill='#9a9184'/><text x='14' y='285' font-size='15' fill='#4a453c'>現況：舊磁磚、舊隔間板、洗手盆在廁所裡面</text></svg>",
-        "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='3樓女廁完工後示意：新壁磚配腰帶、花格磚與新隔間門'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M0 172h400M50 40v150M100 40v150M150 40v150M200 40v150M250 40v150M300 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><rect x='296' y='44' width='96' height='56' fill='#e8edf3' stroke='#cfd8e2'/><g fill='#f6f8fb'><circle cx='312' cy='58' r='5'/><circle cx='330' cy='58' r='5'/><circle cx='348' cy='58' r='5'/><circle cx='366' cy='58' r='5'/><circle cx='312' cy='74' r='5'/><circle cx='330' cy='74' r='5'/><circle cx='348' cy='74' r='5'/><circle cx='366' cy='74' r='5'/><circle cx='312' cy='90' r='5'/><circle cx='330' cy='90' r='5'/><circle cx='348' cy='90' r='5'/><circle cx='366' cy='90' r='5'/></g><rect x='0' y='190' width='400' height='110' fill='#dfe5ec'/><g stroke='#cdd6e0' stroke-width='1'><path d='M0 214h400M0 238h400M0 262h400M60 190v110M120 190v110M180 190v110M240 190v110M300 190v110M360 190v110'/></g><g fill='#7fb5c9'><rect x='40' y='95' width='58' height='95' rx='2'/><rect x='108' y='95' width='58' height='95' rx='2'/><rect x='176' y='95' width='58' height='95' rx='2'/><rect x='244' y='95' width='58' height='95' rx='2'/></g><g fill='#f6f8fb'><circle cx='90' cy='142' r='4'/><circle cx='158' cy='142' r='4'/><circle cx='226' cy='142' r='4'/><circle cx='294' cy='142' r='4'/></g><rect x='300' y='150' width='96' height='9' fill='#3c4653'/><rect x='306' y='159' width='84' height='16' fill='#eef1f5'/><g stroke='#7d8794' stroke-width='3' fill='none'><path d='M318 138v12M342 138v12M366 138v12'/></g><text x='14' y='285' font-size='15' fill='#26303c'>完工後：新壁磚＋腰帶、花格磚、人造石洗手檯</text></svg>"
-      },
       "項目": [
         {
           "標": "🔴 這一間的拆除數量表有一格是空白的",
@@ -327,6 +367,14 @@ const DATA = {
           "材料": "同 1F，唯洗手檯高度為 65 公分。筒燈 12 盞、緊急求救押扣 1 組、閃光警報喇叭 1 組。",
           "看點": "同 1F 各項。防水與貼磚兩項的「只能在這個時間點看」提醒同樣適用。"
         }
+      ],
+      "示意組": [
+        {
+          "題": "C-1 整體樣貌",
+          "涵蓋": "涵蓋工項：與 1F 同（三、四、五、六、七各章之六間共用項）",
+          "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='3樓女廁整修前示意：舊磁磚與舊隔間'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='40' width='400' height='150' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 70h400M0 100h400M0 130h400M0 160h400M40 40v150M100 40v150M160 40v150M220 40v150M280 40v150M340 40v150'/></g><path d='M60 62l16 24-10 5z' fill='#a8a094' opacity='.7'/><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#9a9184'><rect x='40' y='95' width='58' height='95'/><rect x='108' y='95' width='58' height='95'/><rect x='176' y='95' width='58' height='95'/><rect x='244' y='95' width='58' height='95'/></g><g fill='#8b8275'><rect x='62' y='130' width='6' height='6'/><rect x='130' y='130' width='6' height='6'/><rect x='198' y='130' width='6' height='6'/><rect x='266' y='130' width='6' height='6'/></g><ellipse cx='340' cy='168' rx='34' ry='15' fill='#ddd8ce'/><rect x='336' y='140' width='7' height='22' fill='#9a9184'/><text x='14' y='285' font-size='15' fill='#4a453c'>現況：舊磁磚、舊隔間板、洗手盆在廁所裡面</text></svg>",
+          "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='3樓女廁完工後示意：新壁磚配腰帶、花格磚與新隔間門'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M0 172h400M50 40v150M100 40v150M150 40v150M200 40v150M250 40v150M300 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><rect x='296' y='44' width='96' height='56' fill='#e8edf3' stroke='#cfd8e2'/><g fill='#f6f8fb'><circle cx='312' cy='58' r='5'/><circle cx='330' cy='58' r='5'/><circle cx='348' cy='58' r='5'/><circle cx='366' cy='58' r='5'/><circle cx='312' cy='74' r='5'/><circle cx='330' cy='74' r='5'/><circle cx='348' cy='74' r='5'/><circle cx='366' cy='74' r='5'/><circle cx='312' cy='90' r='5'/><circle cx='330' cy='90' r='5'/><circle cx='348' cy='90' r='5'/><circle cx='366' cy='90' r='5'/></g><rect x='0' y='190' width='400' height='110' fill='#dfe5ec'/><g stroke='#cdd6e0' stroke-width='1'><path d='M0 214h400M0 238h400M0 262h400M60 190v110M120 190v110M180 190v110M240 190v110M300 190v110M360 190v110'/></g><g fill='#7fb5c9'><rect x='40' y='95' width='58' height='95' rx='2'/><rect x='108' y='95' width='58' height='95' rx='2'/><rect x='176' y='95' width='58' height='95' rx='2'/><rect x='244' y='95' width='58' height='95' rx='2'/></g><g fill='#f6f8fb'><circle cx='90' cy='142' r='4'/><circle cx='158' cy='142' r='4'/><circle cx='226' cy='142' r='4'/><circle cx='294' cy='142' r='4'/></g><rect x='300' y='150' width='96' height='9' fill='#3c4653'/><rect x='306' y='159' width='84' height='16' fill='#eef1f5'/><g stroke='#7d8794' stroke-width='3' fill='none'><path d='M318 138v12M342 138v12M366 138v12'/></g><text x='14' y='285' font-size='15' fill='#26303c'>完工後：新壁磚＋腰帶、花格磚、人造石洗手檯</text></svg>"
+        }
       ]
     },
     {
@@ -335,10 +383,6 @@ const DATA = {
       "位置": "4 樓那一間，在 3 樓那間的正上方。六間裡做法最單純、圖說也最完整的一間，可以拿它當成其他幾間的對照組。",
       "現況": "5 間蹲式、1 間坐式共 6 個廁間，洗手盆在裡面，外面走廊有一座 4 個水龍頭的洗手檯。牆面地面舊磁磚、明架天花板。",
       "完成": "廁間數不變。舊洗手盆取消，改為入口處人造石洗手檯 65 公分高、3 支長柄式龍頭加一座低位拖布盆。牆面貼馬賽克壁磚配仿木紋腰帶，洗手台上方砌圓孔花格磚，地面 R11 止滑磚，隔間換 12mm 以上實心抗倍特板。",
-      "示意": {
-        "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='4樓女廁整修前示意：舊磁磚與舊隔間'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='40' width='400' height='150' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 70h400M0 100h400M0 130h400M0 160h400M40 40v150M100 40v150M160 40v150M220 40v150M280 40v150M340 40v150'/></g><path d='M200 108l12 28-9 3z' fill='#a8a094' opacity='.7'/><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#9a9184'><rect x='40' y='95' width='58' height='95'/><rect x='108' y='95' width='58' height='95'/><rect x='176' y='95' width='58' height='95'/><rect x='244' y='95' width='58' height='95'/></g><g fill='#8b8275'><rect x='62' y='130' width='6' height='6'/><rect x='130' y='130' width='6' height='6'/><rect x='198' y='130' width='6' height='6'/><rect x='266' y='130' width='6' height='6'/></g><ellipse cx='340' cy='168' rx='34' ry='15' fill='#ddd8ce'/><rect x='336' y='140' width='7' height='22' fill='#9a9184'/><text x='14' y='285' font-size='15' fill='#4a453c'>現況：舊磁磚、舊隔間板、洗手盆在廁所裡面</text></svg>",
-        "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='4樓女廁完工後示意：新壁磚配腰帶、花格磚與新隔間門'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M0 172h400M50 40v150M100 40v150M150 40v150M200 40v150M250 40v150M300 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><rect x='296' y='44' width='96' height='56' fill='#e8edf3' stroke='#cfd8e2'/><g fill='#f6f8fb'><circle cx='312' cy='58' r='5'/><circle cx='330' cy='58' r='5'/><circle cx='348' cy='58' r='5'/><circle cx='366' cy='58' r='5'/><circle cx='312' cy='74' r='5'/><circle cx='330' cy='74' r='5'/><circle cx='348' cy='74' r='5'/><circle cx='366' cy='74' r='5'/><circle cx='312' cy='90' r='5'/><circle cx='330' cy='90' r='5'/><circle cx='348' cy='90' r='5'/><circle cx='366' cy='90' r='5'/></g><rect x='0' y='190' width='400' height='110' fill='#dfe5ec'/><g stroke='#cdd6e0' stroke-width='1'><path d='M0 214h400M0 238h400M0 262h400M60 190v110M120 190v110M180 190v110M240 190v110M300 190v110M360 190v110'/></g><g fill='#7fb5c9'><rect x='40' y='95' width='58' height='95' rx='2'/><rect x='108' y='95' width='58' height='95' rx='2'/><rect x='176' y='95' width='58' height='95' rx='2'/><rect x='244' y='95' width='58' height='95' rx='2'/></g><g fill='#f6f8fb'><circle cx='90' cy='142' r='4'/><circle cx='158' cy='142' r='4'/><circle cx='226' cy='142' r='4'/><circle cx='294' cy='142' r='4'/></g><rect x='300' y='150' width='96' height='9' fill='#3c4653'/><rect x='306' y='159' width='84' height='16' fill='#eef1f5'/><g stroke='#7d8794' stroke-width='3' fill='none'><path d='M318 138v12M342 138v12M366 138v12'/></g><text x='14' y='285' font-size='15' fill='#26303c'>完工後：新壁磚＋腰帶、花格磚、人造石洗手檯</text></svg>"
-      },
       "項目": [
         {
           "標": "與 1F 相同的七項工項",
@@ -354,6 +398,14 @@ const DATA = {
           "材料": "60×100 公分維修門，鋁製，白色。全案 6 處（每間 1 處）。",
           "看點": "① 門打不打得開、開了手伸不伸得進去——維修門做成裝飾品是常見的事。② ⚠ 5 樓男廁那一間的立面圖上漏標了這一項，但標單列的是 6 處，所以六間都要做，見「名詞・爭議」第 9 則。"
         }
+      ],
+      "示意組": [
+        {
+          "題": "D-1 整體樣貌",
+          "涵蓋": "涵蓋工項：與 1F 同，另含 四-5 管道間維修門",
+          "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='4樓女廁整修前示意：舊磁磚與舊隔間'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='40' width='400' height='150' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 70h400M0 100h400M0 130h400M0 160h400M40 40v150M100 40v150M160 40v150M220 40v150M280 40v150M340 40v150'/></g><path d='M200 108l12 28-9 3z' fill='#a8a094' opacity='.7'/><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#9a9184'><rect x='40' y='95' width='58' height='95'/><rect x='108' y='95' width='58' height='95'/><rect x='176' y='95' width='58' height='95'/><rect x='244' y='95' width='58' height='95'/></g><g fill='#8b8275'><rect x='62' y='130' width='6' height='6'/><rect x='130' y='130' width='6' height='6'/><rect x='198' y='130' width='6' height='6'/><rect x='266' y='130' width='6' height='6'/></g><ellipse cx='340' cy='168' rx='34' ry='15' fill='#ddd8ce'/><rect x='336' y='140' width='7' height='22' fill='#9a9184'/><text x='14' y='285' font-size='15' fill='#4a453c'>現況：舊磁磚、舊隔間板、洗手盆在廁所裡面</text></svg>",
+          "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='4樓女廁完工後示意：新壁磚配腰帶、花格磚與新隔間門'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M0 172h400M50 40v150M100 40v150M150 40v150M200 40v150M250 40v150M300 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><rect x='296' y='44' width='96' height='56' fill='#e8edf3' stroke='#cfd8e2'/><g fill='#f6f8fb'><circle cx='312' cy='58' r='5'/><circle cx='330' cy='58' r='5'/><circle cx='348' cy='58' r='5'/><circle cx='366' cy='58' r='5'/><circle cx='312' cy='74' r='5'/><circle cx='330' cy='74' r='5'/><circle cx='348' cy='74' r='5'/><circle cx='366' cy='74' r='5'/><circle cx='312' cy='90' r='5'/><circle cx='330' cy='90' r='5'/><circle cx='348' cy='90' r='5'/><circle cx='366' cy='90' r='5'/></g><rect x='0' y='190' width='400' height='110' fill='#dfe5ec'/><g stroke='#cdd6e0' stroke-width='1'><path d='M0 214h400M0 238h400M0 262h400M60 190v110M120 190v110M180 190v110M240 190v110M300 190v110M360 190v110'/></g><g fill='#7fb5c9'><rect x='40' y='95' width='58' height='95' rx='2'/><rect x='108' y='95' width='58' height='95' rx='2'/><rect x='176' y='95' width='58' height='95' rx='2'/><rect x='244' y='95' width='58' height='95' rx='2'/></g><g fill='#f6f8fb'><circle cx='90' cy='142' r='4'/><circle cx='158' cy='142' r='4'/><circle cx='226' cy='142' r='4'/><circle cx='294' cy='142' r='4'/></g><rect x='300' y='150' width='96' height='9' fill='#3c4653'/><rect x='306' y='159' width='84' height='16' fill='#eef1f5'/><g stroke='#7d8794' stroke-width='3' fill='none'><path d='M318 138v12M342 138v12M366 138v12'/></g><text x='14' y='285' font-size='15' fill='#26303c'>完工後：新壁磚＋腰帶、花格磚、人造石洗手檯</text></svg>"
+        }
       ]
     },
     {
@@ -362,10 +414,6 @@ const DATA = {
       "位置": "5 樓有兩間廁所，分在樓梯兩側，這是其中的男廁。★ 這是全案唯一的男廁，也是唯一有小便斗排、唯一有無障礙小便斗、唯一地坪要做兩種材質的一間。",
       "現況": "8 座小便斗沿牆一整排，中間有隔屏；另有 5 間蹲式、1 間坐式共 6 個廁間。洗手盆在裡面，外面走廊有一座 4 個水龍頭的洗手檯。",
       "完成": "小便斗仍是 8 座，全部換成感應式，其中最靠邊那一座換成附扶手的長斗式（無障礙用）。廁間數不變。小便斗區地坪改成深灰色水泥混凝土鋪面加止滑塗料，其他區域鋪 R11 止滑磚。洗手檯 65 公分高。",
-      "示意": {
-        "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='5樓男廁整修前示意：一整排舊小便斗與舊隔屏'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='40' width='400' height='150' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 70h400M0 100h400M0 130h400M0 160h400M50 40v150M110 40v150M170 40v150M230 40v150M290 40v150M350 40v150'/></g><path d='M150 60l14 26-10 4z' fill='#a8a094' opacity='.7'/><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#d6d0c5' stroke='#a8a094'><rect x='24' y='108' width='34' height='52' rx='6'/><rect x='72' y='108' width='34' height='52' rx='6'/><rect x='120' y='108' width='34' height='52' rx='6'/><rect x='168' y='108' width='34' height='52' rx='6'/><rect x='216' y='108' width='34' height='52' rx='6'/><rect x='264' y='108' width='34' height='52' rx='6'/><rect x='312' y='108' width='34' height='52' rx='6'/><rect x='360' y='108' width='34' height='52' rx='6'/></g><g fill='#9a9184'><rect x='62' y='96' width='6' height='72'/><rect x='110' y='96' width='6' height='72'/><rect x='158' y='96' width='6' height='72'/><rect x='206' y='96' width='6' height='72'/><rect x='254' y='96' width='6' height='72'/><rect x='302' y='96' width='6' height='72'/><rect x='350' y='96' width='6' height='72'/></g><text x='14' y='285' font-size='15' fill='#4a453c'>現況：8 座舊小便斗，中間是舊隔屏</text></svg>",
-        "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='5樓男廁完工後示意：8座感應式小便斗、最左一座附扶手、地坪換深灰止滑鋪面'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M0 172h400M50 40v150M100 40v150M150 40v150M200 40v150M250 40v150M300 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><rect x='0' y='190' width='400' height='110' fill='#5e6873'/><g stroke='#727d8a' stroke-width='1'><path d='M0 220h400M0 250h400M0 280h400'/></g><g fill='#ffffff' stroke='#c3ccd6'><rect x='16' y='104' width='40' height='60' rx='7'/><rect x='72' y='108' width='34' height='52' rx='6'/><rect x='120' y='108' width='34' height='52' rx='6'/><rect x='168' y='108' width='34' height='52' rx='6'/><rect x='216' y='108' width='34' height='52' rx='6'/><rect x='264' y='108' width='34' height='52' rx='6'/><rect x='312' y='108' width='34' height='52' rx='6'/><rect x='360' y='108' width='34' height='52' rx='6'/></g><g stroke='#4d94a8' stroke-width='5' fill='none' stroke-linecap='round'><path d='M8 118v42M64 118v42'/></g><g fill='#7fb5c9'><rect x='62' y='96' width='6' height='68' rx='2'/><rect x='110' y='96' width='6' height='68' rx='2'/><rect x='158' y='96' width='6' height='68' rx='2'/><rect x='206' y='96' width='6' height='68' rx='2'/><rect x='254' y='96' width='6' height='68' rx='2'/><rect x='302' y='96' width='6' height='68' rx='2'/><rect x='350' y='96' width='6' height='68' rx='2'/></g><g fill='#8d99a6'><circle cx='36' cy='98' r='3'/><circle cx='89' cy='102' r='3'/><circle cx='137' cy='102' r='3'/><circle cx='185' cy='102' r='3'/><circle cx='233' cy='102' r='3'/><circle cx='281' cy='102' r='3'/><circle cx='329' cy='102' r='3'/><circle cx='377' cy='102' r='3'/></g><text x='6' y='182' font-size='12' fill='#26303c'>附扶手這一座</text><text x='6' y='285' font-size='15' fill='#f1f5f9'>完工後：感應式小便斗、深灰止滑鋪面</text></svg>"
-      },
       "項目": [
         {
           "標": "8 座感應式小便斗",
@@ -395,6 +443,20 @@ const DATA = {
           "材料": "同 1F，唯洗手檯高度為 65 公分。筒燈 12 盞、緊急求救押扣 1 組、閃光警報喇叭 1 組。",
           "看點": "同 1F 各項。⚠ 這一間的拆除數量表有一個要特別注意的地方：它比其他五間多了 8 片小便斗隔屏，但「既有隔間門窗」那一列的數量和其他五間一樣，見「名詞・爭議」第 8 則。"
         }
+      ],
+      "示意組": [
+        {
+          "題": "E-1 廁間與洗手檯",
+          "涵蓋": "涵蓋工項：四-1、三-8、七(一)-1",
+          "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='5樓男廁整修前示意：一整排舊小便斗與舊隔屏'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='40' width='400' height='150' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 70h400M0 100h400M0 130h400M0 160h400M50 40v150M110 40v150M170 40v150M230 40v150M290 40v150M350 40v150'/></g><path d='M150 60l14 26-10 4z' fill='#a8a094' opacity='.7'/><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#d6d0c5' stroke='#a8a094'><rect x='24' y='108' width='34' height='52' rx='6'/><rect x='72' y='108' width='34' height='52' rx='6'/><rect x='120' y='108' width='34' height='52' rx='6'/><rect x='168' y='108' width='34' height='52' rx='6'/><rect x='216' y='108' width='34' height='52' rx='6'/><rect x='264' y='108' width='34' height='52' rx='6'/><rect x='312' y='108' width='34' height='52' rx='6'/><rect x='360' y='108' width='34' height='52' rx='6'/></g><g fill='#9a9184'><rect x='62' y='96' width='6' height='72'/><rect x='110' y='96' width='6' height='72'/><rect x='158' y='96' width='6' height='72'/><rect x='206' y='96' width='6' height='72'/><rect x='254' y='96' width='6' height='72'/><rect x='302' y='96' width='6' height='72'/><rect x='350' y='96' width='6' height='72'/></g><text x='14' y='285' font-size='15' fill='#4a453c'>現況：8 座舊小便斗，中間是舊隔屏</text></svg>",
+          "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='5樓男廁完工後示意：8座感應式小便斗、最左一座附扶手、地坪換深灰止滑鋪面'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M0 172h400M50 40v150M100 40v150M150 40v150M200 40v150M250 40v150M300 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><rect x='0' y='190' width='400' height='110' fill='#5e6873'/><g stroke='#727d8a' stroke-width='1'><path d='M0 220h400M0 250h400M0 280h400'/></g><g fill='#ffffff' stroke='#c3ccd6'><rect x='16' y='104' width='40' height='60' rx='7'/><rect x='72' y='108' width='34' height='52' rx='6'/><rect x='120' y='108' width='34' height='52' rx='6'/><rect x='168' y='108' width='34' height='52' rx='6'/><rect x='216' y='108' width='34' height='52' rx='6'/><rect x='264' y='108' width='34' height='52' rx='6'/><rect x='312' y='108' width='34' height='52' rx='6'/><rect x='360' y='108' width='34' height='52' rx='6'/></g><g stroke='#4d94a8' stroke-width='5' fill='none' stroke-linecap='round'><path d='M8 118v42M64 118v42'/></g><g fill='#7fb5c9'><rect x='62' y='96' width='6' height='68' rx='2'/><rect x='110' y='96' width='6' height='68' rx='2'/><rect x='158' y='96' width='6' height='68' rx='2'/><rect x='206' y='96' width='6' height='68' rx='2'/><rect x='254' y='96' width='6' height='68' rx='2'/><rect x='302' y='96' width='6' height='68' rx='2'/><rect x='350' y='96' width='6' height='68' rx='2'/></g><g fill='#8d99a6'><circle cx='36' cy='98' r='3'/><circle cx='89' cy='102' r='3'/><circle cx='137' cy='102' r='3'/><circle cx='185' cy='102' r='3'/><circle cx='233' cy='102' r='3'/><circle cx='281' cy='102' r='3'/><circle cx='329' cy='102' r='3'/><circle cx='377' cy='102' r='3'/></g><text x='6' y='182' font-size='12' fill='#26303c'>附扶手這一座</text><text x='6' y='285' font-size='15' fill='#f1f5f9'>完工後：感應式小便斗、深灰止滑鋪面</text></svg>"
+        },
+        {
+          "題": "E-2 小便斗排與地坪雙材質",
+          "涵蓋": "涵蓋工項：七(一)-3、七(一)-4、四-2",
+          "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='5樓男廁小便斗區現況：8座舊式小便斗無隔屏、地面為單一舊地磚'><rect width='400' height='300' fill='#f3f0ea'/><rect x='0' y='0' width='400' height='34' fill='#d5d0c4'/>\n<rect x='0' y='34' width='400' height='168' fill='#e2ded4'/>\n<g stroke='#cbc4b6' stroke-width='1'><path d='M0 70h400M0 106h400M0 142h400M0 178h400M50 34v168M100 34v168M150 34v168M200 34v168M250 34v168M300 34v168M350 34v168'/></g>\n<g fill='#e8e5dd' stroke='#a89f8f' stroke-width='2'>\n<rect x='24' y='78' width='30' height='58' rx='12'/><rect x='70' y='78' width='30' height='58' rx='12'/>\n<rect x='116' y='78' width='30' height='58' rx='12'/><rect x='162' y='78' width='30' height='58' rx='12'/>\n<rect x='208' y='78' width='30' height='58' rx='12'/><rect x='254' y='78' width='30' height='58' rx='12'/>\n<rect x='300' y='78' width='30' height='58' rx='12'/><rect x='346' y='78' width='30' height='58' rx='12'/></g>\n<text x='200' y='192' font-size='13' text-anchor='middle' fill='#8b8477'>8 座，中間沒有隔屏</text>\n<rect x='0' y='202' width='400' height='54' fill='#d8d2c6'/>\n<g stroke='#c3bcae' stroke-width='1'><path d='M0 228h400M80 202v54M160 202v54M240 202v54M320 202v54'/></g>\n<text x='200' y='250' font-size='12' text-anchor='middle' fill='#8b8477'>地面單一舊地磚</text><text x='200' y='292' font-size='15' text-anchor='middle' fill='#4a463f'>現況：8 座舊小便斗無隔屏，地面單一材質</text></svg>",
+          "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='5樓男廁完成示意：7座感應式短斗加1座附扶手長斗式無障礙小便斗、各座之間加隔屏、小便斗區地坪改深灰色止滑鋪面'><rect width='400' height='300' fill='#f3f0ea'/><rect x='0' y='0' width='400' height='34' fill='#dfe6e8'/>\n<rect x='0' y='34' width='400' height='168' fill='#eef1ee'/>\n<g stroke='#7f8f86' stroke-width='4'><path d='M58 42v104M104 42v104M150 42v104M196 42v104M242 42v104M288 42v104M334 42v104'/></g>\n<g fill='#f6f9fb' stroke='#9aa8a2' stroke-width='2'>\n<rect x='24' y='72' width='28' height='52' rx='11'/><rect x='70' y='72' width='28' height='52' rx='11'/>\n<rect x='116' y='72' width='28' height='52' rx='11'/><rect x='162' y='72' width='28' height='52' rx='11'/>\n<rect x='208' y='72' width='28' height='52' rx='11'/><rect x='254' y='72' width='28' height='52' rx='11'/>\n<rect x='300' y='72' width='28' height='52' rx='11'/></g>\n<rect x='344' y='62' width='34' height='84' rx='14' fill='#eaf3ee' stroke='#4f7a4a' stroke-width='3'/>\n<g stroke='#4f7a4a' stroke-width='4' fill='none' stroke-linecap='round'><path d='M338 150v-26M384 150v-26M338 124h46'/></g>\n<text x='361' y='170' font-size='11' text-anchor='middle' fill='#3f6b3b'>無障礙・含扶手</text>\n<g fill='#4b6f88'><circle cx='38' cy='64' r='3'/><circle cx='84' cy='64' r='3'/><circle cx='130' cy='64' r='3'/><circle cx='176' cy='64' r='3'/><circle cx='222' cy='64' r='3'/><circle cx='268' cy='64' r='3'/><circle cx='314' cy='64' r='3'/></g>\n<text x='176' y='192' font-size='12' text-anchor='middle' fill='#4f6577'>感應式短斗 7 座＋長斗式 1 座，隔屏 8 組</text>\n<rect x='0' y='202' width='250' height='54' fill='#6f7276'/>\n<rect x='250' y='202' width='150' height='54' fill='#e7e4dc'/>\n<g stroke='#d3d0c8' stroke-width='1'><path d='M250 228h150M320 202v54'/></g>\n<text x='125' y='234' font-size='12' text-anchor='middle' fill='#f0efe6'>深灰色止滑鋪面</text>\n<text x='325' y='234' font-size='12' text-anchor='middle' fill='#6c6a63'>R11 止滑磚</text><text x='200' y='292' font-size='15' text-anchor='middle' fill='#4a463f'>完成：感應式小便斗＋隔屏，地坪分兩種材質</text></svg>"
+        }
       ]
     },
     {
@@ -403,10 +465,6 @@ const DATA = {
       "位置": "5 樓兩間廁所中的女廁，在樓梯的另一側，與 505 男廁隔著樓梯相對。做法與 3 樓、4 樓那兩間相同。",
       "現況": "5 間蹲式、1 間坐式共 6 個廁間，洗手盆在裡面，外面走廊有一座 4 個水龍頭的洗手檯。牆面地面舊磁磚、明架天花板。",
       "完成": "廁間數不變。舊洗手盆取消，改為入口處人造石洗手檯 65 公分高、3 支長柄式龍頭加一座低位拖布盆。牆面貼馬賽克壁磚配仿木紋腰帶，洗手台上方砌圓孔花格磚，地面 R11 止滑磚，隔間換 12mm 以上實心抗倍特板。",
-      "示意": {
-        "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='5樓女廁整修前示意：舊磁磚與舊隔間'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='40' width='400' height='150' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 70h400M0 100h400M0 130h400M0 160h400M40 40v150M100 40v150M160 40v150M220 40v150M280 40v150M340 40v150'/></g><path d='M96 148l14 24-10 5z' fill='#a8a094' opacity='.7'/><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#9a9184'><rect x='40' y='95' width='58' height='95'/><rect x='108' y='95' width='58' height='95'/><rect x='176' y='95' width='58' height='95'/><rect x='244' y='95' width='58' height='95'/></g><g fill='#8b8275'><rect x='62' y='130' width='6' height='6'/><rect x='130' y='130' width='6' height='6'/><rect x='198' y='130' width='6' height='6'/><rect x='266' y='130' width='6' height='6'/></g><ellipse cx='340' cy='168' rx='34' ry='15' fill='#ddd8ce'/><rect x='336' y='140' width='7' height='22' fill='#9a9184'/><text x='14' y='285' font-size='15' fill='#4a453c'>現況：舊磁磚、舊隔間板、洗手盆在廁所裡面</text></svg>",
-        "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='5樓女廁完工後示意：新壁磚配腰帶、花格磚與新隔間門'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M0 172h400M50 40v150M100 40v150M150 40v150M200 40v150M250 40v150M300 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><rect x='296' y='44' width='96' height='56' fill='#e8edf3' stroke='#cfd8e2'/><g fill='#f6f8fb'><circle cx='312' cy='58' r='5'/><circle cx='330' cy='58' r='5'/><circle cx='348' cy='58' r='5'/><circle cx='366' cy='58' r='5'/><circle cx='312' cy='74' r='5'/><circle cx='330' cy='74' r='5'/><circle cx='348' cy='74' r='5'/><circle cx='366' cy='74' r='5'/><circle cx='312' cy='90' r='5'/><circle cx='330' cy='90' r='5'/><circle cx='348' cy='90' r='5'/><circle cx='366' cy='90' r='5'/></g><rect x='0' y='190' width='400' height='110' fill='#dfe5ec'/><g stroke='#cdd6e0' stroke-width='1'><path d='M0 214h400M0 238h400M0 262h400M60 190v110M120 190v110M180 190v110M240 190v110M300 190v110M360 190v110'/></g><g fill='#7fb5c9'><rect x='40' y='95' width='58' height='95' rx='2'/><rect x='108' y='95' width='58' height='95' rx='2'/><rect x='176' y='95' width='58' height='95' rx='2'/><rect x='244' y='95' width='58' height='95' rx='2'/></g><g fill='#f6f8fb'><circle cx='90' cy='142' r='4'/><circle cx='158' cy='142' r='4'/><circle cx='226' cy='142' r='4'/><circle cx='294' cy='142' r='4'/></g><rect x='300' y='150' width='96' height='9' fill='#3c4653'/><rect x='306' y='159' width='84' height='16' fill='#eef1f5'/><g stroke='#7d8794' stroke-width='3' fill='none'><path d='M318 138v12M342 138v12M366 138v12'/></g><text x='14' y='285' font-size='15' fill='#26303c'>完工後：新壁磚＋腰帶、花格磚、人造石洗手檯</text></svg>"
-      },
       "項目": [
         {
           "標": "與 1F 相同的七項工項",
@@ -414,6 +472,14 @@ const DATA = {
           "白話": "拆到見底、地牆防水與洩水坡度、貼磚、搗擺隔間、便器與人造石洗手檯、照明與感應開關與求救鈴、油漆——這一間七項全部照標準做法。逐項的看法請看「1F 106 女廁」那一頁。",
           "材料": "同 1F，唯洗手檯高度為 65 公分。筒燈 12 盞、緊急求救押扣 1 組、閃光警報喇叭 1 組。管道間維修門 1 處。",
           "看點": "同 1F 各項。★ 這一間在 5 樓，是給水管路的最末端——驗收時特別要試「尖峰時間水量夠不夠」：五樓同時開三支龍頭沖一間馬桶，水勢會不會明顯變小。頂樓水箱與加壓設備在圖說上都只寫「既有」，見「名詞・爭議」第 11 則。"
+        }
+      ],
+      "示意組": [
+        {
+          "題": "F-1 整體樣貌",
+          "涵蓋": "涵蓋工項：與 1F 同，另含 四-5 管道間維修門",
+          "前": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='5樓女廁整修前示意：舊磁磚與舊隔間'><rect width='400' height='300' fill='#e9e5dd'/><rect x='0' y='40' width='400' height='150' fill='#cdc6ba'/><g stroke='#b8b0a2' stroke-width='1'><path d='M0 70h400M0 100h400M0 130h400M0 160h400M40 40v150M100 40v150M160 40v150M220 40v150M280 40v150M340 40v150'/></g><path d='M96 148l14 24-10 5z' fill='#a8a094' opacity='.7'/><rect x='0' y='190' width='400' height='110' fill='#bdb5a8'/><g fill='#9a9184'><rect x='40' y='95' width='58' height='95'/><rect x='108' y='95' width='58' height='95'/><rect x='176' y='95' width='58' height='95'/><rect x='244' y='95' width='58' height='95'/></g><g fill='#8b8275'><rect x='62' y='130' width='6' height='6'/><rect x='130' y='130' width='6' height='6'/><rect x='198' y='130' width='6' height='6'/><rect x='266' y='130' width='6' height='6'/></g><ellipse cx='340' cy='168' rx='34' ry='15' fill='#ddd8ce'/><rect x='336' y='140' width='7' height='22' fill='#9a9184'/><text x='14' y='285' font-size='15' fill='#4a453c'>現況：舊磁磚、舊隔間板、洗手盆在廁所裡面</text></svg>",
+          "後": "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='5樓女廁完工後示意：新壁磚配腰帶、花格磚與新隔間門'><rect width='400' height='300' fill='#f6f8fb'/><rect x='0' y='40' width='400' height='150' fill='#eef1f5'/><g stroke='#dbe2ea' stroke-width='1'><path d='M0 62h400M0 84h400M0 128h400M0 150h400M0 172h400M50 40v150M100 40v150M150 40v150M200 40v150M250 40v150M300 40v150M350 40v150'/></g><rect x='0' y='104' width='400' height='11' fill='#b98a55'/><rect x='296' y='44' width='96' height='56' fill='#e8edf3' stroke='#cfd8e2'/><g fill='#f6f8fb'><circle cx='312' cy='58' r='5'/><circle cx='330' cy='58' r='5'/><circle cx='348' cy='58' r='5'/><circle cx='366' cy='58' r='5'/><circle cx='312' cy='74' r='5'/><circle cx='330' cy='74' r='5'/><circle cx='348' cy='74' r='5'/><circle cx='366' cy='74' r='5'/><circle cx='312' cy='90' r='5'/><circle cx='330' cy='90' r='5'/><circle cx='348' cy='90' r='5'/><circle cx='366' cy='90' r='5'/></g><rect x='0' y='190' width='400' height='110' fill='#dfe5ec'/><g stroke='#cdd6e0' stroke-width='1'><path d='M0 214h400M0 238h400M0 262h400M60 190v110M120 190v110M180 190v110M240 190v110M300 190v110M360 190v110'/></g><g fill='#7fb5c9'><rect x='40' y='95' width='58' height='95' rx='2'/><rect x='108' y='95' width='58' height='95' rx='2'/><rect x='176' y='95' width='58' height='95' rx='2'/><rect x='244' y='95' width='58' height='95' rx='2'/></g><g fill='#f6f8fb'><circle cx='90' cy='142' r='4'/><circle cx='158' cy='142' r='4'/><circle cx='226' cy='142' r='4'/><circle cx='294' cy='142' r='4'/></g><rect x='300' y='150' width='96' height='9' fill='#3c4653'/><rect x='306' y='159' width='84' height='16' fill='#eef1f5'/><g stroke='#7d8794' stroke-width='3' fill='none'><path d='M318 138v12M342 138v12M366 138v12'/></g><text x='14' y='285' font-size='15' fill='#26303c'>完工後：新壁磚＋腰帶、花格磚、人造石洗手檯</text></svg>"
         }
       ]
     }
@@ -708,10 +774,756 @@ const DATA = {
       "圖說": "整套圖說裡，沒有任何一間廁間標示為無障礙廁所：沒有輪椅迴轉空間的標註、沒有馬桶旁的扶手、沒有無障礙求救鈴的規格與高度。唯一與無障礙有關的三樣東西是：2 樓入口的 100 公分坡道（圖說只引用了坡度規定，沒有畫坡道本體）、5 樓男廁最靠邊那一座附扶手的小便斗（扶手無任何規格）、各層的低位拖布盆（那是清潔用的，不是無障礙設施）。而本案的招標前文件裡放了教育部「校園性別友善廁所及宿舍設置指引」、國教署「廁所設計規劃標準原則」與市府性別友善廁所規劃設計檢核表。",
       "為什麼吵": "【待查證】這一則不是說設計一定有問題——這棟樓的其他位置可能本來就有無障礙廁所，而本案的範圍只有這 6 間。但這件事要有人明確回答過、而且留下紀錄。理由是：① 這是一筆教育部的老舊廁所整修補助，成果會被書面查核；② 性別友善廁所是本案的重點，而外界對「性別友善」的期待通常包含無障礙可及性；③ 如果將來有人問「花了四百多萬整修六間廁所，為什麼沒有一間無障礙」，機關手上要有答案。",
       "先問誰": "★ 這一則要問兩邊。① 問設計監造單位：本棟建築物既有的無障礙廁所在哪裡、與這六間的關係、本案是否需要另設，請他書面答覆並註明依據的法規條文。② 如果他的答覆是「不需要」，把那份答覆留進卷裡，並在補助結案的成果報告書裡一併說明。★ 如果他的答覆是「需要」，那就是變更設計，而變更設計愈早提愈便宜——現在提是設計問題，開工後提是追加。"
+    },
+    {
+      "地方": "標單詳細價目表第七章「給排水設備工程」跳號：沒有第 24 項與第 25 項",
+      "圖說": "標單第七章（一）衛生器具設備工程的項次是 1、2…23，然後直接跳到 26、27…33。24 與 25 這兩個號碼在原件裡不存在。",
+      "為什麼吵": "跳號本身不影響金額（合計是按實際列出的項目加總），但它是一個「這份標單被編輯過」的痕跡——原本可能有兩項被刪掉。廠商投標時若拿到不同版本，或決標後送來的契約標價清單自己把號碼補回去，兩份文件的項次就對不起來，日後估驗計價、變更設計會逐項對照，對不起來就是爭議。",
+      "先問誰": "★ 開標前先向建築師事務所確認 24、25 是不是刪掉的項目、刪的是什麼；決標後收到廠商的契約標價清單時，逐項核對項次與品名是否與招標時的標單完全一致（本庫 skill「標價清單比價」即為此而設）。"
     }
   ],
-  "更新日": "2026-08-28",
-  "來源": "依 115001 案 02.招標文件\\08.細設計圖說.pdf（三禾聯合建築師事務所，2026-06-03 修正版，51 頁 A3）逐頁轉譯，並與 02.招標文件\\07.星空樓廁所整修工程標單.xls（設計監造單位 2026-08-24 交付之發包版，91 項工項）、02.招標文件\\09.施工規範.pdf（221 頁）、01.招標前文件\\20260824-工程預定進度.pdf 逐項勾稽。★ 圖說 PDF 無文字層，全部內容為逐頁目視判讀，數量與規格已與標單交叉核對。★ 施工階段的天數為推定：本案尚未決標，尚無廠商提送並經核定之施工預定進度表；此處的天數係依設計監造單位 2026-08-24 版預定進度表（施工階段 75 天、整體 80 天）換算為「開工後第 N 天」，實際期程以決標後廠商提送並經核定之進度表為準。★ 本頁列出的爭議點為圖說內部與圖說對標單之比對結果，不代表設計有誤，僅表示該處存在第二種合理讀法、應於開工前問定。"
+  "更新日": "2026-08-31",
+  "來源": "依 115001 案 02.招標文件\\08.細設計圖說.pdf（三禾聯合建築師事務所，2026-06-03 修正版，51 頁 A3）逐頁轉譯，並與 02.招標文件\\07.星空樓廁所整修工程標單.xls（設計監造單位 2026-08-24 交付之發包版，91 項工項）、02.招標文件\\09.施工規範.pdf（221 頁）、01.招標前文件\\20260824-工程預定進度.pdf 逐項勾稽。★ 圖說 PDF 無文字層，全部內容為逐頁目視判讀，數量與規格已與標單交叉核對。★ 施工階段的天數為推定：本案尚未決標，尚無廠商提送並經核定之施工預定進度表；此處的天數係依設計監造單位 2026-08-24 版預定進度表（施工階段 75 天、整體 80 天）換算為「開工後第 N 天」，實際期程以決標後廠商提送並經核定之進度表為準。★ 2026-08-31 增列「工項清單」頁籤：91 項逐項取自 02.招標文件\\07.星空樓廁所整修工程標單.xls 之「標單明細表」，照原文抄錄，單價與複價一律不上網（單價見原件）。原件材料群組標題以［　］補在品名之前，供辨識規格用；★ 標單以全案六間彙總計價、未逐間分列，故多數工項的「對應圖」欄記為「六間共用」，這不是抽漏，是原件本來就沒有分間。同日並將每區的前後圖由 1 組改為多組（A、B 各 3 組，E 2 組，C、D、F 各 1 組）。★ 本頁列出的爭議點為圖說內部與圖說對標單之比對結果，不代表設計有誤，僅表示該處存在第二種合理讀法、應於開工前問定。",
+  "工項": [
+    {
+      "項次": "一-1",
+      "名": "工程告示牌",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "無圖—假設工程"
+    },
+    {
+      "項次": "一-2",
+      "名": "施工管制安全圍籬(H:295CM)",
+      "單位": "M",
+      "數量": "36",
+      "區": "",
+      "圖": "無圖—假設工程"
+    },
+    {
+      "項次": "一-3",
+      "名": "電梯保護",
+      "單位": "處",
+      "數量": "1",
+      "區": "",
+      "圖": "無圖—假設工程（電梯保護）"
+    },
+    {
+      "項次": "一-4",
+      "名": "施工範圍完工後清潔,施工期工地及周邊環境清潔",
+      "單位": "間",
+      "數量": "6",
+      "區": "",
+      "圖": "無圖—假設工程"
+    },
+    {
+      "項次": "二-1",
+      "名": "水電拆卸及整理",
+      "單位": "間",
+      "數量": "6",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "二-2",
+      "名": "既有磚牆拆除",
+      "單位": "㎡",
+      "數量": "27",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "二-3",
+      "名": "既有壁磚敲除打毛",
+      "單位": "㎡",
+      "數量": "456",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "二-4",
+      "名": "既有墊高地磚敲除打毛",
+      "單位": "㎡",
+      "數量": "35.9",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "二-5",
+      "名": "既有搗擺,門窗拆除",
+      "單位": "組",
+      "數量": "54",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "二-6",
+      "名": "廁內既有設備與五金拆除(馬桶、小便斗、拖布盆、龍頭)",
+      "單位": "組",
+      "數量": "64",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "二-7",
+      "名": "既有明架天花板拆除",
+      "單位": "㎡",
+      "數量": "144",
+      "區": "",
+      "圖": "A-3 天花、照明與求救鈴・六間共用"
+    },
+    {
+      "項次": "二-8",
+      "名": "廢棄物清運(含搬運工,吊工,車資)",
+      "單位": "車",
+      "數量": "8",
+      "區": "",
+      "圖": "無圖—清運工作（3.5 噸車 8 車，須附清運證明）"
+    },
+    {
+      "項次": "三-1",
+      "名": "新做1/2B磚矮牆含粗底粉光 (TH:100cm)",
+      "單位": "㎡",
+      "數量": "4",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "三-2",
+      "名": "拆除後修補工資",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "三-3",
+      "名": "墊高27CM:輕質混凝土+C型鋼",
+      "單位": "㎡",
+      "數量": "11",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "三-4",
+      "名": "牆面打底及防水",
+      "單位": "㎡",
+      "數量": "318.5",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "三-5",
+      "名": "地面打底及防水及洩水坡度施作",
+      "單位": "㎡",
+      "數量": "147",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "三-6",
+      "名": "牆面不施作磁磚面1:3水泥砂漿粉光",
+      "單位": "㎡",
+      "數量": "318.5",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "三-7",
+      "名": "廁所內牆面磁磚鋪設 (含磁磚材料費)",
+      "單位": "㎡",
+      "數量": "301",
+      "區": "",
+      "圖": "A-2 洗手檯與入口立面・六間共用"
+    },
+    {
+      "項次": "三-8",
+      "名": "地面磁磚鋪設 (含磁磚材料費)",
+      "單位": "㎡",
+      "數量": "147",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "三-9",
+      "名": "5*120cm腰帶磁磚鋪設 (含磁磚材料費)",
+      "單位": "片",
+      "數量": "153",
+      "區": "",
+      "圖": "A-2 洗手檯與入口立面・六間共用"
+    },
+    {
+      "項次": "三-10",
+      "名": "人造石一體成人造石洗手台含管線遮板(長174CM)",
+      "單位": "CM",
+      "數量": "1044",
+      "區": "",
+      "圖": "A-2 洗手檯與入口立面・六間共用（全案總長 1,044 cm）"
+    },
+    {
+      "項次": "三-11",
+      "名": "入口造型意象面磁磚鋪設 (含磁磚材料費)",
+      "單位": "㎡",
+      "數量": "77",
+      "區": "",
+      "圖": "A-2 洗手檯與入口立面・六間共用"
+    },
+    {
+      "項次": "三-12",
+      "名": "砌花格磚",
+      "單位": "塊",
+      "數量": "648",
+      "區": "",
+      "圖": "A-2 洗手檯與入口立面・六間共用"
+    },
+    {
+      "項次": "三-13",
+      "名": "人造石止水檻",
+      "單位": "CM",
+      "數量": "1380",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "四-1",
+      "名": "全區廁所熱固性樹脂板搗擺隔間(TH:大於等於12mm以上，含五金固定件及不鏽鋼掛勾)",
+      "單位": "間",
+      "數量": "37",
+      "區": "",
+      "圖": "各區「廁間與地坪」組・六間共 37 間"
+    },
+    {
+      "項次": "四-2",
+      "名": "全區男廁小便斗間熱固性樹脂板搗擺隔板(TH:大於等於12mm以上，含尼龍五金固定件)",
+      "單位": "組",
+      "數量": "8",
+      "區": "E",
+      "圖": "E-2 小便斗排與地坪雙材質"
+    },
+    {
+      "項次": "四-3",
+      "名": "廁所入口標示牌TH3MM壓克力貼卡典西德字(中英)",
+      "單位": "組",
+      "數量": "37",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "四-4",
+      "名": "全區廁所TH5MM壓克力造型直徑120CM(人形)含底板",
+      "單位": "組",
+      "數量": "12",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "四-5",
+      "名": "管道間維修門",
+      "單位": "處",
+      "數量": "6",
+      "區": "",
+      "圖": "六間共用—每間 1 處管道間維修門"
+    },
+    {
+      "項次": "四-6",
+      "名": "上吊鎖5MM壓克力仿偷拍隔板",
+      "單位": "組",
+      "數量": "6",
+      "區": "B",
+      "圖": "B-2 小便斗獨立隔間與地板排水槽（★ 標單 6 組、圖說只標 2F，見爭議第 5 則）"
+    },
+    {
+      "項次": "四-7",
+      "名": "［內貼大圖輸出團另選］18mm厚發泡板門片 30*77cm(框料及鉸鍊)",
+      "單位": "片",
+      "數量": "2",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "四-8",
+      "名": "［內貼大圖輸出團另選］18mm厚發泡板門片 40*77cm(框料及鉸鍊)",
+      "單位": "片",
+      "數量": "10",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "五-1",
+      "名": "全區廁所內牆面不施作磁磚面批土刷耐候3合1晴雨漆",
+      "單位": "㎡",
+      "數量": "318.5",
+      "區": "",
+      "圖": "各區「牆面與洗手檯」組・六間共用"
+    },
+    {
+      "項次": "五-2",
+      "名": "全區廁所內原樓板露樑內牆面批土刷耐候3合1晴雨漆",
+      "單位": "㎡",
+      "數量": "246",
+      "區": "",
+      "圖": "A-3 天花、照明與求救鈴・六間共用"
+    },
+    {
+      "項次": "六(一)-1",
+      "名": "20W筒燈(4000K)",
+      "單位": "盞",
+      "數量": "73",
+      "區": "",
+      "圖": "A-3 天花、照明與求救鈴・六間共用（這一間 12 盞，全案 73 盞）"
+    },
+    {
+      "項次": "六(一)-2",
+      "名": "單切螢光開關15A 220V,附金屬蓋板",
+      "單位": "只",
+      "數量": "6",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(一)-3",
+      "名": "熱感自動開關3A 110V/220V",
+      "單位": "只",
+      "數量": "6",
+      "區": "",
+      "圖": "A-3 天花、照明與求救鈴・六間共用"
+    },
+    {
+      "項次": "六(一)-4",
+      "名": "四角/八角BOX附蓋板1.6mmT (熱浸鍍鋅)",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(一)-5",
+      "名": "PVC金屬防水軟管, 燈具結線及測試",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(一)-6",
+      "名": "工程另料(含五金另料及耗材)",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(一)-7",
+      "名": "運什費",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(一)-8",
+      "名": "工資",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(二)-1",
+      "名": "［600V PVC 線 及另料］2.0mm",
+      "單位": "M",
+      "數量": "20",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(二)-2",
+      "名": "［600V PVC 線 及另料］配線另料",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(二)-3",
+      "名": "［PVC 導線管  E管］16∮(2.0mm) (1/2\")",
+      "單位": "M",
+      "數量": "20",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(二)-4",
+      "名": "［PVC 導線管  E管］配管另件",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(二)-5",
+      "名": "管路吊架及固定 (含拉線箱)",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(二)-6",
+      "名": "工程另料(含五金另料及耗材)",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(二)-7",
+      "名": "運什費",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(二)-8",
+      "名": "工資(含打鑿修補及復原)",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(三)-1",
+      "名": "緊急求救押扣",
+      "單位": "組",
+      "數量": "13",
+      "區": "",
+      "圖": "A-3 天花、照明與求救鈴（2F 8 組、其餘各 1 組，全案 13 組）"
+    },
+    {
+      "項次": "六(三)-2",
+      "名": "閃光警報喇叭",
+      "單位": "組",
+      "數量": "6",
+      "區": "",
+      "圖": "A-3 天花、照明與求救鈴・六間各 1 組"
+    },
+    {
+      "項次": "六(三)-3",
+      "名": "設備按裝工資",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(三)-4",
+      "名": "系統測試費",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(三)-5",
+      "名": "設備按裝另料",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(三)-6",
+      "名": "［PVC 導線管  E管 (符合CNS規定)］16mm∮ (1/2\")",
+      "單位": "M",
+      "數量": "10",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(三)-7",
+      "名": "［PVC 導線管  E管 (符合CNS規定)］配管另件",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(三)-8",
+      "名": "出線口(BOX,拖線箱,結線箱)",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "六(三)-9",
+      "名": "配管工資(含打鑿修補及復原)",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-1",
+      "名": "座式上壓二段式馬桶, 含省水型銅器配件全套",
+      "單位": "組",
+      "數量": "6",
+      "區": "",
+      "圖": "各區「廁間與地坪」組・六間各 1 座"
+    },
+    {
+      "項次": "七(一)-2",
+      "名": "蹲式馬桶(加長型)，含兩段式手壓式沖水器省水型銅器配件全套",
+      "單位": "組",
+      "數量": "29",
+      "區": "",
+      "圖": "各區「廁間與地坪」組・六間共 29 座"
+    },
+    {
+      "項次": "七(一)-3",
+      "名": "感應式小便斗(掛牆長斗式)，背進水，含扶手，附省水型銅器配件全套，(感應器為內嵌式)",
+      "單位": "組",
+      "數量": "1",
+      "區": "E",
+      "圖": "E-2 小便斗排與地坪雙材質（附扶手長斗式，無障礙用）"
+    },
+    {
+      "項次": "七(一)-4",
+      "名": "感應式小便斗(掛牆短斗式)，背進水，附省水型銅器配件全套，(感應器為內嵌式)",
+      "單位": "組",
+      "數量": "9",
+      "區": "",
+      "圖": "E-2 小便斗排與地坪雙材質（5F 男廁 7 座＋2F 性別友善 2 座，標單未分間）"
+    },
+    {
+      "項次": "七(一)-5",
+      "名": "單栓龍頭 (一般長柄式)(拖布盆)",
+      "單位": "組",
+      "數量": "6",
+      "區": "",
+      "圖": "A-2 洗手檯與入口立面・每間 1 座拖布盆"
+    },
+    {
+      "項次": "七(一)-6",
+      "名": "單栓龍頭 (一般長柄式)(洗手台)",
+      "單位": "組",
+      "數量": "18",
+      "區": "",
+      "圖": "A-2 洗手檯與入口立面・每間 3 支"
+    },
+    {
+      "項次": "七(一)-7",
+      "名": "方型無牙地板落水頭 2\"",
+      "單位": "只",
+      "數量": "12",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-8",
+      "名": "［橫式逆止凡而, 不鏽鋼螺紋口10Kg/C㎡級, 檢附測試報告］1-1/2\"",
+      "單位": "只",
+      "數量": "8",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-9",
+      "名": "［雙片式球塞凡而,不銹鋼製螺紋口10kg/C㎡級,檢附測試報告］3/4\"",
+      "單位": "只",
+      "數量": "7",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-10",
+      "名": "［雙片式球塞凡而,不銹鋼製螺紋口10kg/C㎡級,檢附測試報告］1\"",
+      "單位": "只",
+      "數量": "4",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-11",
+      "名": "［雙片式球塞凡而,不銹鋼製螺紋口10kg/C㎡級,檢附測試報告］1-1/4\"",
+      "單位": "只",
+      "數量": "7",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-12",
+      "名": "［雙片式球塞凡而,不銹鋼製螺紋口10kg/C㎡級,檢附測試報告］1-1/2\"",
+      "單位": "只",
+      "數量": "8",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-13",
+      "名": "工程另料(含五金另料及耗材)",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-14",
+      "名": "［冷水管 - PE被覆不鏽鋼管(壓接薄管)及另件, 管材須固熔化熱處理］1/2\"  (0.8mm)    (被覆厚度0.8mm)",
+      "單位": "M",
+      "數量": "340",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-15",
+      "名": "［冷水管 - PE被覆不鏽鋼管(壓接薄管)及另件, 管材須固熔化熱處理］3/4\"  (1.0mm)    (被覆厚度0.8mm)",
+      "單位": "M",
+      "數量": "160",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-16",
+      "名": "［冷水管 - PE被覆不鏽鋼管(壓接薄管)及另件, 管材須固熔化熱處理］1\"  (1.0mm)    (被覆厚度0.8mm)",
+      "單位": "M",
+      "數量": "220",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-17",
+      "名": "［冷水管 - PE被覆不鏽鋼管(壓接薄管)及另件, 管材須固熔化熱處理］1-1/4\"  (1.2mm)    (被覆厚度0.8mm)",
+      "單位": "M",
+      "數量": "60",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-18",
+      "名": "［冷水管 - PE被覆不鏽鋼管(壓接薄管)及另件, 管材須固熔化熱處理］1-1/2\"  (1.2mm)    (被覆厚度0.8mm)",
+      "單位": "M",
+      "數量": "50",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-19",
+      "名": "不鏽鋼接頭另件, 雙壓接 (符合JWWA及SAS、檢附CNS測試報告)",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-20",
+      "名": "［PVC (污廢水管)  (桔紅色管) 及另件］2\" (4.5mm)",
+      "單位": "M",
+      "數量": "195",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-21",
+      "名": "［PVC (污廢水管)  (桔紅色管) 及另件］3\" (5.5mm)",
+      "單位": "M",
+      "數量": "150",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-22",
+      "名": "［PVC (污廢水管)  (桔紅色管) 及另件］4\" (7.0mm)",
+      "單位": "M",
+      "數量": "180",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-23",
+      "名": "配管另件 (牙接或機械接頭)",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-26",
+      "名": "［PVC管透氣管及另件］2\" (2.0mm)",
+      "單位": "M",
+      "數量": "170",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-27",
+      "名": "PVC管透氣管配管另件",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-28",
+      "名": "試水試壓、管路清潔消毒及調整(檢附測試報告及照片)",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-29",
+      "名": "管路標示,油漆,吊掛及固定另料(SUS304)",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-30",
+      "名": "既設給排水管路切除及銜接",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-31",
+      "名": "工程另料(含五金另料及耗材)",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-32",
+      "名": "運什費",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    },
+    {
+      "項次": "七(一)-33",
+      "名": "工資(含打鑿修補及復原)",
+      "單位": "式",
+      "數量": "1",
+      "區": "",
+      "圖": "六間共用—標單以全案彙總計價，未分間"
+    }
+  ],
+  "原始文件": [
+    {
+      "名": "發包圖說（細設計圖說，PDF，51 頁 A3）",
+      "連結": "https://drive.google.com/file/d/1GVQuWk2djqNqYY5mKk1C7qDl3K5h1a1s/view"
+    },
+    {
+      "名": "標單（空白標單，Excel，四個工作表：標單書總表／標單明細表／單分／數量計算表）★ 單價與複價欄為空白，本檔不含任何價格",
+      "連結": "https://drive.google.com/file/d/1Cq3cJvuRmgW-X_XCiwzgdMy8cdoJHkar/view"
+    }
+  ]
 };
 </script>
 <!-- ═══ 以下不動 ═══ -->
@@ -750,15 +1562,21 @@ const panels = [];
 const add = (id, 名, html) => { panels.push({ id, 名, html }); };
 
 // ① 各區域：現況→完成 對比 + 逐項白話
-DATA.區域.forEach(r => add('r' + r.id, r.名, `
+//    2026-08-31 改版：一區可有多組前後圖（示意組）。沒有 示意組 的舊 JSON 走原本的單組 示意。
+DATA.區域.forEach(r => {
+  const 組 = (r.示意組 && r.示意組.length) ? r.示意組
+           : [{ 前: r.示意?.前, 後: r.示意?.後 }];
+  add('r' + r.id, r.名, `
   <h2>這一區在哪裡</h2>
   <div class="card"><p>${esc(r.位置)}</p></div>
   <h2>做之前 / 做之後</h2>
+  ${組.map(g => `
+  ${(g.題 || g.涵蓋) ? `<h3 class="ba-t">${esc(g.題 || '')}${g.涵蓋 ? `<span class="tag">${esc(g.涵蓋)}</span>` : ''}</h3>` : ''}
   <div class="ba" data-ba>
-    <div class="before">${r.示意?.前 || '<p class="muted">（施工前示意）</p>'}<span class="lab">現況</span></div>
-    <div class="after">${r.示意?.後 || '<p class="muted">（完工後示意）</p>'}<span class="lab">完工後</span></div>
+    <div class="before">${g.前 || '<p class="muted">（施工前示意）</p>'}<span class="lab">現況</span></div>
+    <div class="after">${g.後 || '<p class="muted">（完工後示意）</p>'}<span class="lab">完工後</span></div>
   </div>
-  <input class="sp" type="range" min="0" max="100" value="50" aria-label="拖曳比較施工前後">
+  <input class="sp" type="range" min="0" max="100" value="50" aria-label="拖曳比較施工前後">`).join('')}
   <div class="grid2" style="margin-top:12px">
     <div class="card"><h3>現況</h3><p class="muted">${esc(r.現況)}</p></div>
     <div class="card"><h3>完工後</h3><p class="muted">${esc(r.完成)}</p></div>
@@ -773,7 +1591,8 @@ DATA.區域.forEach(r => add('r' + r.id, r.名, `
         <dt>現場看點</dt><dd>${esc(i.看點)}</dd>
       </dl>
     </div>`).join('')}
-`));
+`);
+});
 
 // ② 施工階段
 add('st', '施工階段', `
@@ -821,22 +1640,60 @@ add('gl', '名詞・爭議', `
       <p><b>圖說怎麼寫：</b>${esc(w.圖說)}</p>
       <p><b>為什麼會吵：</b>${esc(w.為什麼吵)}</p>
       <p><b>開工前先問：</b>${esc(w.先問誰)}</p>
-    </details>`).join('')}
+    </details>`).join('')}`);
+
+// ⑤ 工項清單（2026-08-31 改版新增。取標價清單的項次與數量，單價一律不上網）
+//    ★ 欄位缺席就不長這個頁籤——舊 JSON 重建不能壞。
+if (DATA.工項 && DATA.工項.length) add('bq', '工項清單', `
+  <h2>本工程有哪些施作項目</h2>
+  <p class="muted">本表取自本案標價清單（詳細價目表）的項次與數量，名稱照原件抄。
+  <b>單價與金額不放上網</b>，要看單價請到「原始圖說」頁籤開原件。</p>
+  <div class="tbl-wrap"><table class="boq">
+    <thead><tr><th>項次</th><th>工項</th><th>單位</th><th>數量</th><th>對應圖</th></tr></thead>
+    <tbody>${DATA.工項.map(i => `
+      <tr><td>${esc(i.項次)}</td><td>${esc(i.名)}</td><td>${esc(i.單位)}</td><td>${esc(i.數量)}</td>
+      <td>${i.區 ? `<button class="btn go" data-go="r${esc(i.區)}">${esc(i.圖 || '看圖')}</button>`
+                  : `<span class="muted">${esc(i.圖 || '—')}</span>`}</td></tr>`).join('')}
+    </tbody>
+  </table></div>
+  <p class="muted">共 ${DATA.工項.length} 項，與原件逐項對齊。</p>`);
+
+// ⑥ 原始圖說（2026-08-31 改版新增。只放 Google Drive 連結，原件一頁都不進本站）
+if (DATA.原始文件 && DATA.原始文件.length) add('doc', '原始圖說', `
+  <h2>原始文件（原件）</h2>
+  <p class="muted">設計單位交付的原始文件存放在學校的雲端硬碟，本頁只放連結、不存放檔案。
+  <b>原始文件之開啟權限由學校管理</b>，打不開請洽總務處。</p>
+  ${DATA.原始文件.map(d => `
+    <div class="card">
+      <h3>${esc(d.名)}</h3>
+      <p><a class="doc-a" href="${esc(d.連結)}" target="_blank" rel="noopener noreferrer">在雲端硬碟開啟 ↗</a></p>
+      ${d.預覽 ? `<details><summary>頁內預覽</summary>
+        <iframe class="doc-f" src="${esc(d.預覽)}" loading="lazy" allow="fullscreen" title="${esc(d.名)} 預覽"></iframe>
+      </details>` : ''}
+    </div>`).join('')}`);
+
+// 頁尾放在所有 section 之外，每個頁籤都看得到（不可退讓 6）
+el('elMain').innerHTML = panels.map((p, i) => `<section id="${p.id}" class="${i ? '' : 'on'}">${p.html}</section>`).join('') + `
   <footer>
     <div>資料來源：${esc(DATA.來源)}</div>
     <div>更新日：${esc(DATA.更新日)}</div>
     <div>★ 本頁是圖說的<b>白話轉譯</b>，不是契約文件。施工範圍、尺寸、規格一律以核定圖說與契約為準。</div>
-  </footer>`);
-
-el('elMain').innerHTML = panels.map((p, i) => `<section id="${p.id}" class="${i ? '' : 'on'}">${p.html}</section>`).join('');
+  </footer>`;
 el('elTabs').innerHTML = panels.map((p, i) =>
   `<button class="tab" role="tab" aria-selected="${!i}" data-go="${p.id}">${esc(p.名)}</button>`).join('');
 
-el('elTabs').addEventListener('click', e => {
-  const b = e.target.closest('[data-go]'); if (!b) return;
+// 換頁：nav 的頁籤與內文裡的 [data-go]（工項表「對應圖」按鈕）走同一條路
+const goTab = id => {
+  const b = document.querySelector(`nav [data-go="${id}"]`); if (!b) return;
   document.querySelectorAll('nav .tab').forEach(t => t.setAttribute('aria-selected', t === b));
-  document.querySelectorAll('main section').forEach(s => s.classList.toggle('on', s.id === b.dataset.go));
+  document.querySelectorAll('main section').forEach(s => s.classList.toggle('on', s.id === id));
   scrollTo({ top: 0, behavior: 'smooth' });
+};
+el('elTabs').addEventListener('click', e => {
+  const b = e.target.closest('[data-go]'); if (b) goTab(b.dataset.go);
+});
+el('elMain').addEventListener('click', e => {
+  const b = e.target.closest('[data-go]'); if (b) goTab(b.dataset.go);
 });
 
 // 前後對比：拖桿 + 直接在圖上拖
